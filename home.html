@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Bootstrap Example</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" 
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+      
+    <nav class="navbar navbar-inverse navbar-fixed-top"> 
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" 
+              data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+            <a class="navbar-brand" href="home.html">WebSiteName</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Contact Us
+                  <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="www.twitter.com/BOOKin">Twitter</a></li>
+                <li><a href="www.facebook.com/BOOKin">Facebook</a></li>
+                <li><a href="www.instagram/BOOKin">Instagram</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Search Book</a></li>
+            <li><a href="#">Search Artist</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="signUpPage.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="loginPage.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>    
+
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1>Slide per contenuti</h1>
+        <p>Resize this responsive page to see the effect!</p>
+        <a href="home.html" class="btn btn-primary"> Read More</a>
+      </div> 
+    </div>
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4" style="background-color:rgb(17, 0, 255);">
+          <h3>Column 1 <img class="img-responsive" src="camilleri.jpg" alt=""></h3>
+          <dl>
+            <dt>Immagine evento</dt>
+            <dd>- descrizione</dd>
+            <dd>- link alla apgina</dd>
+          </dl>
+        </div>
+        <div class="col-sm-4" style="background-color:rgb(255, 0, 0);">
+          <h3>Column 2</h3>
+          <dl>
+            <dt>Immagine evento</dt>
+            <dd><kbd>- descrizione </kbd></dd>
+            <dd>- link alla apgina</dd>
+          </dl>
+        </div>
+        <div class="col-sm-4" style="background-color:rgb(255, 230, 0);">
+          <h3>Column 3</h3>        
+          <dl>
+            <dt>Immagine evento</dt>
+            <dd>- descrizione</dd>
+            <dd>- link alla apgina</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <div class="container">
+      <div class="text-center"> <h2>Eventi in programma</h2></div>
+      <br></br>
+      <p>Clicca sulle Immagini per vedere gli Eventi nel dettaglio</p>
+      <br></br>
+      <br></br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <a href="#" target="_blank">
+              <img src="got.jpg" alt="Lights" style="width:100%">
+              <div class="caption">
+                <p>Presentazione dell'ultimo libro della saga del Trono di Spade</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <a href="#" target="_blank">
+              <img src="Hp.jpg" alt="Nature" style="width:100%">
+              <div class="caption">
+                <p>J.K. Rowling ci asciuga ancora con un liro su HP</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <a href="#" target="_blank">
+              <img src="Hg.jpg" alt="Fjords" style="width:100%">
+              <div class="caption">
+                <p>Libri orrendi e film fatti peggio, ma l'autore ha finito i soldi per 
+                          il crack e deve mangiare </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body> 
+</html>
