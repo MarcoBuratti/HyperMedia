@@ -1,0 +1,11 @@
+body{
+    margin-top: 50px;
+}
+
+.navbar-inverse{
+    border: 0;
+}
+
+.box{
+    margin: 5px;
+}

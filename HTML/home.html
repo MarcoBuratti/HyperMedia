@@ -8,6 +8,7 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="../CSS/home.css">
   </head>
 
   <body>
@@ -29,7 +30,7 @@
             <li><a href="contact.html">Contact Us</a></li>
             <li><a href="#">Search Book</a></li>
             <li><a href="artist.html">Search Artist</a></li>
-            <li><a href="evets.html">Events</a></li>
+            <li><a href="events.html">Events</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="signUpPage.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -47,31 +48,30 @@
       </div> 
     </div>
       
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4" style="background-color:rgb(17, 0, 255);">
-          <h3>Column 1 <img class="img-responsive" src="../JPG/camilleri.jpg" alt=""></h3>
-          <dl>
-            <dt>Immagine evento</dt>
-            <dd>- descrizione</dd>
-            <dd>- link alla apgina</dd>
-          </dl>
-        </div>
-        <div class="col-sm-4" style="background-color:rgb(255, 0, 0);">
-          <h3>Column 2</h3>
-          <dl>
-            <dt>Immagine evento</dt>
-            <dd><kbd>- descrizione </kbd></dd>
-            <dd>- link alla apgina</dd>
-          </dl>
-        </div>
-        <div class="col-sm-4" style="background-color:rgb(255, 230, 0);">
-          <h3>Column 3</h3>        
-          <dl>
-            <dt>Immagine evento</dt>
-            <dd>- descrizione</dd>
-            <dd>- link alla apgina</dd>
-          </dl>
+    <div id="showcase">
+      <div class="box">
+        <div class="row">
+          <div class="col-md-4 col-sm-4">
+            <div class="showcase-left"> 
+              <li><img class="img-responsive" src="../JPG/camilleri.jpg"><h3>Evento 1</h3></li>
+              <p> Breve descrizione dell'evento in programma</p>
+              <a class="btn btn-default btn-sm showcase-btn" href="evets.html">Read More</a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4">
+              <div class="showcase-left"> 
+                <li><img class="img-responsive" src="../JPG/camilleri.jpg"><h3>Evento 2</h3></li>
+                <p> Breve descrizione dell'evento in programma</p>
+                <a class="btn btn-default btn-sm showcase-btn" href="evets.html">Read More</a>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="showcase-left"> 
+                  <li><img class="img-responsive" src="../JPG/camilleri.jpg"><h3>Evento 1</h3></li>
+                  <p> Breve descrizione dell'evento in programma</p>
+                  <a class="btn btn-default btn-sm showcase-btn" href="evets.html">Read More</a>
+                </div>
+              </div>
         </div>
       </div>
     </div>
