@@ -1,11 +1,16 @@
 body{
-    margin-top: 50px;
+    background-color: white;
 }
 
-.navbar-inverse{
-    border: 0;
+#master{
+    background-color: white;
 }
 
-.box{
-    margin: 5px;
+#events{
+    background-color: red;
 }
+
+#showcase{
+    background-color: blue;
+}
+
