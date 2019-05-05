@@ -1,0 +1,25 @@
+{
+  "name": "hypermedia",
+  "version": "1.0.0",
+  "description": "hyper project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcoBuratti/HyperMedia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcoBuratti/HyperMedia/issues"
+  },
+  "homepage": "https://github.com/MarcoBuratti/HyperMedia#readme",
+  "dependencies": {
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}
