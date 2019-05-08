@@ -1,0 +1,45 @@
+#img_event{
+    
+    margin-bottom: 1%;
+    margin-right: 2%;
+    margin-left: 0.5%;
+    float: left;
+    border: solid black 1px;
+}
+#all_text{
+    margin-top: 5%;
+    margin-left: 20%;
+}
+
+h1{
+    font-size: 50;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 1200px;
+}
+
+h2{
+    font-size: 20;
+    font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 1200px;
+}
+p{
+    text-align: justify;
+    font-size: 16;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 1200px;
+}
+
+h3{
+    font-size: 80;
+    font-weight: bold;
+    margin-top: 5%;
+    text-align: center;
+}
+
+    
