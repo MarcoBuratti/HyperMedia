@@ -1,0 +1,99 @@
+body{
+    background: white;
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+  
+  .navbar {
+      border-radius: 0;
+      margin-bottom: 0;
+      letter-spacing: 1px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font: 13px;
+  }
+    
+  #container {
+      min-height: 100%;
+      position: relative;
+  }
+    
+  #header {
+      padding: 10px;
+  }
+    
+  #body {
+      margin-top: 50px;
+      padding: 10px;
+      padding-bottom: 20px;
+  }
+    
+  #footer {
+      height: 20px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+  }
+    
+  #social{
+      width: 100%;
+      margin-top: 110px;
+      background-color: rgb(36, 36, 36);
+      color: rgb(121, 121, 121);
+      text-align: center;
+      font-size: 14px;
+      height: auto;
+  }
+  
+  * {
+      box-sizing: border-box;
+  }
+
+#search-box-container {
+    text-align: center;
+}
+
+#search-box {
+    display: inline-block;
+}
+
+h2.search-bar-title {
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(100, 165, 210);
+}
+
+input#filterInput {
+    width: 1000px;
+    border-radius: 10px;
+    border-color: rgb(100, 165, 210);
+    padding: 10px;
+    background-color: lightgrey;
+    color: rgb(100, 165, 210);
+}
+
+a.collection-item {
+    color: black;
+}
+
+li.collection-item {
+    margin-left: 20px;
+}
+
+li.collection-header {
+    display: inline;
+
+}
+
+h5.collection-header {
+    margin-top: 30px;
+    color: rgb(100, 165, 210);
+    font-weight: bold;
+    font-style: italic;
+}

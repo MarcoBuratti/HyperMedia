@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport", content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X_UA_Compatible", content="ie-edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet", href="../CSS/filterable-list.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>Search Bar</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="home.html">&copy;BOOKin</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navar-left">
+                            <li><a href="home.html">Home</a></li>
+                            <li class="active"><a href="contact.html">Contact Us</a></li>
+                            <li><a href="#">Search Book</a></li>
+                            <li><a href="artist.html">Search Artist</a></li>
+                            <li><a href="events.html">Events</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="loginPage.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div id="body">
+            <div id="search-box-container">
+                <div id="search-box">
+                    <h2 class="search-bar-title">Search Bar</h2>
+                    <input type="text" , id="filterInput" , placeholder="Please type the book title here.">
+                </div>
+            </div>
+            <ul class="collection with-header", id="books">
+                <li class="collection-header">
+                    <h5 class="collection-header">A</h5>
+                </li>
+                <li class="collection-item">
+                    <a class="collection-item", href="#">Acqua</a>
+                </li>
+                <li class="collection-item">
+                    <a class="collection-item", href="#">Aretha</a>
+                </li>
+                <li class="collection-item">
+                    <a class="collection-item", href="#">Aria</a>
+                </li>
+                <li class="collection-item">
+                    <a class="collection-item", href="#">Ariete</a>
+                 </li>
+                <li class="collection-header">
+                    <h5 class="collection-header">B</h5>
+                </li>
+                <li class="collection-item">
+                    <a class="collection-item", href="#">Balena</a>
+                </li>
+                <li class="collection-item">
+                    <a class="collection-item", href="#">Bob</a>
+                </li>
+                <li class="collection-item">
+                    <a class="collection-item", href="#">Bocciolo</a>
+                </li>
+                <li class="collection-item">
+                    <a class="collection-item", href="#">Bradipo</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="footer">
+            <footer class="py-5 bg-dark" id="footer-footer">
+                <div class="container" id="social">
+                    <p class="m-0 text-center text-white">Find Us on:</p>
+                    <div class="middle">
+                        <a class="btn" href="https://www.facebook.com" id="button" target="_blank">
+                            <i class="fab fa-facebook" id="firstname"></i>
+                        </a>
+                        <a class="btn" href="https://www.instagram.com" id="button" target="_blank">
+                            <i class="fab fa-instagram" id="firstname"></i>
+                        </a>
+                        <a class="btn" href="https://www.twitter.com" id="button" target="_blank">
+                            <i class="fab fa-twitter" id="firstname"></i>
+                        </a>
+                        <p class="m-0 text-center text-white">&copy;BOOKin - All rights reserved</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+    <script type="text/javascript", src="../JS/filterable-list.js"></script>
+
+</body>
+
+</html>
