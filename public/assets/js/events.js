@@ -1,5 +1,5 @@
 $.ajax({
-    url: '../events.json',
+    url: '../../other/events.json',
     dataType: 'json',
     type: 'get',
     cache: false,

@@ -1,0 +1,30 @@
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row {
+    content: "";
+    display: table;
+    clear: both;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.side-column {
+   float: left;
+   width: 30%;
+   background-color: white;
+   border-style: hidden;
+   border-width: 1px;
+}
+
+.main-column {
+    padding-left: 30px;
+    float: left;
+    width: 70%;
+}
