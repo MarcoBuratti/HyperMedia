@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Responsive Side Menu</title>
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet", href="../assets/css/standard-page.css">
+    <link rel="stylesheet", href="../assets/css/sidebar.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="container">
+
+        <div id="header">
+          
+          <nav class="navbar navbar-inverse navbar-fixed-top">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="../index.html">&copy;BOOKin</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                  <ul class="nav navbar-nav navar-left">
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="active"><a href="../pages/about-us.html">Contact Us</a></li>
+                    <li><a href="../pages/filterable-list.html">Search Book</a></li>
+                    <li><a href="../pages/filterable-list.html">Search Artist</a></li>
+                    <li><a href="../pages/events.html">Events</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="../pages/loginPage.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                  </ul>
+                </div>
+              </div>
+          </nav>
+    
+        </div>
+    
+    
+        <div id="body">
+
+            <div class="wrapper">
+
+                <!-- Sidebar -->
+                <nav class="sidebar">
+                    <span class="open-slide">
+                        <a href="#", class="btn-open", id="sidebar-btn-open">
+                            <svg width="30", height="30">
+                                <path d="M0,5 30,5" stroke="#000" stroke-width="5"/>
+                                <path d="M0,14 30,14" stroke="#000" stroke-width="5"/>
+                                <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
+                            </svg>
+                        </a>
+                    </span>
+
+                    <ul class="sidebar-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Home</a></li>
+                    </ul>   
+                </nav>
+
+                <div id="side-menu", class="side-nav">
+                    
+                    <a href="#", class="btn-close", id="sidebar-btn-close">&times;</a>
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Contact</a>
+                </div>
+
+                <div id="main">
+                    <h1>Responsive Side Menu</h1>
+                </div>
+
+            
+                <!-- Page Content -->
+                <div id="content">
+                    
+                </div>
+            
+            </div>  
+        
+        </div>
+    
+        <div id="footer">
+    
+          <footer class="py-5 bg-dark" id="footer-footer">
+            <div class="container" id="social">
+              <p class="m-0 text-center text-white">Find Us on:</p>
+              <div class="middle">
+                <a class="btn" href="https://www.facebook.com" id="button" target="_blank">
+                  <i class="fab fa-facebook" id="firstname"></i>
+                </a>
+                <a class="btn" href="https://www.instagram.com" id="button" target="_blank">
+                  <i class="fab fa-instagram" id="firstname"></i>
+                </a>
+                <a class="btn" href="https://www.twitter.com" id="button" target="_blank">
+                  <i class="fab fa-twitter" id="firstname"></i>
+                </a>
+                <p class="m-0 text-center text-white">&copy;BOOKin - All rights reserved</p>
+              </div>
+            </div>
+          </footer>
+    
+        </div>
+    
+      </div>
+
+      <script type="text/javascript", src="../assets/js/sidebar.js"></script>
+
+</body>
+
+</html>
