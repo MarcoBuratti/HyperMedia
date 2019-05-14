@@ -1,13 +1,27 @@
 body {
     overflow-x: hidden;
     font-family: "Arial", Serif;
-    background-color: #f4f4f4;
+}
+
+#body {
+    margin-top: 41px;
+    padding: 0px;
+    padding-bottom: 0px;
 }
 
 .sidebar {
     background-color: cornflowerblue;
-    overflow: hidden;
     height: 63px;
+}
+
+#sidebar-title {
+    text-align: center;
+    text-indent: -60px;
+    font-family: sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    font-style: italic;
+    vertical-align: middle;
 }
 
 .sidebar a {
@@ -35,7 +49,7 @@ body {
     width: 0;
     position: fixed;
     z-index: 1;
-    top: 63px;
+    top: 61px;
     left: 0;
     background-color: #111;
     opacity: 0.9;
