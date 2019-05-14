@@ -13,7 +13,7 @@ h2.search-bar-title {
 }
 
 input#filterInput {
-    width: 1000px;
+    width: 80vw;
     border-radius: 10px;
     border-color: rgb(100, 165, 210);
     padding: 10px;
