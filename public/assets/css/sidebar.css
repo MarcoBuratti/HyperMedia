@@ -86,6 +86,41 @@ body {
     width: 100%;
 }
 
+#content-box {
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+    text-align: left;
+    background-color: whitesmoke;
+    padding: 10px 10px 30px 30px;
+    height: 80vh;
+}
+
+#content-box:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+#book-cover-column {
+    padding-top: 3vh;
+    padding-left: 5vw;
+}
+
+#book-cover {
+    width: 30vw;
+    height: 70vh;
+}
+
+#book-title {
+    color: rgb(50, 85, 155);
+    text-shadow: 1px 1px rgba(50, 85, 155, 0.750);
+
+}
+
 /*@media( max-width:568px ) {
     .sidebar-nav{display: none}
 }
