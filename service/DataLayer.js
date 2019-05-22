@@ -1,26 +1,16 @@
 let sqlDb = require("../db/knex");
 
-let { booksDbSetup } = require("./BookService");
+let book = require("./BookService");
+let author = require('./AuthorService');
+let user = require('./UserService');
+let event = require('./EventService');
+let cart = require('./CartService');
 
 function setupDataLayer() {
-  return booksDbSetup(sqlDb);
-  //IMPORTNTE
-  //IMPORTNTE
-  //IMPORTNTE
-  //IMPORTNTE
-  //DA AGGIUNGERE IL CONTOLLO SU TUTTI I SERVICE SE ESISTONO I DATABASE DI RIFERIMENTO
+  console.log("Check if DataBase table exist");
+  return book.booksDbSetup(sqlDb) && author.authorDbSetup(sqlDb) 
+    && user.userDbSetup(sqlDb) && event.eventDbSetup(sqlDb) && cart.cartDbSetup(sqlDb);
 }
 
 module.exports = { database: sqlDb, setupDataLayer };
 
-/*let sqlDb = require("../db/knex.js");
-
-let { booksDbSetup } = require("./BookService");
-
-function setupDataLayer() {
-  console.log("Setting up data layer");
-  return booksDbSetup(sqlDb);
-}
-
-module.exports = { database: sqlDb, setupDataLayer };
-*/

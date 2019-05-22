@@ -1,6 +1,20 @@
 'use strict';
 
-const knex = require('../db/knex');
+let db;
+
+
+exports.userDbSetup = function (database) {
+  db = database;
+  return db.schema.hasTable("users").then(exists => {
+    if (!exists) {
+      console.log("It doesn't");
+    } else {
+      console.log("DbUsers Exists");
+    }
+  });
+}
+
+
 /**
  * Login
  * Login with a form
@@ -38,14 +52,9 @@ exports.userRegisterPOST = function (username, password) {
 
 
 exports.getUserById = function (userID) {
-  knex.select()
+  return db.select()
     .from('authors')
-    .where('id', userID)
-    .then(function (user) {
-      console.log("Selected ID User is: " + userID);
-      console.log(user);
-      return user;
-    })
+    .where('id_user', userID);
 }
 
 

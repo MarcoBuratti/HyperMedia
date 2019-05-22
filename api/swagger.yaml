@@ -1,0 +1,339 @@
+
+swagger: "2.0"
+info:
+  description: "This is a simple bookstore server"
+  version: "1.0.0"
+  title: "BookStore"
+  contact:
+    email: "10530190@polimi.it"
+  license:
+    name: "Apache-2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:5050"
+basePath: "/v2"
+tags:
+- name: "book"
+  description: "Available book"
+- name: "events"
+  description: "Events sponsored"
+- name: "user"
+  description: "Operations about user"
+- name: "author"
+  description: "List of author aviable"
+- name: "cart"
+  description: "Books added by the user to the cart"
+schemes:
+- "http"
+paths:
+  /books:
+    get:
+      tags:
+      - "book"
+      summary: "Books available in the inventory"
+      description: "List of books available in the inventory"
+      operationId: "booksGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0."
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20 and cannot exceed\
+          \ 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "A collection of Books"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
+        404:
+          description: "Unexpected error"
+      x-swagger-router-controller: "Book"
+  /books/{bookId}:
+    get:
+      tags:
+      - "book"
+      summary: "Find book by ID"
+      description: "Returns a book"
+      operationId: "getBookById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookId"
+        in: "path"
+        description: "ID of book to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Book not found"
+      x-swagger-router-controller: "Book"
+  /user/login:
+    post:
+      tags:
+      - "user"
+      summary: "Login"
+      description: "Login with a form"
+      operationId: "userLoginPOST"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "formData"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "formData"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Successful login"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+        404:
+          description: "unauthorized"
+      x-swagger-router-controller: "User"
+  /user/register:
+    post:
+      tags:
+      - "user"
+      summary: "Register"
+      description: "Register into the store"
+      operationId: "userRegisterPOST"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "formData"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "formData"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "succesfull registration"
+        404:
+          description: "unauthorized"
+      x-swagger-router-controller: "User"
+  /events:
+    get:
+      tags:
+      - "event"
+      summary: "Events in sponsord"
+      operationId: "eventsGET"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "A collection of events"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        404:
+          description: "Unexpected error"
+      x-swagger-router-controller: "Event"
+  /authors:
+    get:
+      tags:
+      - "author"
+      summary: "Find author by ID"
+      description: "Returns a author"
+      operationId: "getAuthorById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "authorID"
+        in: "query"
+        description: "ID of author to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Author not found"
+      x-swagger-router-controller: "Author"
+  /carts:
+    get:
+      tags:
+      - "cart"
+      summary: "Find cart by ID"
+      description: "Returns a list of books"
+      operationId: "getCartById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cartId"
+        in: "query"
+        description: "ID of book to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "A collection of Books"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Cart"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Cart not found"
+      x-swagger-router-controller: "Cart"
+    post:
+      tags:
+      - "cart"
+      summary: "Add new book on my cart"
+      description: "Login with a form"
+      operationId: "postCartyID"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookID"
+        in: "formData"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "succesfull login"
+        404:
+          description: "unauthorized"
+      x-swagger-router-controller: "Cart"
+definitions:
+  Author:
+    type: "object"
+    required:
+    - "name"
+    - "surname"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      surname:
+        type: "string"
+      books:
+        type: "array"
+        items:
+          $ref: "#/definitions/Book"
+    title: "Author"
+    description: "Author present in our website"
+  Event:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      presentedBook:
+        $ref: "#/definitions/Book"
+      date:
+        type: "string"
+      subscribers:
+        type: "integer"
+    title: "Event"
+    description: "An event available in our website"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      address:
+        type: "string"
+      creditcard:
+        type: "string"
+    title: "User"
+    description: "A user"
+  Cart:
+    type: "object"
+    properties:
+      total:
+        $ref: "#/definitions/Amount"
+      books:
+        type: "string"
+        items:
+          $ref: "#/definitions/Book"
+    title: "Cart"
+    description: "Order for books"
+  Book:
+    type: "object"
+    required:
+    - "author"
+    - "price"
+    - "title"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      author:
+        type: "string"
+      price:
+        $ref: "#/definitions/Amount"
+      status:
+        type: "string"
+        description: "book availability in the inventory"
+        enum:
+        - "available"
+        - "out of stock"
+    title: "Book"
+  Amount:
+    type: "object"
+    required:
+    - "currency"
+    - "value"
+    properties:
+      value:
+        type: "number"
+        format: "double"
+        minimum: 0.01
+        maximum: 1000000000000000
+      currency:
+        $ref: "#/definitions/Currency"
+    description: "Price\n"
+  Currency:
+    type: "string"
+    pattern: "^[A-Z]{3,3}$"
+    description: "some description\n"

@@ -1,6 +1,18 @@
 'use strict';
-const knex = require('../db/knex');
-const prova = require('../index');
+let db;
+
+
+exports.authorDbSetup = function (database) {
+  db = database;
+  console.log("Check if author table exist");
+  return db.schema.hasTable("authors").then(exists => {
+    if (!exists) {
+      console.log("It doesn't");
+    } else {
+      console.log("DbAuthor Exists");
+    }
+  });
+}
 /**
  * Find author by ID
  * Returns a author
@@ -9,20 +21,8 @@ const prova = require('../index');
  * returns Author
  **/
 exports.getAuthorById = function (authorID) {
-  /*
-  let response = await fetch('../v2/authors/'+ authorID);
-  let json = await response.json();
-  console.log(json)
-  return json;
-  */
-  knex.select()
+   return db.select()
     .from('authors')
-    .where('id', authorID)
-    .then(function (author) {
-      console.log("Selected ID Authors is: " + authorID);
-      console.log(author);
-      prova.setResponse(author).json();
-    })
-
+    .where('id', authorID);
 }
 

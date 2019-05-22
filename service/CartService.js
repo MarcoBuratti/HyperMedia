@@ -1,6 +1,17 @@
 'use strict';
+let db;
 
-const knex = require('../db/knex');
+
+exports.cartDbSetup = function (database) {
+  db = database;
+  return db.schema.hasTable("cart").then(exists => {
+    if (!exists) {
+      console.log("It doesn't");
+    } else {
+      console.log("DbCart Exists");
+    }
+  });
+}
 
 /**
  * Find cart by ID

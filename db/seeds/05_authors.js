@@ -5,9 +5,9 @@ exports.seed = function (knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('authors').insert([
-        { id: 0, name: 'AA', surname: 'AA' },
-        { id: 1, name: 'BB', surname: 'BB' },
-        { id: 2, name: 'CC', surname: 'CC' }
+        { id_author: 0, name: 'AA', biography: 'AA nasce ad AA e muore ad AA' },
+        { id_author: 1, name: 'BB', biography: 'BB nasce a BB e muore a BB' },
+        { id_author: 2, name: 'CC', biography: 'CC nasce a CC e muore a CC' }
       ]);
     });
 };

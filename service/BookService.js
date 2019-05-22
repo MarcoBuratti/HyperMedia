@@ -1,8 +1,17 @@
 'use strict';
 
 let db;
-const knex = require('../db/knex');
 
+exports.booksDbSetup = function (database) {
+  db = database;
+  return db.schema.hasTable("books").then(exists => {
+    if (!exists) {
+      console.log("It doesn't");
+    } else {
+      console.log("DbBook Exists");
+    }
+  });
+}
 /**
  * Books available in the inventory
  * List of books available in the inventory
@@ -12,13 +21,8 @@ const knex = require('../db/knex');
  * returns List
  **/
 exports.booksGET = function (offset, limit) {
-  return new Promise(function (resolve, reject) {
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
+  return db.select()
+  .from('books');
 }
 
 /**
@@ -26,24 +30,8 @@ exports.booksGET = function (offset, limit) {
  * returns Book
  **/
 exports.getBookById = function (bookId) {
-  knex.select()
+  return db.select()
     .from('books')
-    .where('id', bookId)
-    .then(function (book) {
-      console.log("Selected ID Book is: " + bookId);
-      console.log(book);
-      return book;
-    })
-}
+    .where('isbn', bookId);
 
-exports.booksDbSetup = function (database) {
-  db = database;
-  console.log("Check if book table exist");
-  return db.schema.hasTable("books").then(exists => {
-    if (!exists) {
-      console.log("It doesn't");
-    } else {
-      console.log("DbBook Exists: " + exists);
-    }
-  });
 }

@@ -1,63 +1,51 @@
-let express = require("express");
-let app = express();
-let process = require("process");
-let bodyparser = require("body-parser");
-let _ = require("lodash");
-let knex = require("./db/knex");
-let myport = 5050 || process.env.PORT;
-//other
+'use strict';
 
-let myidentifier;
-let response;
+var fs = require('fs'),
+  path = require('path'),
+  http = require('http');
+
+var app = require('connect')();
+var swaggerTools = require('swagger-tools');
+var jsyaml = require('js-yaml');
+var serverPort = 5050;
+let serveStatic = require("serve-static");
+
 let { setupDataLayer } = require("./service/DataLayer");
-let author = require("./service/AuthorService");
 
-app.use(express.static(__dirname + ""));
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: true }));
-app.set("port", myport);
-app.use(express.static(__dirname + '/public'));
 
-//Dato ID ritorno l'evento richiesto all'html
-app.get("/event/:id", function (req, res) {
-    myidentifier = parseInt(req.params.id);//prende l'id dalla stringa
-    knex.select()
-        .from('events')
-        .where('id', myidentifier)
-        .then(function (event) {
-            res.status(200);
-            res.send(event);
-        })
-})
-//Dato ID ritorna libro richiesto ad HTML
-app.get("/book/:id", function (req, res) {
-    myidentifier = parseInt(req.params.id);//prende l'id dalla stringa
-    knex.select()
-        .from('books')
-        .where('id', myidentifier)
-        .then(function (book) {
-            res.status(200);
-            res.send(book);
-        })
-})
-//Dato ID ritorna autore richiesto ad HTML
-app.get("/author/:id", function (req, res) {
-    myidentifier = parseInt(req.params.id);//prende l'id dalla stringa
-    knex.select()
-    .from('authors')
-    .where('id', myidentifier)
-    .then(function(author){
-        res.status(200);
-        res.send(author);
-    })
-})
+// swaggerRouter configuration
+var options = {
+  swaggerUi: path.join(__dirname, '/swagger.json'),
+  controllers: path.join(__dirname, './controllers'),
+  useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)
+};
 
-//CONTROLLARE LA CLASSE DataLayer
-setupDataLayer().then(
-    function () {
-        app.listen(myport, function () {
-            console.log('Your server is listening on port %d: http://localhost:%d', myport, myport);
-        })
-    }
-);
+// The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
+var spec = fs.readFileSync(path.join(__dirname, 'api/swagger.yaml'), 'utf8');
+var swaggerDoc = jsyaml.safeLoad(spec);
 
+// Initialize the Swagger middleware
+swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
+
+  // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
+  app.use(middleware.swaggerMetadata());
+
+  // Validate Swagger requests
+  app.use(middleware.swaggerValidator());
+
+  // Route validated requests to appropriate controller
+  app.use(middleware.swaggerRouter(options));
+
+  // Serve the Swagger documents and Swagger UI
+  app.use(middleware.swaggerUi());
+
+  app.use(serveStatic(__dirname + "/public"));
+
+  setupDataLayer().then(() => {
+    // Start the server
+    http.createServer(app).listen(serverPort, function () {
+      console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
+      console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
+    });
+  });
+});
