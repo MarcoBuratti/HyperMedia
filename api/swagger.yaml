@@ -14,7 +14,7 @@ basePath: "/v2"
 tags:
 - name: "book"
   description: "Available book"
-- name: "events"
+- name: "event"
   description: "Events sponsored"
 - name: "user"
   description: "Operations about user"
@@ -162,6 +162,32 @@ paths:
         404:
           description: "Unexpected error"
       x-swagger-router-controller: "Event"
+  /events/{eventId}:
+    get:
+      tags:
+      - "event"
+      summary: "Find event by ID"
+      description: "Returns a event"
+      operationId: "getEventById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "ID of event to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Event'
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Event not found"
+      x-swagger-router-controller: "Event"
   /authors:
     get:
       tags:
@@ -241,77 +267,109 @@ definitions:
   Author:
     type: "object"
     required:
+    - "id_author"
     - "name"
-    - "surname"
+    - "biography"
     properties:
-      id:
+      id_author:
         type: "integer"
         format: "int64"
+        $ref: "#/definitions/Relation"
       name:
         type: "string"
-      surname:
+      biography:
         type: "string"
-      books:
-        type: "array"
-        items:
-          $ref: "#/definitions/Book"
     title: "Author"
     description: "Author present in our website"
   Event:
     type: "object"
+    required:
+      - "id_event"
+      - "name"
+      - "isbn"
+      - "date"
+      - "description"
     properties:
-      id:
+      id_event:
         type: "integer"
       name:
         type: "string"
-      presentedBook:
+      isbn:
+        type: "string"
         $ref: "#/definitions/Book"
       date:
         type: "string"
-      subscribers:
+      description:
         type: "integer"
     title: "Event"
     description: "An event available in our website"
   User:
     type: "object"
+    required:
+      - "id_user"
+      - "name"
+      - "email"
     properties:
-      id:
+      id_user:
         type: "integer"
       name:
         type: "string"
-      address:
-        type: "string"
-      creditcard:
+      email:
         type: "string"
     title: "User"
-    description: "A user"
+    description: "User in our database"
   Cart:
     type: "object"
+    required:
+      - "id_user"
+      - "total"
+      - "quantity"
+      - "isbn"
     properties:
+      id_user:
+        type: "integer"
       total:
-        $ref: "#/definitions/Amount"
-      books:
+        type: "integer"
+      quantity:
+        type: "integer"
+      isbn:
         type: "string"
-        items:
-          $ref: "#/definitions/Book"
+        $ref: "#/definitions/Book"
     title: "Cart"
     description: "Order for books"
   Book:
     type: "object"
     required:
-    - "author"
-    - "price"
+    - "isbn"
     - "title"
+    - "theme1"
+    - "theme2"
+    - "genre1"
+    - "genre2"
+    - "date"
+    - "recommended"
+    - "price"
+    - "status"
     properties:
-      id:
-        type: "integer"
-        format: "int64"
+      isbn:
+        type: "string"
+        $ref: '#/definitions/Relation'
       title:
         type: "string"
-      author:
+      theme1:
         type: "string"
+      theme2:
+        type: "string"
+      genre1:
+        type: "string"
+      genre2:
+        type: "string"
+      date:
+        type: "string"
+      recommended:
+        type: "boolean"
       price:
-        $ref: "#/definitions/Amount"
+        type: "number"  
       status:
         type: "string"
         description: "book availability in the inventory"
@@ -319,21 +377,17 @@ definitions:
         - "available"
         - "out of stock"
     title: "Book"
-  Amount:
+  Relation:
     type: "object"
     required:
-    - "currency"
-    - "value"
+      - "isbn"
+      - "id_author"
     properties:
-      value:
-        type: "number"
-        format: "double"
-        minimum: 0.01
-        maximum: 1000000000000000
-      currency:
-        $ref: "#/definitions/Currency"
-    description: "Price\n"
-  Currency:
-    type: "string"
-    pattern: "^[A-Z]{3,3}$"
-    description: "some description\n"
+      id_author:
+        type: "integer"
+        format: "int64"
+        $ref: "#/definitions/Author"
+      isbn:
+        type: "string"
+        $ref: '#/definitions/Book'    
+    description: "Relation between authors and books"

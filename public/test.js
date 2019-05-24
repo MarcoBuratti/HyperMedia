@@ -11,36 +11,34 @@ const userAction = async () => {
     console.log('undefined book id, showing book number 1');
     id = '1';
   }
-  let response = await fetch('../../v2/books/' + id + '');
-  console.log("eskere");
+  //funzione per prelevare tutti gli eventi dal database
+  // per fare altri tipi di richieste al database vedere swagger editto con file yaml
+  let response = await fetch('../../v2/events?offset/' + id + '');
   console.log(response);
-  console.log('address: "../../v2/books/' + id + '');
+  console.log('address: "../../v2/events?offset/' + id + '');
 
-  /*, {
-    
-    method: 'GET',
-    body: myBody, // string or object
-    headers:{
-      'Content-Type': 'application/json'
-    }
-  }*/
   json = await response.json(); //extract JSON from the http response
-  // do something with myJson
+  //funzione par lavorare il json
   loadData(json);
 }
 
 userAction();
 
 function loadData(json) {
+  //scrivi quello che ti server per costriure html
   console.log(json);
-  titleEl.innerText = json[0].title;
-  priceEl.innerText = json[0].price;
-  idEl.innerText = json[0].isbn;
+  for (let i = 0; i < json.length; i++) {
+    titleEl.innerText = json[i].name;
+    priceEl.innerText = json[i].description;
+    idEl.innerText = json[i].id_event;
+    console.log(titleEl.innerText + " " + priceEl.innerText + " " + idEl.innerText );
+  }
 }
 
 
 //No error checking as now. Parse the url
 function parseTopURL() {
+  //parser del url dell'html di riferimento
   let query = window.location.search.substring(1);
   console.log("window.location.search.substring(1) = '" + query + "'");
   let args = query.split('&');

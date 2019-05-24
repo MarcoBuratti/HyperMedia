@@ -13,3 +13,15 @@ module.exports.eventsGET = function eventsGET (req, res, next) {
       utils.writeJson(res, response);
     });
 };
+
+module.exports.getEventById = function getEventById(req, res, next) {
+  var eventId = req.swagger.params['eventId'].value;
+  Event.getEventById(eventId)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+

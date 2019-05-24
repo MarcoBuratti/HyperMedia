@@ -2,13 +2,13 @@
 let db;
 
 
-exports.authorDbSetup = function (database) {
+exports.relationDbSetup = function (database) {
   db = database;
-  return db.schema.hasTable("authors").then(exists => {
+  return db.schema.hasTable("relations").then(exists => {
     if (!exists) {
       console.log("It doesn't");
     } else {
-      console.log("DbAuthor Exists");
+      console.log("DbRelations Exists");
     }
   });
 }
@@ -19,9 +19,9 @@ exports.authorDbSetup = function (database) {
  * authorID Long ID of author to return
  * returns Author
  **/
-exports.getAuthorById = function (authorID) {
+exports.getRelationById = function (relationID) {
    return db.select()
-    .from('authors')
-    .where('id', authorID);
+    .from('relations')
+    .where('isbn', relationID);
 }
 
