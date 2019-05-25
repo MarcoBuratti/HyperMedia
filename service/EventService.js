@@ -20,16 +20,13 @@ exports.eventDbSetup = function (database) {
  * returns List
  **/
 exports.eventsGET = function (offset) {
-  return new Promise(function (resolve, rejected) {
-    var sql = knex.select()
-      .from('events')
-      .where('id', offset)
-    if (Object.keys(sql).length > 0) {
-      console.log(sql);
-      resolve(sql[Object.keys(sql)]);
-    } else {
-      resolve();
-    }
-  })
+  return db.select()
+      .from('events');
 }
 
+
+exports.getEventById = function (eventId) {
+  return db.select()
+    .from('events')
+    .where('id_event', eventId);
+}

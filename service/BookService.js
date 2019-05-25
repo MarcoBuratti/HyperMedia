@@ -33,5 +33,4 @@ exports.getBookById = function (bookId) {
   return db.select()
     .from('books')
     .where('isbn', bookId);
-
 }
