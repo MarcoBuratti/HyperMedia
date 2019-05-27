@@ -56,7 +56,7 @@ paths:
         404:
           description: "Unexpected error"
       x-swagger-router-controller: "Book"
-  /books/{bookId}:
+  /bookId/{bookId}:
     get:
       tags:
       - "book"
@@ -82,6 +82,144 @@ paths:
         404:
           description: "Book not found"
       x-swagger-router-controller: "Book"
+  /bookName/{bookName}:
+    get:
+      tags:
+      - "book"
+      summary: "Find book by Name"
+      description: "Returns a book"
+      operationId: "getBookByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookName"
+        in: "path"
+        description: "Name of book to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        400:
+          description: "Invalid Name supplied"
+        404:
+          description: "Book not found"
+      x-swagger-router-controller: "Book"
+  /bookGenre/{bookGenre}:
+    get:
+      tags:
+      - "book"
+      summary: "Find book by Genre"
+      description: "Return a book"
+      operationId: "getBookByGenre"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookGenre"
+        in: "path"
+        description: "Name of book to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        400:
+          description: "Invalid Name supplied"
+        404:
+          description: "Book not found"
+      x-swagger-router-controller: "Book"
+  /bookTheme/{bookTheme}:
+    get:
+      tags:
+      - "book"
+      summary: "Find book by Theme"
+      description: "Return a book"
+      operationId: "getBookByTheme"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookTheme"
+        in: "path"
+        description: "Name of book to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        400:
+          description: "Invalid Name supplied"
+        404:
+          description: "Book not found"
+      x-swagger-router-controller: "Book"
+  /allTheme:
+    get:
+      tags:
+      - "book"
+      summary: "Find all book by Theme"
+      description: "Return a list of book"
+      operationId: "getAllTheme"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        400:
+          description: "Invalid Name supplied"
+        404:
+          description: "Book not found"
+      x-swagger-router-controller: "Book"
+  /allGenre:
+    get:
+      tags:
+      - "book"
+      summary: "Find all book by Genre"
+      description: "Return a list of book"
+      operationId: "getAllGenre"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        400:
+          description: "Invalid Name supplied"
+        404:
+          description: "Book not found"
+      x-swagger-router-controller: "Book"      
+  /bookRecommended/{bookRecommended}:
+    get:
+      tags:
+      - "book"
+      summary: "Find book by Recomm"
+      description: "Return a book"
+      operationId: "getBookRecommended"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookRecommended"
+        in: "path"
+        description: "Name of book to return"
+        required: true
+        type: "boolean"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        400:
+          description: "Invalid Name supplied"
+        404:
+          description: "Book not found"
+      x-swagger-router-controller: "Book"       
   /user/login:
     post:
       tags:
@@ -162,7 +300,7 @@ paths:
         404:
           description: "Unexpected error"
       x-swagger-router-controller: "Event"
-  /events/{eventId}:
+  /eventId/{eventId}:
     get:
       tags:
       - "event"
@@ -188,6 +326,56 @@ paths:
         404:
           description: "Event not found"
       x-swagger-router-controller: "Event"
+  /eventName/{eventName}:
+    get:
+      tags:
+      - "event"
+      summary: "Find event by Name"
+      description: "Returns a event"
+      operationId: "getEventByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eventName"
+        in: "path"
+        description: "Name of event to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Event'
+        400:
+          description: "Invalid Name supplied"
+        404:
+          description: "Event not found"
+      x-swagger-router-controller: "Event"
+  /eventMonth/{eventMonth}:
+    get:
+      tags:
+      - "event"
+      summary: "Find event by Month"
+      description: "Returns a event"
+      operationId: "getEventByMonth"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eventMonth"
+        in: "path"
+        description: "Name of event to return"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Event'
+        400:
+          description: "Invalid Name supplied"
+        404:
+          description: "Event not found"
+      x-swagger-router-controller: "Event"      
   /authors:
     get:
       tags:

@@ -13,9 +13,9 @@ const userAction = async () => {
   }
   //funzione per prelevare tutti gli eventi dal database
   // per fare altri tipi di richieste al database vedere swagger editto con file yaml
-  let response = await fetch('../../v2/events?offset/' + id + '');
+  let response = await fetch('../../v2/allGenre');
   console.log(response);
-  console.log('address: "../../v2/events?offset/' + id + '');
+  console.log('address: "../../v2/allTheme' + id);
 
   json = await response.json(); //extract JSON from the http response
   //funzione par lavorare il json
@@ -28,9 +28,9 @@ function loadData(json) {
   //scrivi quello che ti server per costriure html
   console.log(json);
   for (let i = 0; i < json.length; i++) {
-    titleEl.innerText = json[i].name;
-    priceEl.innerText = json[i].description;
-    idEl.innerText = json[i].id_event;
+    titleEl.innerText = json[i].isbn;
+    priceEl.innerText = json[i].theme1;
+    idEl.innerText = json[i].recommended;
     console.log(titleEl.innerText + " " + priceEl.innerText + " " + idEl.innerText );
   }
 }

@@ -20,13 +20,13 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
     "knex": "^0.14.6",
     "lodash": "^4.17.10",
     "pg": "^7.11.0",
     "process": "^0.11.10",
-    "js-yaml": "^3.3.0",
     "serve-static": "^1.14.0",
-    "swagger-tools": "0.10.1"
+    "swagger-tools": "^0.10.4"
   },
   "devDependencies": {
     "nodemon": "^1.18.11"

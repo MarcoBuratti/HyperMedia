@@ -11,4 +11,3 @@ exports.seed = function(knex, Promise) {
       ]);
     });
 };
-//Aggiungere descrizione togliere sub agg immagini, presentedB metterer id libro

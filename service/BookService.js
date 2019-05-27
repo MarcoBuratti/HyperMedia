@@ -21,8 +21,20 @@ exports.booksDbSetup = function (database) {
  * returns List
  **/
 exports.booksGET = function (offset, limit) {
-  return db.select()
-  .from('books');
+  return db.select('isbn')
+    .from('books');
+}
+
+exports.getAllTheme = function () {
+  return db.distinct('theme1').from('books').union( function(){
+    this.distinct('theme2').from('books')
+  })
+}
+
+exports.getAllGenre = function () {
+  return db.distinct('genre1').from('books').union( function(){
+    this.distinct('genre2').from('books')
+  })
 }
 
 /**
@@ -30,7 +42,35 @@ exports.booksGET = function (offset, limit) {
  * returns Book
  **/
 exports.getBookById = function (bookId) {
-  return db.select()
+  return db.join('relations', 'relations.isbn', '=', 'books.isbn').join('authors', 'authors.id_author', '=', 'relations.id_author')
+    .select('relations.isbn', 'title', 'theme1', 'theme2', 'genre1', 'genre2', 'date', 'recommended', 'price', 'status', 'name')
     .from('books')
-    .where('isbn', bookId);
+    .where('relations.isbn', bookId);
+}
+
+exports.getBookByName = function (bookName) {
+  bookName = '%' + bookName + '%';
+  return db.select('isbn')
+    .from('books')
+    .where('title', 'like', bookName);
+}
+
+exports.getBookByGenre = function (bookGenre) {
+  return db.select('isbn')
+    .from('books')
+    .where('genre1', bookGenre)
+    .orWhere('genre2', bookGenre);
+}
+
+exports.getBookByTheme = function (bookTheme) {
+  return db.select('isbn')
+    .from('books')
+    .where('theme1', bookTheme)
+    .orWhere('theme2', bookTheme);
+}
+
+exports.getBookRecommended = function (bookRecomm) {
+  return db.select('isbn')
+    .from('books')
+    .where('recommended', bookRecomm);
 }

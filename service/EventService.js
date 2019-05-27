@@ -30,3 +30,18 @@ exports.getEventById = function (eventId) {
     .from('events')
     .where('id_event', eventId);
 }
+
+
+exports.getEventByName = function (eventName) {
+  eventName = '%' + eventName + '%';
+  return db.select()
+  .from('events')
+  .where('name', 'like', eventName);
+}
+
+exports.getEventByMonth = function (eventMonth) {
+  eventMonth = '%/' + eventMonth + '/%';
+  return db.select()
+  .from('events')
+  .where('date', 'like', eventMonth);
+}
