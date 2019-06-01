@@ -20,6 +20,7 @@ exports.authorDbSetup = function (database) {
  * returns Author
  **/
 exports.getAuthorById = function (authorID) {
+  console.log("aa");
    return db.select()
     .from('authors')
     .where('id', authorID);

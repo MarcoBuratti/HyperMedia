@@ -13,7 +13,7 @@ const userAction = async () => {
   }
   //funzione per prelevare tutti gli eventi dal database
   // per fare altri tipi di richieste al database vedere swagger editto con file yaml
-  let response = await fetch('../../v2/allGenre');
+  let response = await fetch('../../v2/bookId/' + id);
   console.log(response);
   console.log('address: "../../v2/allTheme' + id);
 

@@ -13,6 +13,7 @@ exports.up = function (knex, Promise) {
             table.increments('id_user');//.primary().reference('user_id').inTable('cart').unique();
             table.string('name');//.notNullable();
             table.string('email');//.notNullable();
+            table.string('password');
         })
         .createTable('cart', function (table) {
             console.log("Create Table Cart");
@@ -33,12 +34,13 @@ exports.up = function (knex, Promise) {
             table.boolean('recommended');
             table.float('price');//.notNullable();
             table.enum('status', ['available', 'out of stock']);
+            table.integer('sold');
         })
         .createTable('authors', function (table) {
             console.log("Create Table Authors");
             table.increments('id_author');//.references('id_author').inTable('relations').unique();
             table.string('name');//.notNullable();
-            table.string('biography');//.notNullable();
+            table.text('biography');//.notNullable();
         })
         .createTable('relations', function(table) {
             console.log("Create Table Relation");

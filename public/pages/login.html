@@ -48,20 +48,21 @@
 
       <div class="container" id="master">
         <div class="form-container sign-up-container">
-          <form action="#">
+          <form>
             <h1 class="h1-login">Create Account</h1>
             <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
-            <button>Sign Up</button>
+            <input type="submit"> Sign Up </input>
           </form>
         </div>
         <div class="form-container sign-in-container">
-          <form action="#">
+          <form id="sign-up-btn">
             <h1 class="h1-login">Sign in</h1>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button>Sign In</button>
+            <input id="name" type="text" placeholder="Name" />
+            <input id="email" type="email" placeholder="Email" />
+            <input id="psw"  type="password" placeholder="Password" />
+            <input type="submit"> Sign In</input>
           </form>
         </div>
         <div class="overlay-container">
@@ -110,7 +111,8 @@
 
   </div>
 
-  <script type="text/javascript" src="../assets/js/login.js"></script>
+  <!-- <script type="text/javascript" src="../assets/js/login.js"></script> -->
+  <script type="text/javascript" src="../script.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </body>
