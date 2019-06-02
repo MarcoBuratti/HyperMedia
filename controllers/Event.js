@@ -38,7 +38,7 @@ module.exports.getEventByName = function getEventByName(req, res, next) {
 
 module.exports.getEventByMonth = function getEventByMonth(req, res, next) {
   var eventMonth = req.swagger.params['eventMonth'].value;
-  Event.getEventByName(eventMonth)
+  Event.getEventByMonth(eventMonth)
     .then(function (response) {
       utils.writeJson(res, response);
     })

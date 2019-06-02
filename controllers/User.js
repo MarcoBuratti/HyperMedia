@@ -31,7 +31,6 @@ module.exports.getUserById = function getUserById(req, res, next) {
   var userId = req.swagger.params['userId'].value;
   User.getUserById(userId)
     .then(function (response) {
-      console.log(response);
       utils.writeJson(res, response);
     })
     .catch(function (response) {
