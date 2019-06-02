@@ -40,3 +40,7 @@ h5.collection-header {
     font-weight: bold;
     font-style: italic;
 }
+
+h5.collection-header-hidden {
+    display: none;
+}
