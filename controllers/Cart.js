@@ -16,19 +16,32 @@ module.exports.getCartById = function getCartById (req, res, next) {
 
 module.exports.cartInsertPOST = function cartInsertPOST(req, res, next) {
   var body = req.body;
-  Cart.cartInsertPOST(body).then(function (response) {
-    console.log(response);
+  Cart.getCartByIdAndIsbn(body).then(function (response) {
     let ctrl = JSON.stringify(response);
     let lunghezza = ctrl.length;
     if (lunghezza != 2) {
-      User.userRegisterPOST(body)
-        .then(function () {
-          res.writeHead(200, { 'Content-Type': 'application/json' });
-          res.end('[{ "status": "eskere" }]');
-        })
+      Cart.cartUpdate(body).then(function(){
+        Cart.getAll().then(function(response){console.log(response)});
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end('[{ "status": "aggiornato" }]');
+      })
     } else {
-      res.writeHead(400, { 'Content-Type': 'application/json' });
-      res.end('[{ "status": "eskere" }]');
-    }
-  })
+      Cart.cartInsertPOST(body).then(function(){
+      Cart.getAll().then(function(response){console.log(response)});
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end('[{ "status": "inserito" }]');
+    })
+  }
+})};
+
+
+module.exports.deleteCart = function deleteCart (req, res, next) {
+  var userId = req.swagger.params['userId'].value;
+  Cart.deleteCart(userId)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 };

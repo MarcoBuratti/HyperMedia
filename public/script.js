@@ -6,12 +6,11 @@ let signUp = document.getElementById('sign-up-btn');
 signUp.addEventListener('submit', (e) => {
     e.preventDefault();
 
-
     let details = {
-        'user_id': 5,
-        'isbn': "0sasa",
-        'quantity': 3,
-        'total': 43
+        'user_id': 32,
+        'total': 5313,
+        'quantity': 5,
+        'isbn': "101"
     };
 
     let formBody = [];
@@ -26,10 +25,10 @@ signUp.addEventListener('submit', (e) => {
 });
 
 const getResponse = async (body) => {
-    let answer = await fetch("/v2/cart/insert", {
+    let answer = await fetch("../../v2/cartInsert", {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: body
     })
