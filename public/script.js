@@ -6,9 +6,45 @@ let signUp = document.getElementById('sign-up-btn');
 signUp.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    console.log(name.value);
-    console.log(email);
-    //here all is ok, so sent the post request
+
+    let details = {
+        'user_id': 5,
+        'isbn': "0sasa",
+        'quantity': 3,
+        'total': 43
+    };
+
+    let formBody = [];
+    for (var property in details) {
+        let encodedKey = encodeURIComponent(property);
+        let encodedValue = encodeURIComponent(details[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+    console.log(formBody)
+    getResponse(formBody);
+});
+
+const getResponse = async (body) => {
+    let answer = await fetch("/v2/cart/insert", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: body
+    })
+
+    answer = await answer.json()
+
+    console.log(answer[0].status);
+
+}
+
+/*
+signUp.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+
     let details = {
         'name': name.value,
         'password': psw.value,
@@ -22,12 +58,12 @@ signUp.addEventListener('submit', (e) => {
         formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    console.log(formBody);
+    
     getResponse(formBody);
 });
 
 const getResponse = async (body) => {
-    let answer = await fetch("/v2/user/register", {
+    let answer = await fetch("/v2/user/login", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -37,10 +73,6 @@ const getResponse = async (body) => {
 
     answer = await answer.json()
 
-    if (answer.success === true) {
-        window.location.replace();
-    } else {
-        alert(answer.error + '!');
-    }
+    console.log(answer[0].status);
 
-}
+}*/

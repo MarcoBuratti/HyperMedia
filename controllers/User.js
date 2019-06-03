@@ -4,14 +4,18 @@ var utils = require('../utils/writer.js');
 var User = require('../service/UserService');
 
 module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
-  var username = req.swagger.params['username'].value;
-  var password = req.swagger.params['password'].value;
-  User.userLoginPOST(username, password)
+  var body = req.body;
+  User.userLoginPOST(body)
     .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
+      let ctrl = JSON.stringify(response);
+      let lunghezza = ctrl.length;
+      if (lunghezza != 2) {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end('[{ "status": "prova il login, rete, che gol" }]');
+      } else {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end('[{ "status": "prova il login, non va" }]');
+      }
     });
 };
 
@@ -30,7 +34,7 @@ module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
         })
     } else {
       res.writeHead(400, { 'Content-Type': 'application/json' });
-      res.end('end response 400');
+      res.end('[{ "status": "eskereNo" }]');
     }
   })
 };

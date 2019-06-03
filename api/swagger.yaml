@@ -512,24 +512,35 @@ paths:
         404:
           description: "Cart not found"
       x-swagger-router-controller: "Cart"
+  /cart/insert:
     post:
       tags:
       - "cart"
-      summary: "Add new book on my cart"
-      description: "Login with a form"
-      operationId: "postCartyID"
+      summary: "cartInsert"
+      description: "Register into the cart"
+      operationId: "cartInsertPOST"
       consumes:
       - "application/x-www-form-urlencoded"
       produces:
       - "application/json"
       parameters:
-      - name: "bookID"
-        in: "formData"
-        required: true
-        type: "string"
+      - in: "body"
+        name: "body"
+        description: "data send to client"
+        schema:
+          type: "object"
+          properties:
+            user_id: 
+              type: "integer"
+            quantity: 
+              type: "integer"
+            total:
+              type: "integer" 
+            isbn: 
+              type: "string"              
       responses:
         200:
-          description: "succesfull login"
+          description: "Successful"
         404:
           description: "unauthorized"
       x-swagger-router-controller: "Cart"
@@ -591,12 +602,12 @@ definitions:
   Cart:
     type: "object"
     required:
-      - "id_user"
+      - "user_id"
       - "total"
       - "quantity"
       - "isbn"
     properties:
-      id_user:
+      user_id:
         type: "integer"
       total:
         type: "integer"

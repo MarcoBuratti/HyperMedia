@@ -20,15 +20,11 @@ exports.cartDbSetup = function (database) {
  * cartId Long ID of book to return
  * returns List
  **/
-exports.getCartById = function (cartId) {
-  knex.select()
+exports.getCartById = function (userId) {
+  return db.select()
     .from('cart')
-    .where('user_id', cartId)
-    .then(function (cart) {
-      console.log("Selected ID Cart is: " + cartId);
-      console.log(cart);
-      return cart;
-    })
+    .where('user_id', userId);
+    
 }
 
 
@@ -39,9 +35,25 @@ exports.getCartById = function (cartId) {
  * bookID String 
  * no response value expected for this operation
  **/
-exports.postCartyID = function (bookID) {
-  return new Promise(function (resolve, reject) {
-    resolve();
+exports.cartInsertPOST = function (body) {
+
+  console.log(body);
+  let id_user = body.id_user;
+  let quantity = body.quantity;
+  let isbn = body.isbn;
+  let total = body.total;
+  console.log(id_user);
+  db.select("id_user").from("cart").where('id_user',id_user).andWhere('isbn',isbn).then(function(){
+    return db2('cart').insert({
+      id_user: id_user,
+      quantity: quantity,
+      isbn: isbn,
+      total: total
+    })
   });
+  return db.select().from('cart');
+
+
 }
+
 
