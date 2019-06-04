@@ -39,9 +39,23 @@ module.exports.deleteCart = function deleteCart (req, res, next) {
   var userId = req.swagger.params['userId'].value;
   Cart.deleteCart(userId)
     .then(function (response) {
+      Cart.getAll().then(function(response){console.log(response)});
       utils.writeJson(res, response);
+      
     })
     .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.deleteBook = function deleteBook (req, res, next) {
+  var userId = req.swagger.params['userId'].value;
+  var isbn = req.swagger.params['isbn'].value;
+  Cart.deleteBook(userId,isbn)
+    .then(function (response) {
+      Cart.getAll().then(function(response){console.log(response)});
+      utils.writeJson(res, response);
+    }).catch(function (response) {
       utils.writeJson(res, response);
     });
 };

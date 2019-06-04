@@ -3,14 +3,14 @@ let email = document.getElementById("email");
 let psw = document.getElementById('psw');
 let signUp = document.getElementById('sign-up-btn');
 
-signUp.addEventListener('submit', (e) => {
+/*signUp.addEventListener('submit', (e) => {
     e.preventDefault();
 
     let details = {
-        'user_id': 32,
+        'user_id': 22,
         'total': 5313,
         'quantity': 5,
-        'isbn': "101"
+        'isbn': "111"
     };
 
     let formBody = [];
@@ -39,7 +39,7 @@ const getResponse = async (body) => {
 
 }
 
-/*
+*/
 signUp.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -74,4 +74,4 @@ const getResponse = async (body) => {
 
     console.log(answer[0].status);
 
-}*/
+}

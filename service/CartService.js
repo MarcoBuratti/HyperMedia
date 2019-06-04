@@ -81,3 +81,8 @@ exports.deleteCart = function (userId) {
   return db('cart').where('user_id', userId).del();
     
 }
+
+exports.deleteBook = function (userId,isbn) {
+  return db('cart').where('user_id', userId).andWhere('isbn',isbn).del();
+    
+}
