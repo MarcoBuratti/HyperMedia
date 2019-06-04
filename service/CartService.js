@@ -20,16 +20,27 @@ exports.cartDbSetup = function (database) {
  * cartId Long ID of book to return
  * returns List
  **/
-exports.getCartById = function (cartId) {
-  knex.select()
+exports.getCartById = function (userId) {
+  return db.select()
     .from('cart')
-    .where('user_id', cartId)
-    .then(function (cart) {
-      console.log("Selected ID Cart is: " + cartId);
-      console.log(cart);
-      return cart;
-    })
+    .where('user_id', userId);
+    
 }
+
+exports.getAll = function () {
+  return db.select()
+    .from('cart');
+    
+}
+exports.getCartByIdAndIsbn = function (body) {
+  let id_user = body.user_id;
+  let isbn = body.isbn;
+  return db.select()
+    .from('cart')
+    .where('user_id', id_user).andWhere('isbn',isbn);
+    
+}
+
 
 
 /**
@@ -39,9 +50,39 @@ exports.getCartById = function (cartId) {
  * bookID String 
  * no response value expected for this operation
  **/
-exports.postCartyID = function (bookID) {
-  return new Promise(function (resolve, reject) {
-    resolve();
+exports.cartInsertPOST = function (body) {
+
+  let id_user = body.user_id;
+  let quantity = body.quantity;
+  let isbn = body.isbn;
+  let total = body.total;
+  return db('cart').insert({
+      user_id: id_user,
+      quantity: quantity,
+      isbn: isbn,
+      total: total
+    })
+}
+
+
+exports.cartUpdate = function (body) {
+
+  let id_user = body.user_id;
+  let quantity = body.quantity;
+  let isbn = body.isbn;
+  let total = body.total;
+  return db('cart').where('user_id',id_user).andWhere('isbn',isbn).update({
+    quantity: quantity,
+    total: total
   });
 }
 
+exports.deleteCart = function (userId) {
+  return db('cart').where('user_id', userId).del();
+    
+}
+
+exports.deleteBook = function (userId,isbn) {
+  return db('cart').where('user_id', userId).andWhere('isbn',isbn).del();
+    
+}

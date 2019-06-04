@@ -34,18 +34,6 @@ paths:
       operationId: "booksGET"
       produces:
       - "application/json"
-      parameters:
-      - name: "offset"
-        in: "query"
-        description: "Pagination offset. Default is 0."
-        required: false
-        type: "integer"
-      - name: "limit"
-        in: "query"
-        description: "Maximum number of items per page. Default is 20 and cannot exceed\
-          \ 500."
-        required: false
-        type: "integer"
       responses:
         200:
           description: "A collection of Books"
@@ -55,6 +43,25 @@ paths:
               $ref: "#/definitions/Book"
         404:
           description: "Unexpected error"
+      x-swagger-router-controller: "Book"
+  /bestSeller:
+    get:
+      tags:
+      - "book"
+      summary: "Find all book by Genre"
+      description: "Return a list of book"
+      operationId: "getBestSeller"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        400:
+          description: "Invalid Name supplied"
+        404:
+          description: "Book not found"
       x-swagger-router-controller: "Book"
   /bookId/{bookId}:
     get:
@@ -432,6 +439,51 @@ paths:
         404:
           description: "Author not found"
       x-swagger-router-controller: "Author"
+  /allAuthors:
+    get:
+      tags:
+      - "author"
+      summary: "Find all authros"
+      description: "Returns all authors"
+      operationId: "getAllAuthors"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Invalid Name supplied"
+        404:
+          description: "Author not found"
+      x-swagger-router-controller: "Author"      
+  /booksByIdAuthor/{authorId}:
+    get:
+      tags:
+      - "author"
+      summary: "Find books by ID"
+      description: "Returns books"
+      operationId: "getBooksByIdAuthor"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "authorId"
+        in: "path"
+        description: "ID of author"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Book not found"
+      x-swagger-router-controller: "Author"
   /carts:
     get:
       tags:
@@ -460,26 +512,88 @@ paths:
         404:
           description: "Cart not found"
       x-swagger-router-controller: "Cart"
+  /cartInsert:
     post:
       tags:
       - "cart"
-      summary: "Add new book on my cart"
-      description: "Login with a form"
-      operationId: "postCartyID"
+      summary: "cartInsert"
+      description: "Register into the cart"
+      operationId: "cartInsertPOST"
       consumes:
       - "application/x-www-form-urlencoded"
       produces:
       - "application/json"
       parameters:
-      - name: "bookID"
-        in: "formData"
-        required: true
-        type: "string"
+      - in: "body"
+        name: "body"
+        description: "data send to client"
+        schema:
+          type: "object"
+          properties:
+            user_id:
+              type: "string"
+            total:
+              type: "string"
+            quantity:
+              type: "string"
+            isbn:
+              type: "string"             
       responses:
         200:
-          description: "succesfull login"
+          description: "Successful"
         404:
           description: "unauthorized"
+      x-swagger-router-controller: "Cart"
+  /cartDelete/{userId}:
+    delete:
+      tags:
+      - "cart"
+      description: "Returns books"
+      operationId: "deleteCart"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of user"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Invalid ID supplied"
+      x-swagger-router-controller: "Cart"
+  /bookDelete/{userId}/{isbn}:
+    delete:
+      tags:
+      - "cart"
+      description: "Delete book"
+      operationId: "deleteBook"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "ID of user"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "isbn"
+        in: "path"
+        description: "isbn of book"
+        required: true
+        type: "string"        
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Invalid ID supplied"
       x-swagger-router-controller: "Cart"
 definitions:
   Author:
@@ -539,20 +653,19 @@ definitions:
   Cart:
     type: "object"
     required:
-      - "id_user"
+      - "user_id"
       - "total"
       - "quantity"
       - "isbn"
     properties:
-      id_user:
-        type: "integer"
+      user_id:
+        type: "string"
       total:
-        type: "integer"
+        type: "string"
       quantity:
-        type: "integer"
+        type: "string"
       isbn:
         type: "string"
-        $ref: "#/definitions/Book"
     title: "Cart"
     description: "Order for books"
   Book:

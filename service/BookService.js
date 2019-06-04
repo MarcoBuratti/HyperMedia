@@ -20,9 +20,16 @@ exports.booksDbSetup = function (database) {
  * limit Integer Maximum number of items per page. Default is 20 and cannot exceed 500. (optional)
  * returns List
  **/
-exports.booksGET = function (offset, limit) {
+exports.booksGET = function () {
   return db.select('isbn')
     .from('books');
+}
+
+exports.getBestSeller = function () {
+  return db.select('isbn')
+    .from('books')
+    .orderBy('sold', 'desc')
+    .limit(3);
 }
 
 exports.getAllTheme = function () {

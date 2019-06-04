@@ -20,9 +20,18 @@ exports.authorDbSetup = function (database) {
  * returns Author
  **/
 exports.getAuthorById = function (authorID) {
-  console.log("aa");
    return db.select()
     .from('authors')
     .where('id', authorID);
 }
 
+
+exports.getAllAuthors = function () {
+  return db.select()
+   .from('authors');
+}
+
+exports.getBooksByIdAuthor = function (authorID) {
+  return db.select('isbn')
+   .from('relations').where('id_author',authorID);
+}
