@@ -2,6 +2,8 @@
 
 var utils = require('../utils/writer.js');
 var User = require('../service/UserService');
+let cookieSession = require("cookie-session");
+let cookieParser = require("cookie-parser");
 
 module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
   var body = req.body;
@@ -10,8 +12,9 @@ module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
       let ctrl = JSON.stringify(response);
       let lunghezza = ctrl.length;
       if (lunghezza != 2) {
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end('[{ "status": "prova il login, rete, che gol" }]');
+        console.log(res);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end('[{ "status": "prova il login, rete, che gol" }]');
       } else {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end('[{ "status": "prova il login, non va" }]');
