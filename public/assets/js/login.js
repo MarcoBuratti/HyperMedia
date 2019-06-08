@@ -24,12 +24,9 @@ let signIn = document.getElementById('sign-in-btn');
     e.preventDefault();
 
     let details = {
-        'user_id': 22,
         'total': 5313,
-        'quantity': 5,
-        'isbn': "111"
-    };': 5,
-        'isbn': "111"
+        'quantity': 53,
+        'isbn': "1121"
     };
 
     let formBody = [];
@@ -54,11 +51,12 @@ const getResponse = async (body) => {
 
     answer = await answer.json()
 
-    console.log(answer[0].status);
+    console.log(answer.status);
 
 }
 
 */
+
 signUp.addEventListener('submit', (e) => {
     e.preventDefault();
 

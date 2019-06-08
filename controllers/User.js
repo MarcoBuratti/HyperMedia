@@ -5,9 +5,9 @@ var User = require('../service/UserService');
 
 module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
 
-  
+
   let status = { status: false }
-  let cookie =req.session.id_user;
+  let cookie = req.session.id_user;
   console.log(cookie);
 
   if (cookie === undefined) {
@@ -23,30 +23,29 @@ module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
   else {
 
 
-  var body = req.body;
-  User.userLoginPOST(body)
-    .then(function (response) {
-      
-      //console.log(response[0].id_user);
-      let ctrl = JSON.stringify(response);
-      
-      let lenght = ctrl.length;
-      if (lenght !== 2) {
-        req.session.id_user = response[0].id_user;
-        status.status = true;
-        utils.writeJson(res, status);
-      } else {
-        utils.writeJson(res, status);
-      }
-    });
-}
+    var body = req.body;
+    User.userLoginPOST(body)
+      .then(function (response) {
+
+        let ctrl = JSON.stringify(response);
+
+        let lenght = ctrl.length;
+        if (lenght !== 2) {
+          req.session.id_user = response[0].id_user;
+          status.status = true;
+          utils.writeJson(res, status);
+        } else {
+          utils.writeJson(res, status);
+        }
+      });
+  }
 };
 
 module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
 
   var body = req.body;
   let status = { status: false }
-  let cookie =req.session.id_user;
+  let cookie = req.session.id_user;
   console.log(cookie);
   if (cookie === undefined) {
     console.log("unde");
