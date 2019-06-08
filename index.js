@@ -28,7 +28,7 @@ var swaggerDoc = jsyaml.safeLoad(spec);
 
 // Add cookies to responses
 app.use(cookieParser());
-app.use(cookieSession({ name: "session", keys: ["abc", "def"] }));
+app.use(cookieSession({ name: "session", keys: ['id_user','cookie'] }));
 
 
 // Initialize the Swagger middleware

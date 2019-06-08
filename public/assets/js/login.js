@@ -112,7 +112,7 @@ const getResponseReg = async (body) => {
 
     answer = await answer.json()
 
-    console.log(answer[0].status);
+    console.log(answer);
 
 }
 
@@ -127,6 +127,6 @@ const getResponseLog = async (body) => {
 
     answer = await answer.json()
 
-    console.log(answer[0].status);
+    console.log(answer);
 
 }

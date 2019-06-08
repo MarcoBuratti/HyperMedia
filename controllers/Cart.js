@@ -19,7 +19,7 @@ module.exports.cartInsertPOST = function cartInsertPOST(req, res, next) {
   Cart.getCartByIdAndIsbn(body).then(function (response) {
     let ctrl = JSON.stringify(response);
     let lunghezza = ctrl.length;
-    if (lunghezza != 2) {
+    if (lunghezza !== 2) {
       Cart.cartUpdate(body).then(function(){
         Cart.getAll().then(function(response){console.log(response)});
         res.writeHead(200, { 'Content-Type': 'application/json' });
