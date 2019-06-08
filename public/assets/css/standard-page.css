@@ -1,5 +1,5 @@
 body{
-  background: beige;
+  background: rgb(255, 255, 200);
   font-family: sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
@@ -8,17 +8,64 @@ body{
   height: 100vh;
 }
 
-.navbar {
+.my-navbar {
     border-radius: 0;
-    margin-bottom: 0;
+    margin: 0px;
     letter-spacing: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font: 13px;
+    height: 60px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: rgb(255, 76, 6);
+    overflow: hidden;
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    font-size: 16px;
+    font-weight: 550;
+    z-index: 9999;
 }
-  
+
+
+.my-navbar-btn, .brand-btn {
+    margin-top: 0;
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.my-navbar-active-btn {
+    color: white;
+}
+
+.my-navbar-btn-right {
+    float: right;
+}
+
+.my-navbar-btn:hover {
+    background: rgb(255, 104, 44);
+    color: slategrey;
+    text-decoration: none;
+}
+
+.brand-btn:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.my-navbar-left li {
+    list-style: none;
+}
+
+.my-navbar-right li {
+    list-style: none;
+}
+
 #container {
     min-height: 100%;
     position: relative;
@@ -44,11 +91,22 @@ body{
 #social{
     width: 100%;
     margin-top: 50px;
-    background-color: rgb(36, 36, 36);
-    color: rgb(121, 121, 121);
+    background-color: rgb(255, 76, 6);
+    color: black;
     text-align: center;
     font-size: 14px;
+    font-weight: bold;
     height: auto;
+}
+
+.btn {
+    color: black;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    background-color: rgb(255, 104, 44);
+    color: slategray;
 }
 
 * {

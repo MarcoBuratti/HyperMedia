@@ -16,6 +16,25 @@ body {
     margin: auto;
     text-align: center;
     background-color: rgb(255,255,255);
+    border-radius: 10px;
+}
+
+.img-responsive {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.btn-primary {
+    background-color: rgb(255, 76, 6);
+    color: black;
+    font-weight: bold;
+    border-color: transparent;
+}
+
+.btn-primary:hover {
+    background-color: rgb(255, 104, 44);
+    color: slategray;
+    border-color: transparent;
 }
 
 #rowx{
@@ -42,7 +61,7 @@ hr#separatore {
     overflow: hidden;
     border-style: inset;
     border-width: 1px;
-    border-color: blue;
+    border-color: rgba(0, 0, 0, 0.2);
 }
 
 
