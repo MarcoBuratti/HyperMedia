@@ -27,6 +27,21 @@ exports.getCartById = function (userId) {
     
 }
 
+exports.getAll = function () {
+  return db.select()
+    .from('cart');
+    
+}
+exports.getCartByIdAndIsbn = function (body) {
+  let id_user = body.user_id;
+  let isbn = body.isbn;
+  return db.select()
+    .from('cart')
+    .where('user_id', id_user).andWhere('isbn',isbn);
+    
+}
+
+
 
 /**
  * Add new book on my cart
@@ -37,23 +52,37 @@ exports.getCartById = function (userId) {
  **/
 exports.cartInsertPOST = function (body) {
 
-  console.log(body);
-  let id_user = body.id_user;
+  let id_user = body.user_id;
   let quantity = body.quantity;
   let isbn = body.isbn;
   let total = body.total;
-  console.log(id_user);
-  db.select("id_user").from("cart").where('id_user',id_user).andWhere('isbn',isbn).then(function(){
-    return db2('cart').insert({
-      id_user: id_user,
+  return db('cart').insert({
+      user_id: id_user,
       quantity: quantity,
       isbn: isbn,
       total: total
     })
-  });
-  return db.select().from('cart');
-
-
 }
 
 
+exports.cartUpdate = function (body) {
+
+  let id_user = body.user_id;
+  let quantity = body.quantity;
+  let isbn = body.isbn;
+  let total = body.total;
+  return db('cart').where('user_id',id_user).andWhere('isbn',isbn).update({
+    quantity: quantity,
+    total: total
+  });
+}
+
+exports.deleteCart = function (userId) {
+  return db('cart').where('user_id', userId).del();
+    
+}
+
+exports.deleteBook = function (userId,isbn) {
+  return db('cart').where('user_id', userId).andWhere('isbn',isbn).del();
+    
+}

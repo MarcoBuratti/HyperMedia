@@ -9,7 +9,9 @@ exports.seed = function (knex, Promise) {
         { id_author: 1, name: 'J.K. Rowling', biography: "Rowling was born to Peter James Rowling, a Rolls-Royce aircraft engineer, and Anne Rowling (née Volant), a science technician, on 31 July 1965 in Yate, Gloucestershire, England, 10 miles (16 km) northeast of Bristol. Her parents first met on a train departing from King's Cross Station bound for Arbroath in 1964. They married on 14 March 1965. One of her maternal great-grandfathers, Dugald Campbell, was Scottish, born in Lamlash on the Isle of Arran. Her mother's paternal grandfather, Louis Volant, was French, and was awarded the Croix de Guerre for exceptional bravery in defending the village of Courcelles-le-Comte during the First World War. Rowling originally believed he had won the Légion d'honneur during the war, as she said when she received it herself in 2009. She later discovered the truth when featured in an episode of the UK genealogy series Who Do You Think You Are?, in which she found out it was a different Louis Volant who won the Legion of Honour. When she heard her grandfather's story of bravery and discovered the croix de guerre was for ''ordinary'' soldiers like her grandfather, who had been a waiter, she stated the croix de guerre was ''better'' to her than the Legion of Honour." },
         { id_author: 2, name: 'Emily Brontë', biography: "Emily Bronte biography" },
         { id_author: 3, name: 'Jane Austen', biography: "Jane Austen biography"},
-        { id_author: 4, name: 'Oscar Wilde', biography: "Oscar Wilde biography"}
+        { id_author: 4, name: 'Oscar Wilde', biography: "Oscar Wilde biography"},
+        { id_author: 5, name: 'Sona Charaipotra', biography: "Sona Charaipotra biography"},
+        { id_author: 6, name: 'Dhonielle Clayton', biography: "Dhonielle Clayton biography"}
       ]);
     });
 };

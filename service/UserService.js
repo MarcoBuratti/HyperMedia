@@ -19,32 +19,35 @@ exports.userDbSetup = function (database) {
 
 exports.userLoginPOST = function (body) {
   let nameIns = body.name;
+  let emailIns = body.email;
   let passwordIns = body.password;
-  return db.select('id_user').from('users').where('name', nameIns).andWhere('password',passwordIns);
+  return db.select('id_user').from('users').where('name', nameIns).andWhere('email', emailIns).andWhere('password', passwordIns);
 }
 
 
 exports.userRegisterPOST = function (body) {
+
   let nameIns = body.name;
   let emailIns = body.email;
   let pswIns = body.password;
-  db.max("id_user").from("users").then(data => {
+  let id = db.max("id_user").from("users").then(data => {
     let id = data[0].max;
     id = id + 1;
-    return db2('users').insert({
+    db('users').insert({
       id_user: id,
       name: nameIns,
       email: emailIns,
       password: pswIns
-    })
+    }).then(function(){return true;})
+    return id;
   });
-  return db.select().from('users').where('email', emailIns);
+  return id;
 }
 
 exports.getUserByEmail = function (body) {
   let emailIns = body.email;
   let nameIns = body.name;
-  return db.select('email').from('users').where('email', emailIns).andWhere('name',nameIns);
+  return db.select('email').from('users').where('email', emailIns).andWhere('name', nameIns);
 }
 
 
