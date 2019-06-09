@@ -236,3 +236,9 @@ body{
     }
     
 }
+
+@media screen and (max-width: 255px) {
+    #sidebar-brand {
+        display: none;
+    }
+}
