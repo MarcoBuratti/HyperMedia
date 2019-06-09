@@ -167,6 +167,10 @@ body{
         height: 60px;
         background-color: rgb(255, 76, 6);
     }
+
+    #sidebar-btn-close {
+        color: black;
+    }
     
     .sidebar ul {
         margin: 8px 0 0 0;
@@ -186,7 +190,7 @@ body{
         z-index: 1;
         top: 0;
         right: 0;
-        background-color: #111;
+        background-color: rgb(255, 76, 6);
         opacity: 0.9;
         overflow-x: hidden;
         padding-top: 60px;
@@ -197,13 +201,12 @@ body{
         padding: 10px 10px 10px 30px;
         text-decoration: none;
         font-size: 22px;
-        color: #ccc;
         display: block;
         transition: 0.3s;
     }
     
     .side-nav a:hover {
-        color: #fff;
+        color: slategray;
     }
     
     .side-nav .btn-close {
@@ -220,15 +223,15 @@ body{
     
     .sidebar-btn {
         background-color: none;
-        color: #ccc;
+        color: black;
     }
     
     .sidebar-btn:hover {
-        color: #fff;
+        color: slategray;
     }
     
     .active-sidebar-btn {
-        background-color: rgba(80, 80, 80, 0.5);
+        background-color: rgb(255, 104, 44);
         color: white;
     }
     
