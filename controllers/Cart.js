@@ -3,7 +3,7 @@
 var utils = require('../utils/writer.js');
 var Cart = require('../service/CartService');
 
-module.exports.getCartById = function getCartById (req, res, next) {
+module.exports.getCartById = function getCartById(req, res, next) {
   var cartId = req.swagger.params['cartId'].value;
   Cart.getCartById(cartId)
     .then(function (response) {
@@ -16,46 +16,71 @@ module.exports.getCartById = function getCartById (req, res, next) {
 
 module.exports.cartInsertPOST = function cartInsertPOST(req, res, next) {
   var body = req.body;
-  Cart.getCartByIdAndIsbn(body).then(function (response) {
-    let ctrl = JSON.stringify(response);
-    let lunghezza = ctrl.length;
-    if (lunghezza !== 2) {
-      Cart.cartUpdate(body).then(function(){
-        Cart.getAll().then(function(response){console.log(response)});
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end('[{ "status": "aggiornato" }]');
-      })
-    } else {
-      Cart.cartInsertPOST(body).then(function(){
-      Cart.getAll().then(function(response){console.log(response)});
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end('[{ "status": "inserito" }]');
+  let id_user = req.session.id_user;
+  console.log("CIAO"+id_user);
+
+  let status = { status: false }
+  if (id_user === undefined) {
+    console.log("unde");
+    req.session = { id_user: "0" };
+  }
+
+  if (req.session.id_user == 0) {
+    console.log(req.session.id_user);
+    console.log("no login");
+    utils.writeJson(res, status);
+  }
+  else {
+
+    Cart.getCartByIdAndIsbn(body, id_user).then(function (response) {
+
+      let ctrl = JSON.stringify(response);
+      let lenght = ctrl.length;
+      if (lenght !== 2) {
+        Cart.cartUpdate(body, id_user).then(function () {
+          Cart.getAll().then(function (response) { console.log(response) });
+        })
+      } else {
+        Cart.cartInsertPOST(body, id_user).then(function () {
+          Cart.getAll().then(function (response) { console.log(response) });
+        })
+      }
+
+      status.status = true;
+      utils.writeJson(res, status)
     })
   }
-})};
+};
 
 
-module.exports.deleteCart = function deleteCart (req, res, next) {
-  var userId = req.swagger.params['userId'].value;
+module.exports.deleteCart = function deleteCart(req, res, next) {
+
+  var userId = req.session.id_user;
+  let status = { status: false }
+
   Cart.deleteCart(userId)
-    .then(function (response) {
-      Cart.getAll().then(function(response){console.log(response)});
-      utils.writeJson(res, response);
-      
+    .then(function () {
+      Cart.getAll().then(function (response) { console.log(response) });
+      status.status = true;
+      utils.writeJson(res, status);
+
     })
-    .catch(function (response) {
-      utils.writeJson(res, response);
+    .catch(function () {
+      utils.writeJson(res, status);
     });
 };
 
-module.exports.deleteBook = function deleteBook (req, res, next) {
-  var userId = req.swagger.params['userId'].value;
+module.exports.deleteBook = function deleteBook(req, res, next) {
+  var userId = req.session.id_user;
   var isbn = req.swagger.params['isbn'].value;
-  Cart.deleteBook(userId,isbn)
-    .then(function (response) {
-      Cart.getAll().then(function(response){console.log(response)});
-      utils.writeJson(res, response);
-    }).catch(function (response) {
-      utils.writeJson(res, response);
+  let status = { status: false };
+
+  Cart.deleteBook(userId, isbn)
+    .then(function () {
+      Cart.getAll().then(function (response) { console.log(response) });
+      status.status = true;
+      utils.writeJson(res, status);
+    }).catch(function () {
+      utils.writeJson(res, status);
     });
 };

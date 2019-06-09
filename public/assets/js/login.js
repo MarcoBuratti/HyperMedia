@@ -3,11 +3,11 @@ const signInButton = document.getElementById('signIn');
 const container = document.getElementById('master');
 
 signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
+    container.classList.add("right-panel-active");
 });
 
 signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
+    container.classList.remove("right-panel-active");
 });
 
 
@@ -24,12 +24,9 @@ let signIn = document.getElementById('sign-in-btn');
     e.preventDefault();
 
     let details = {
-        'user_id': 22,
         'total': 5313,
-        'quantity': 5,
-        'isbn': "111"
-    };': 5,
-        'isbn': "111"
+        'quantity': 53,
+        'isbn': "1121"
     };
 
     let formBody = [];
@@ -54,11 +51,12 @@ const getResponse = async (body) => {
 
     answer = await answer.json()
 
-    console.log(answer[0].status);
+    console.log(answer.status);
 
 }
 
 */
+
 signUp.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -77,7 +75,8 @@ signUp.addEventListener('submit', (e) => {
     }
     formBody = formBody.join("&");
 
-    getResponseReg(formBody);
+    let res = getResponseReg(formBody);
+    setNavBtn(res);
 });
 
 signIn.addEventListener('submit', (e) => {
@@ -97,8 +96,8 @@ signIn.addEventListener('submit', (e) => {
         formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-
-    getResponseLog(formBody);
+    let res = getResponseLog(formBody);
+    setNavBtn(res);
 });
 
 const getResponseReg = async (body) => {
@@ -111,9 +110,8 @@ const getResponseReg = async (body) => {
     })
 
     answer = await answer.json()
-
     console.log(answer);
-
+    return answer.status;
 }
 
 const getResponseLog = async (body) => {
@@ -124,9 +122,52 @@ const getResponseLog = async (body) => {
         },
         body: body
     })
-
     answer = await answer.json()
-
     console.log(answer);
-
+    return answer.status;
 }
+
+let link;
+let nameBtn;
+let dinamic_btn = document.getElementById("dinamic-btn");
+
+setNavBtn(false);
+
+function setNavBtn(res) {
+    if (res) {
+        nameBtn = 'Logout';
+        link = '<a href="../pages/login.html">';
+        let buttonLogIn = '<li class="active" id="LogoutFunction">' + link + '<span class="glyphicon glyphicon-log-in"></span>' + nameBtn + '</a></li>';
+        dinamic_btn.innerHTML = buttonLogIn;
+        const logoutFunction = document.getElementById('LogoutFunction');
+        logoutFunction.addEventListener('click',async (e) => {
+
+            e.preventDefault();
+        
+        
+            let answer = await fetch("/v2/user/logout", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                }
+            })
+            answer = await answer.json()
+            console.log(answer.status);
+            console.log("keke");
+        
+            setNavBtn(false);
+        });
+        location.replace('../index.html');
+    } else {
+        link = '<a href="../pages/login.html">';
+        nameBtn = 'Login';
+        let buttonLogIn = '<li class="active">' + link + '<span class="glyphicon glyphicon-log-in"></span>' + nameBtn + '</a></li>';
+        console.log(buttonLogIn);
+        alert('Please control your credential, maybe are wrong');
+        dinamic_btn.innerHTML = buttonLogIn;
+    }
+}
+
+
+
+

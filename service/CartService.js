@@ -32,8 +32,8 @@ exports.getAll = function () {
     .from('cart');
     
 }
-exports.getCartByIdAndIsbn = function (body) {
-  let id_user = body.user_id;
+exports.getCartByIdAndIsbn = function (body,id_user) {
+  
   let isbn = body.isbn;
   return db.select()
     .from('cart')
@@ -42,17 +42,8 @@ exports.getCartByIdAndIsbn = function (body) {
 }
 
 
+exports.cartInsertPOST = function (body,id_user) {
 
-/**
- * Add new book on my cart
- * Login with a form
- *
- * bookID String 
- * no response value expected for this operation
- **/
-exports.cartInsertPOST = function (body) {
-
-  let id_user = body.user_id;
   let quantity = body.quantity;
   let isbn = body.isbn;
   let total = body.total;
@@ -65,9 +56,8 @@ exports.cartInsertPOST = function (body) {
 }
 
 
-exports.cartUpdate = function (body) {
+exports.cartUpdate = function (body,id_user) {
 
-  let id_user = body.user_id;
   let quantity = body.quantity;
   let isbn = body.isbn;
   let total = body.total;
