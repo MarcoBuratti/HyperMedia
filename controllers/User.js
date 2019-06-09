@@ -87,3 +87,23 @@ module.exports.getUserById = function getUserById(req, res, next) {
       utils.writeJson(res, response);
     });
 };
+
+module.exports.userLogoutPOST = function userLogoutPOST(req, res, next) {
+  let status = { status: false }
+  let cookie = req.session.id_user;
+  console.log(cookie);
+  if (cookie === undefined) {
+    console.log("unde");
+    req.session = { id_user: "0" };
+  }
+
+  if (req.session.id_user != 0) {
+    console.log(req.session.id_user);
+    req.session.id_user = 0;
+    console.log("già loggato");
+    status.status = true;
+    utils.writeJson(res, status);
+  }
+  else
+    utils.writeJson(res, status);
+};
