@@ -157,6 +157,10 @@ body {
 
 @media( max-width:568px ) {
 
+    #sidebar-title {
+        display: none;
+    }
+
     #content-box {
         height: 100%;
     }

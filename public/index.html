@@ -18,11 +18,44 @@
   <div id="container">
 
     <div id="header">
+      <div id="sidenav">
+        <!-- Sidebar -->
+        <nav class="sidebar">
 
-      <nav class="my-navbar">
-        <div class="my-navbar-container">
+          <span class="open-slide">
+            <a href="#" , class="btn-open" , id="sidebar-btn-open">
+              <svg width="30" , height="30">
+                <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
+                <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
+                <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
+              </svg>
+            </a>
+          </span>
+
+          <!-- <ul class="sidebar-nav">
+                                      <li><a href="#">Home</a></li>
+                                      <li><a href="#">Home</a></li>
+                                      <li><a href="#">Home</a></li>
+                                      <li><a href="#">Home</a></li>
+                                  </ul>    -->
+        </nav>
+
+        <div id="side-menu" , class="side-nav">
+
+          <a href="#" , class="btn-close" , id="sidebar-btn-close">&times;</a>
+          <a href="#" , class="sidebar-btn active-sidebar-btn" , id="sidebar-btn-info">Book</a>
+          <a href="#" , class="sidebar-btn" , id="sidebar-btn-reviews">Reviews</a>
+          <a href="#" , class="sidebar-btn" , id="sidebar-btn-gallery">Recommended Books</a>
+          <a href="#" , class="sidebar-btn" , id="sidebar-btn-event">Event</a>
+        </div>
+      </div>
+      <div id="nav">
+        <nav class="my-navbar">
+
+
           <div class="my-navbar-brand-box">
-            <p class="brand-btn" id="my-navbar-brand">&copy;BOOKin</p>
+            <p class="brand-btn" id="my-navbar-brand">&copy;BookWorm<img src="./assets/img/brand.png" height="35" width="35"
+                alt="logo"></p>
           </div>
           <div class="my-navbar-buttons-box">
             <ul class="my-navbar-left">
@@ -32,15 +65,14 @@
               <li><a class="my-navbar-btn" href="./pages/filterable-list.html">Artists</a></li>
               <li><a class="my-navbar-btn" href="./pages/sidebar.html">Events</a></li>
             </ul>
-      
+
             <ul class="my-navbar-right">
               <li><a href="./pages/login.html" class="my-navbar-btn my-navbar-btn-right">Login</a></li>
             </ul>
           </div>
-        </div>
-      </nav>
-      
 
+        </nav>
+      </div>
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
@@ -87,11 +119,13 @@
       </div>
       <!--End Carousel-->
 
+
+ 
+
     </div>
 
 
     <div id="body">
-    
 
         <div class="container" id="master">
             <div class="col-lg-12" id="paragrafo1">
@@ -174,6 +208,8 @@
     </div>
 
   </div>
+
+  <script type="text/javascript", src="../public/assets/js/script.js"></script>
 
 </body>
 
