@@ -114,7 +114,7 @@
     margin-top: 30px;
   }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
 
   .row {
     width: 100%;

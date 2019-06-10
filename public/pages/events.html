@@ -17,34 +17,66 @@
 
   <div id="container">
 
-    <div id="header">
-      
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="../index.html">&copy;BOOKin</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav navar-left">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../pages/about-us.html">Contact Us</a></li>
-                <li><a href="../pages/filterable-list.html">Search Book</a></li>
-                <li><a href="../pages/filterable-list.html">Search Artist</a></li>
-                <li class="active"><a href="../pages/events.html">Events</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="../pages/loginPage.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-              </ul>
+      <div id="header">
+
+          <div id="sidenav">
+            <!-- Sidebar -->
+            <nav class="sidebar">
+          
+              <p class="brand-btn" id="sidebar-brand">&copy;BookWorm<img src="../assets/img/brand.png" height="35" width="35"
+                  alt="logo"></p>
+          
+              <span class="open-slide">
+                <a href="#" , class="btn-open" , id="sidebar-btn-open">
+                  <svg width="30" , height="30">
+                    <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
+                    <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
+                    <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
+                  </svg>
+          
+                </a>
+              </span>
+          
+            </nav>
+          
+            <div id="side-menu" , class="side-nav">
+          
+              <a href="#" , class="btn-close" , id="sidebar-btn-close">&times;</a>
+              <a href="../index.html" class="sidebar-btn active-sidebar-btn">Home</a>
+              <a class="sidebar-btn" href="../pages/about-us.html">About Us</a>
+              <a class="sidebar-btn" href="../pages/filterable-list.html">Books</a>
+              <a class="sidebar-btn" href="../pages/filterable-list.html">Artists</a>
+              <a class="sidebar-btn" href="../pages/sidebar.html">Events</a>
+              <a href="../pages/login.html" class="sidebar-btn">Login</a>
+          
             </div>
           </div>
-      </nav>
-
-    </div>
+          <div id="nav">
+            <nav class="my-navbar">
+          
+          
+              <div class="my-navbar-brand-box">
+                <p class="brand-btn" id="my-navbar-brand">&copy;BookWorm<img src="../assets/img/brand.png" height="35" width="35"
+                    alt="logo"></p>
+              </div>
+              <div class="my-navbar-buttons-box">
+                <ul class="my-navbar-left">
+                  <li><a href="../index.html" class="my-navbar-btn my-navbar-active-btn">Home</a></li>
+                  <li><a class="my-navbar-btn" href="../pages/about-us.html">About Us</a></li>
+                  <li><a class="my-navbar-btn" href="../pages/filterable-list.html">Books</a></li>
+                  <li><a class="my-navbar-btn" href="../pages/filterable-list.html">Artists</a></li>
+                  <li><a class="my-navbar-btn" href="../pages/sidebar.html">Events</a></li>
+                </ul>
+          
+                <ul class="my-navbar-right">
+                  <li><a href="../pages/login.html" class="my-navbar-btn my-navbar-btn-right">Login</a></li>
+                </ul>
+              </div>
+          
+            </nav>
+          </div>
+    
+        </div>
 
 
     <div id="body">
@@ -82,7 +114,8 @@
 
   </div>
 
-  <script src ="../assets/js/events.js"></script>
+  <script type="text/javascript", src="../assets/js/script.js"></script>
+  <script type="text/javascript", src ="../assets/js/events.js"></script>
 
 </body>
 
