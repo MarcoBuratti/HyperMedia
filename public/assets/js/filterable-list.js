@@ -33,7 +33,7 @@ function filterBooks(){
 }
 
 const userAction = async () => {
-let response = await fetch('../../v2/allTheme');
+let response = await fetch('../../v2/books');
 console.log(response);
 json = await response.json();
 console.log(json);
@@ -47,7 +47,7 @@ function loadData(json) {
     for(var i=0; i<json.length; i++) {
         var collection;
         var collectionHeader;
-        switch(json[i].theme1.charAt(0).toUpperCase()) {
+        switch(json[i].title.charAt(0).toUpperCase()) {
             case 'A':
                 collection = document.getElementById('a-collection-items');
                 collectionHeader = document.getElementById('a-collection-header');
@@ -153,12 +153,12 @@ function loadData(json) {
                 collectionHeader = document.getElementById('z-collection-header');
                 break;
         }
-        if (json[i].theme1.charAt(0).match(/[a-z]/i)) {
+        if (json[i].title.charAt(0).match(/[a-z]/i)) {
             if (collectionHeader.className === 'collection-header-hidden')
                 collectionHeader.className = "collection-header";
             var innerHTML = collection.innerHTML;
             collection.innerHTML = innerHTML + "<li class='collection-item'>" +
-            "<a class='collection-item' , href='#'>" + json[i].theme1 + "</a></li>";
+            "<a class='collection-item' , href='#'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' height='100' width='50'></a></li>";
         }
     }
 
