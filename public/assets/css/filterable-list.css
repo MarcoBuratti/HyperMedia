@@ -22,12 +22,34 @@ input#filterInput {
 }
 
 a.collection-item {
-    color: black;
+    color: rgb(50, 50, 50);
+    font-style: italic;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 20px;
 }
 
-li.collection-item {
-    margin-left: 20px;
+a.collection-item:hover {
+    text-decoration: none;
 }
+
+
+li.collection-item {
+    list-style: none;
+	  display: list-item;
+	  margin-left: 50px;
+}
+
+li.collection-item:before {
+    content: "";
+	  border: 5px #000 solid !important;
+	  border-radius: 50px;
+	  margin-top: 5px;
+	  margin-left: -20px;
+	  position: absolute;
+}
+
 
 li.collection-header {
     display: inline;
@@ -37,6 +59,7 @@ li.collection-header {
 h5.collection-header {
     margin-top: 30px;
     color: rgb(100, 165, 210);
+    font-size: 25px;
     font-weight: bold;
     font-style: italic;
 }

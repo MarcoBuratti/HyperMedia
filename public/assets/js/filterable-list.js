@@ -158,7 +158,8 @@ function loadData(json) {
                 collectionHeader.className = "collection-header";
             var innerHTML = collection.innerHTML;
             collection.innerHTML = innerHTML + "<li class='collection-item'>" +
-            "<a class='collection-item' , href='#'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' height='100' width='50'></a></li>";
+            "<a class='collection-item' , href='#'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' height='300' width='180'></a>" +
+            "<h4>Price: "+ json[i].price.toFixed(2) + '€' + "</h4></li>";
         }
     }
 
