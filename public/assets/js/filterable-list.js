@@ -34,9 +34,7 @@ function filterBooks(){
 
 const userAction = async () => {
 let response = await fetch('../../v2/books');
-console.log(response);
 json = await response.json();
-console.log(json);
 loadData(json);
 }
 
@@ -158,7 +156,7 @@ function loadData(json) {
                 collectionHeader.className = "collection-header";
             var innerHTML = collection.innerHTML;
             collection.innerHTML = innerHTML + "<li class='collection-item'>" +
-            "<a class='collection-item' , href='#'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' height='300' width='180'></a>" +
+            "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' height='300' width='180'></a>" +
             "<h4>Price: "+ json[i].price.toFixed(2) + '€' + "</h4></li>";
         }
     }
