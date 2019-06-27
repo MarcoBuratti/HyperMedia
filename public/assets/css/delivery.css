@@ -1,0 +1,39 @@
+#body {
+    margin-bottom: 50vh;
+    margin-top: 10vh;
+}
+
+.col {
+    float: left;
+    width: 40%;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+  
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.del {
+    margin-bottom: 1vh;
+    border-width: 5px;
+    border-color: grey;
+    border-radius: 10px;
+}
+
+#card-img-left {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+#card-img-right {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+#social {
+    margin-top: 15vh;
+}
