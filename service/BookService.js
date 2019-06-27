@@ -49,7 +49,7 @@ exports.getAllGenre = function () {
  * returns Book
  **/
 exports.getBookById = function (isbn) {
-  return db.select('title', 'theme1', 'theme2', 'genre1', 'genre2', 'date', 'recommended', 'price', 'status')
+  return db.select('title', 'theme1', 'theme2', 'genre1', 'genre2', 'date', 'recommended', 'price', 'status', 'descr')
     .from('books')
     .where('isbn', isbn);
 }

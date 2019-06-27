@@ -35,6 +35,7 @@ exports.up = function (knex, Promise) {
             table.float('price');//.notNullable();
             table.enum('status', ['available', 'out of stock']);
             table.integer('sold');
+            table.text('descr');
         })
         .createTable('authors', function (table) {
             console.log("Create Table Authors");
