@@ -63,22 +63,21 @@ paths:
         404:
           description: "Book not found"
       x-swagger-router-controller: "Book"
-  /bookId/{bookId}:
+  /bookId/{isbn}:
     get:
       tags:
       - "book"
-      summary: "Find book by ID"
+      summary: "Find book by isbn"
       description: "Returns a book"
       operationId: "getBookById"
       produces:
       - "application/json"
       parameters:
-      - name: "bookId"
+      - name: "isbn"
         in: "path"
-        description: "ID of book to return"
+        description: "isbn of book to return"
         required: true
-        type: "integer"
-        format: "int64"
+        type: "string"
       responses:
         200:
           description: "successful operation"
@@ -89,44 +88,19 @@ paths:
         404:
           description: "Book not found"
       x-swagger-router-controller: "Book"
-  /bookName/{bookName}:
-    get:
-      tags:
-      - "book"
-      summary: "Find book by Name"
-      description: "Returns a book"
-      operationId: "getBookByName"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "bookName"
-        in: "path"
-        description: "Name of book to return"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            $ref: "#/definitions/Book"
-        400:
-          description: "Invalid Name supplied"
-        404:
-          description: "Book not found"
-      x-swagger-router-controller: "Book"
   /bookGenre/{bookGenre}:
     get:
       tags:
       - "book"
       summary: "Find book by Genre"
-      description: "Return a book"
+      description: "Return an array of books"
       operationId: "getBookByGenre"
       produces:
       - "application/json"
       parameters:
       - name: "bookGenre"
         in: "path"
-        description: "Name of book to return"
+        description: "Name of genre"
         required: true
         type: "string"
       responses:
@@ -144,14 +118,14 @@ paths:
       tags:
       - "book"
       summary: "Find book by Theme"
-      description: "Return a book"
+      description: "Return an array of books"
       operationId: "getBookByTheme"
       produces:
       - "application/json"
       parameters:
       - name: "bookTheme"
         in: "path"
-        description: "Name of book to return"
+        description: "Name of theme"
         required: true
         type: "string"
       responses:
@@ -168,8 +142,8 @@ paths:
     get:
       tags:
       - "book"
-      summary: "Find all book by Theme"
-      description: "Return a list of book"
+      summary: "Find all Themes"
+      description: "Return a list of themes"
       operationId: "getAllTheme"
       produces:
       - "application/json"
@@ -187,8 +161,8 @@ paths:
     get:
       tags:
       - "book"
-      summary: "Find all book by Genre"
-      description: "Return a list of book"
+      summary: "Find all Genres"
+      description: "Return an array of genres"
       operationId: "getAllGenre"
       produces:
       - "application/json"
@@ -202,21 +176,15 @@ paths:
         404:
           description: "Book not found"
       x-swagger-router-controller: "Book"      
-  /bookRecommended/{bookRecommended}:
+  /bookRecommended:
     get:
       tags:
       - "book"
-      summary: "Find book by Recomm"
-      description: "Return a book"
+      summary: "Find recommended books"
+      description: "Return an array of books"
       operationId: "getBookRecommended"
       produces:
       - "application/json"
-      parameters:
-      - name: "bookRecommended"
-        in: "path"
-        description: "Name of book to return"
-        required: true
-        type: "boolean"
       responses:
         200:
           description: "successful operation"
@@ -498,6 +466,31 @@ paths:
         404:
           description: "Book not found"
       x-swagger-router-controller: "Author"
+  /authorsByIsbn/{isbn}:
+    get:
+      tags:
+      - "author"
+      summary: "Find authors by isbn"
+      description: "Returns authors"
+      operationId: "getAuthorsByIsbn"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "isbn"
+        in: "path"
+        description: "isbn of book"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Book not found"
+      x-swagger-router-controller: "Author"      
   /carts:
     get:
       tags:

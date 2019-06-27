@@ -36,3 +36,14 @@ module.exports.getBooksByIdAuthor = function getBooksByIdAuthor (req, res, next)
       utils.writeJson(res, response);
     });
 };
+
+module.exports.getAuthorsByIsbn = function getAuthorsByIsbn (req, res, next) {
+  var authorID = req.swagger.params['isbn'].value;
+  Author.getAuthorsByIsbn(authorID)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};

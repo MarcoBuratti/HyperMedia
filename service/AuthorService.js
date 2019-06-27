@@ -35,3 +35,10 @@ exports.getBooksByIdAuthor = function (authorID) {
   return db.select('isbn')
    .from('relations').where('id_author',authorID);
 }
+
+
+exports.getAuthorsByIsbn = function (isbn) {
+  return db.join('relations','authors.id_author','=','relations.id_author').select('authors.name')
+   .from('authors')
+   .where('isbn', isbn);
+}

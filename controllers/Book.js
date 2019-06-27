@@ -44,28 +44,16 @@ module.exports.getAllGenre = function getAllGenre(req, res, next) {
 };
 
 module.exports.getBookById = function getBookById(req, res, next) {
-  var bookId = req.swagger.params['bookId'].value;
+  var bookId = req.swagger.params['isbn'].value;
   Book.getBookById(bookId)
     .then(function (response) {
-      console.log(response);
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      console.log(response);
       utils.writeJson(res, response);
     });
 };
 
-module.exports.getBookByName = function getBookByName(req, res, next) {
-  var bookName = req.swagger.params['bookName'].value;
-  Book.getBookByName(bookName)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
 
 module.exports.getBookByGenre = function getBookByGenre(req, res, next) {
   var bookGenre = req.swagger.params['bookGenre'].value;
@@ -90,8 +78,7 @@ module.exports.getBookByTheme = function getBookByTheme(req, res, next) {
 };
 
 module.exports.getBookRecommended = function getBookRecommended(req, res, next) {
-  var bookRecommended = req.swagger.params['bookRecommended'].value;
-  Book.getBookRecommended(bookRecommended)
+  Book.getBookRecommended()
     .then(function (response) {
       utils.writeJson(res, response);
     })

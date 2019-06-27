@@ -48,19 +48,12 @@ exports.getAllGenre = function () {
  * bookId Long ID of book to return
  * returns Book
  **/
-exports.getBookById = function (bookId) {
-  return db.join('relations', 'relations.isbn', '=', 'books.isbn').join('authors', 'authors.id_author', '=', 'relations.id_author')
-    .select('relations.isbn', 'title', 'theme1', 'theme2', 'genre1', 'genre2', 'date', 'recommended', 'price', 'status', 'name')
+exports.getBookById = function (isbn) {
+  return db.select('title', 'theme1', 'theme2', 'genre1', 'genre2', 'date', 'recommended', 'price', 'status')
     .from('books')
-    .where('relations.isbn', bookId);
+    .where('isbn', isbn);
 }
 
-exports.getBookByName = function (bookName) {
-  bookName = '%' + bookName + '%';
-  return db.select('isbn')
-    .from('books')
-    .where('title', 'like', bookName);
-}
 
 exports.getBookByGenre = function (bookGenre) {
   return db.select('isbn')
@@ -76,8 +69,8 @@ exports.getBookByTheme = function (bookTheme) {
     .orWhere('theme2', bookTheme);
 }
 
-exports.getBookRecommended = function (bookRecomm) {
+exports.getBookRecommended = function () {
   return db.select('isbn')
     .from('books')
-    .where('recommended', bookRecomm);
+    .where('recommended', true);
 }
