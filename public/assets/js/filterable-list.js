@@ -1,6 +1,7 @@
 // Get input element
 let filterInput = document.getElementById('filterInput');
 let json;
+let author;
 // Add Event Listener
 filterInput.addEventListener('keyup', filterBooks);
 
@@ -33,16 +34,26 @@ function filterBooks(){
 }
 
 const userAction = async () => {
-let response = await fetch('../../v2/books');
-json = await response.json();
-loadData(json);
+    let response = await fetch('../../v2/books');
+    json = await response.json();
+    loadData(json);
 }
+
 
 
 userAction();
 
-function loadData(json) {
+async function loadData(json) {
     for(var i=0; i<json.length; i++) {
+
+
+        let response = await fetch('../../v2/authorsByIsbn/' + json[i].isbn);
+        author = await response.json();
+
+
+
+        console.log(author);
+        /*console.log("STAMPAMI AUTHORQUERY" + authorQuery(json[i].isbn));*/
         var collection;
         var collectionHeader;
         switch(json[i].title.charAt(0).toUpperCase()) {
@@ -155,9 +166,22 @@ function loadData(json) {
             if (collectionHeader.className === 'collection-header-hidden')
                 collectionHeader.className = "collection-header";
             var innerHTML = collection.innerHTML;
-            collection.innerHTML = innerHTML + "<li class='collection-item'>" +
+            innerHTML = innerHTML + "<li class='collection-item'>" +
             "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' height='300' width='180'></a>" +
-            "<h4>Price: "+ json[i].price.toFixed(2) + '€' + "</h4></li>";
+            "<h4>Price: " + json[i].price.toFixed(2) + '€' + "</h4>";
+            console.log("Mi sono bloccato prima dell'if?");
+            if (author.length > 1) {
+                innerHTML = innerHTML + "<h4>Authors: " + author[0].name + ", ";
+                for(var j=1; j<author.length-1; j++) {
+                    innerHTML = innerHTML  + author[j].name + ", ";
+                }
+                innerHTML = innerHTML + author[author.length-1].name + "</h4></li>";
+            }
+            else {
+                innerHTML = innerHTML + "<h4>Author: " + author[0].name + "</h4></li>";
+            }
+            console.log("Sono dopo l'if");
+            collection.innerHTML = innerHTML;
         }
     }
 
