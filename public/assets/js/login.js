@@ -1,3 +1,5 @@
+
+
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('master');
@@ -110,6 +112,7 @@ const getResponseReg = async (body) => {
     })
 
     answer = await answer.json()
+    console.log(document.activeElement);
     console.log(answer);
     return answer.status;
 }

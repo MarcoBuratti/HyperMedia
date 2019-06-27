@@ -54,7 +54,6 @@ module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
 
   if (req.session.id_user != 0) {
     console.log(req.session.id_user);
-    console.log("già loggato");
     utils.writeJson(res, status);
   }
   else {

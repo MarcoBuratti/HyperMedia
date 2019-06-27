@@ -299,16 +299,11 @@ paths:
     get:
       tags:
       - "event"
-      summary: "Events in sponsord"
+      summary: "Events available in the database"
+      description: "List of events in the database"
       operationId: "eventsGET"
       produces:
       - "application/json"
-      parameters:
-      - name: "offset"
-        in: "query"
-        description: "Pagination offset"
-        required: false
-        type: "integer"
       responses:
         200:
           description: "A collection of events"
@@ -345,46 +340,26 @@ paths:
         404:
           description: "Event not found"
       x-swagger-router-controller: "Event"
-  /eventName/{eventName}:
-    get:
-      tags:
-      - "event"
-      summary: "Find event by Name"
-      description: "Returns a event"
-      operationId: "getEventByName"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "eventName"
-        in: "path"
-        description: "Name of event to return"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            $ref: '#/definitions/Event'
-        400:
-          description: "Invalid Name supplied"
-        404:
-          description: "Event not found"
-      x-swagger-router-controller: "Event"
-  /eventMonth/{eventMonth}:
+  /eventMonth/{month}/{year}:
     get:
       tags:
       - "event"
       summary: "Find event by Month"
-      description: "Returns a event"
+      description: "Returns an array of events"
       operationId: "getEventByMonth"
       produces:
       - "application/json"
       parameters:
-      - name: "eventMonth"
-        in: "path"
-        description: "Name of event to return"
-        required: true
-        type: "string"
+        - name: "month"
+          in: "path"
+          description: "Month"
+          required: true
+          type: "string"
+        - name: "year"
+          in: "path"
+          description: "Year"
+          required: true
+          type: "string"
       responses:
         200:
           description: "successful operation"
@@ -400,7 +375,7 @@ paths:
       tags:
       - "author"
       summary: "Find author by ID"
-      description: "Returns a author"
+      description: "Returns an author"
       operationId: "getAuthorById"
       produces:
       - "application/json"
@@ -426,7 +401,7 @@ paths:
       tags:
       - "author"
       summary: "Find all authros"
-      description: "Returns all authors"
+      description: "Returns an array of authors"
       operationId: "getAllAuthors"
       produces:
       - "application/json"
@@ -444,8 +419,8 @@ paths:
     get:
       tags:
       - "author"
-      summary: "Find books by ID"
-      description: "Returns books"
+      summary: "Find books by authorId"
+      description: "Returns an array of books"
       operationId: "getBooksByIdAuthor"
       produces:
       - "application/json"
@@ -673,6 +648,7 @@ definitions:
     - "recommended"
     - "price"
     - "status"
+    - "descr"
     properties:
       isbn:
         type: "string"
@@ -694,6 +670,8 @@ definitions:
       price:
         type: "number"  
       status:
+        type: "string"
+      descr:
         type: "string"
         description: "book availability in the inventory"
         enum:

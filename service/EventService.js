@@ -13,13 +13,8 @@ exports.eventDbSetup = function (database) {
   });
 }
 
-/**
- * Events in sponsord
- *
- * offset Integer Pagination offset (optional)
- * returns List
- **/
-exports.eventsGET = function (offset) {
+
+exports.eventsGET = function () {
   return db.select()
       .from('events');
 }
@@ -32,16 +27,9 @@ exports.getEventById = function (eventId) {
 }
 
 
-exports.getEventByName = function (eventName) {
-  eventName = '%' + eventName + '%';
+exports.getEventByMonth = function (month,year) {
+  var date = '%/' + month + '/'+ year + '%';
   return db.select()
   .from('events')
-  .where('name', 'like', eventName);
-}
-
-exports.getEventByMonth = function (eventMonth) {
-  eventMonth = '%/' + eventMonth + '/%';
-  return db.select()
-  .from('events')
-  .where('date', 'like', eventMonth);
+  .where('date', 'like', date);
 }
