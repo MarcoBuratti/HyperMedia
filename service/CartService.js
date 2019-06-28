@@ -21,7 +21,7 @@ exports.cartDbSetup = function (database) {
  * returns List
  **/
 exports.getCartById = function (userId) {
-  return db.select()
+  return db.join('books','books.isbn','=','cart.isbn').select('quantity', 'total', 'title', 'books.isbn')
     .from('cart')
     .where('user_id', userId);
     
@@ -73,6 +73,7 @@ exports.deleteCart = function (userId) {
 }
 
 exports.deleteBook = function (userId,isbn) {
+  console.log(userId+"DSDs"+isbn);
   return db('cart').where('user_id', userId).andWhere('isbn',isbn).del();
     
 }

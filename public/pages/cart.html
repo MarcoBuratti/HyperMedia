@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport", content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X_UA_Compatible", content="ie-edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet", href="../assets/css/standard-page.css">
+    <link rel="stylesheet", href="../assets/css/filterable-list.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+    <title>Search Bar</title>
+</head>
+
+<body>
+    <div id="container">
+            <div id="header">
+
+                    <div id="sidenav">
+                      <!-- Sidebar -->
+                      <nav class="sidebar">
+                    
+                        <p class="brand-btn" id="sidebar-brand">&copy;BookWorm<img src="../assets/img/brand.png" height="35" width="35"
+                            alt="logo"></p>
+                    
+                        <span class="open-slide">
+                          <a href="#" , class="btn-open" , id="sidebar-btn-open">
+                            <svg width="30" , height="30">
+                              <path d="M0,5 30,5" stroke="#000" stroke-width="5" />
+                              <path d="M0,14 30,14" stroke="#000" stroke-width="5" />
+                              <path d="M0,23 30,23" stroke="#000" stroke-width="5" />
+                            </svg>
+                    
+                          </a>
+                        </span>
+                    
+                      </nav>
+                    
+                      <div id="side-menu" , class="side-nav">
+                    
+                        <a href="#" , class="btn-close" , id="sidebar-btn-close">&times;</a>
+                        <a href="../index.html" class="sidebar-btn">Home</a>
+                        <a class="sidebar-btn" href="../pages/about-us.html">About Us</a>
+                        <a class="sidebar-btn active-sidebar-btn" href="../pages/filterable-list.html">Books</a>
+                        <a class="sidebar-btn" href="../pages/filterable-list.html">Artists</a>
+                        <a class="sidebar-btn" href="../pages/sidebar.html">Events</a>
+                        <a class="sidebar-btn" href="../pages/delivery.html">Shipping Info</a>
+                        <a href="../pages/login.html" class="sidebar-btn">Login</a>
+                    
+                      </div>
+                    </div>
+                    <div id="nav">
+                      <nav class="my-navbar">
+                    
+                    
+                        <div class="my-navbar-brand-box">
+                          <p class="brand-btn" id="my-navbar-brand">&copy;BookWorm<img src="../assets/img/brand.png" height="35" width="35"
+                              alt="logo"></p>
+                        </div>
+                        <div class="my-navbar-buttons-box">
+                          <ul class="my-navbar-left">
+                            <li><a href="../index.html" class="my-navbar-btn">Home</a></li>
+                            <li><a class="my-navbar-btn" href="../pages/about-us.html">About Us</a></li>
+                            <li><a class="my-navbar-btn my-navbar-active-btn" href="../pages/filterable-list.html">Books</a></li>
+                            <li><a class="my-navbar-btn" href="../pages/filterable-list.html">Artists</a></li>
+                            <li><a class="my-navbar-btn" href="../pages/sidebar.html">Events</a></li>
+                            <li><a class="my-navbar-btn" href="../pages/delivery.html">Shipping Info</a></li>
+                          </ul>
+                    
+                          <ul class="my-navbar-right">
+                            <li><a href="../pages/login.html" class="my-navbar-btn my-navbar-btn-right">Login</a></li>
+                          </ul>
+                        </div>
+                    
+                      </nav>
+                    </div>
+              
+                  </div>
+
+        <div id="body">
+            <div id="search-box-container">
+                <div id="search-box">
+                    <form name="search-form">                    
+                        <h2 class="search-bar-title">Search Bar</h2>
+                        <input type="text" , id="filterInput" , placeholder="Please type the book title here.">
+                        <br>
+                        
+                    </form>
+                </div>
+            </div>
+
+            <!--TITOLO-->
+            <div id= "upper-text">
+
+            </div>
+            <ul class="collection with-header", id="books">
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="a-collection-header">A</h5>
+                </li>
+                <div id="a-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="b-collection-header">B</h5>
+                </li>
+                <div id="b-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="c-collection-header">C</h5>
+                </li>
+                <div id="c-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="d-collection-header">D</h5>
+                </li>
+                <div id="d-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="e-collection-header">E</h5>
+                </li>
+                <div id="e-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="f-collection-header">F</h5>
+                </li>
+                <div id="f-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="g-collection-header">G</h5>
+                </li>
+                <div id="g-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="h-collection-header">H</h5>
+                </li>
+                <div id="h-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="i-collection-header">I</h5>
+                </li>
+                <div id="i-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="j-collection-header">J</h5>
+                </li>
+                <div id="j-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="k-collection-header">K</h5>
+                </li>
+                <div id="k-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="l-collection-header">L</h5>
+                </li>
+                <div id="l-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="m-collection-header">M</h5>
+                </li>
+                <div id="m-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="n-collection-header">N</h5>
+                </li>
+                <div id="n-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="o-collection-header">O</h5>
+                </li>
+                <div id="o-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="p-collection-header">P</h5>
+                </li>
+                <div id="p-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="q-collection-header">Q</h5>
+                </li>
+                <div id="q-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="r-collection-header">R</h5>
+                </li>
+                <div id="r-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="s-collection-header">S</h5>
+                </li>
+                <div id="s-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="t-collection-header">T</h5>
+                </li>
+                <div id="t-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="u-collection-header">U</h5>
+                </li>
+                <div id="u-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="v-collection-header">V</h5>
+                </li>
+                <div id="v-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="w-collection-header">W</h5>
+                </li>
+                <div id="w-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="x-collection-header">X</h5>
+                </li>
+                <div id="x-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="y-collection-header">Y</h5>
+                </li>
+                <div id="y-collection-items">
+                </div>
+                <li class="collection-header">
+                    <h5 class="collection-header-hidden", id="z-collection-header">Z</h5>
+                </li>
+                <div id="z-collection-items">
+                </div>
+            </ul>
+
+            <button id="buy-button">Vai al pagamento</button>
+        </div>
+
+        <div id="footer">
+            <footer class="py-5 bg-dark" id="footer-footer">
+                <div class="container" id="social">
+                    <p class="m-0 text-center text-white">Find Us on:</p>
+                    <div class="middle">
+                        <a class="btn" href="https://www.facebook.com" id="button" target="_blank">
+                            <i class="fab fa-facebook" id="firstname"></i>
+                        </a>
+                        <a class="btn" href="https://www.instagram.com" id="button" target="_blank">
+                            <i class="fab fa-instagram" id="firstname"></i>
+                        </a>
+                        <a class="btn" href="https://www.twitter.com" id="button" target="_blank">
+                            <i class="fab fa-twitter" id="firstname"></i>
+                        </a>
+                        <p class="m-0 text-center text-white">&copy;BOOKin - All rights reserved</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+    <script type="text/javascript", src="../assets/js/script.js"></script>
+    <script type="text/javascript", src="../assets/js/cart.js"></script>
+
+
+</body>
+
+</html>
