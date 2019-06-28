@@ -33,14 +33,14 @@
   }
   
   h3.about-us, h3#contact-us-title{
-    color: rgb(100, 165, 210);
+    color: black;
     font-style: italic;
     font-weight: bold;
   }
   
   p.about-us {
-    background-color: rgb(100, 165, 210);
-    color: white;
+    background-color: rgba(255, 104, 44, 0.8);
+    color: black;
     width: 20vw;
     margin-right: 170px;
     margin-left: 170px;
@@ -48,7 +48,12 @@
     border-width: 5px;
     border-color: grey;
     border-radius: 10px;
+    font-weight: bold;
     text-align: left;
+  }
+
+  .fas {
+    color: rgb(255, 76, 6);
   }
   
   a.email-address, a.phone-number, i.important {
@@ -68,8 +73,7 @@
   }
   
   p.contact-us{
-    background-color: rgb(100, 165, 210);
-    color: white;
+    color: black;
     font-style: italic;
     font-weight: bold;
     width: max-content;
@@ -79,8 +83,14 @@
   }
   
   input.contact-us{
-    background-color: lightgrey;
+    background-color: white;
     color: black;
+    border-style: groove;
+    border-width: 1.5px;
+    border-color: rgb(255, 76, 6);
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   
   }
   
@@ -97,12 +107,12 @@
   textarea {
     resize: none;
     width: 15vw;
-    background-color: lightgrey;
+    background-color: white;
   }
   
   
   input#submit-button {
-    background-color: rgb(100, 165, 210);
+    background-color: rgb(255, 76, 6);
     color: white;
     font-family: sans-serif;
     font-size: 15px;
