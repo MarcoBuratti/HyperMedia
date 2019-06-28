@@ -18,10 +18,10 @@ exports.userDbSetup = function (database) {
 
 
 exports.userLoginPOST = function (body) {
-  let nameIns = body.name;
+
   let emailIns = body.email;
   let passwordIns = body.password;
-  return db.select('id_user').from('users').where('name', nameIns).andWhere('email', emailIns).andWhere('password', passwordIns);
+  return db.select('id_user').from('users').where('email', emailIns).andWhere('password', passwordIns);
 }
 
 

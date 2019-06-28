@@ -56,7 +56,6 @@ signIn.addEventListener('submit', (e) => {
 
 
     let details = {
-        'name': nameLog.value,
         'password': pswLog.value,
         'email': emailLog.value
     };
