@@ -1,4 +1,4 @@
-const collector = document.getElementById('dinamic-li');
+const collector = document.getElementById('dinamic-nav');
 
 
 
@@ -15,9 +15,11 @@ async function setNavBtn() {
     console.log(answer.length);
     if (answer.length) {
         nameBtn = 'Logout';
-        link = '<a href="../pages/login.html">';
-        let buttonLogIn = '<li class="active" id="LogoutFunction">' + link + '<span class="glyphicon glyphicon-log-in"></span>' + nameBtn + '</a></li>';
-        dinamic_btn.innerHTML = buttonLogIn;
+        link = '<a href="../pages/login.html" class="my-navbar-btn my-navbar-btn-right my-navbar-active-btn">';
+        let buttonLogIn = '<li><a class="my-navbar-btn">'+ answer[0].name + '</a></li>';
+        buttonLogIn += '<li><a class="my-navbar-btn" href="../pages/about-us.html"> Cart</a></li>';
+        buttonLogIn += '<li class="active" id="LogoutFunction">' + link + '<span class="glyphicon glyphicon-log-in"></span>' + nameBtn + '</a></li>';
+        collector.innerHTML = buttonLogIn;
         const logoutFunction = document.getElementById('LogoutFunction');
         logoutFunction.addEventListener('click', async (e) => {
 
@@ -34,9 +36,9 @@ async function setNavBtn() {
             location.replace('../pages/login.html');
         });
     } else {
-        link = '<a href="../pages/login.html">';
+        link = '<a href="../pages/login.html" class="my-navbar-btn my-navbar-btn-right my-navbar-active-btn">';
         nameBtn = 'Login';
         let buttonLogIn = '<li class="active">' + link + '<span class="glyphicon glyphicon-log-in"></span>' + nameBtn + '</a></li>';
-        dinamic_btn.innerHTML = buttonLogIn;
+        collector.innerHTML = buttonLogIn;
     }
 }

@@ -3,6 +3,9 @@ script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 let json;
+
+
+let buyForm = document.getElementById('buy-form');
 let title = document.getElementById('book-title');
 let isbn = document.getElementById('isbn-code');
 let cover = document.getElementById('book-cover');
@@ -59,6 +62,70 @@ const userAction = async () => {
     }
     return undefined;
   }
+
+  buyForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let myQuantity = document.getElementById("quantity");
+    let total = myQuantity.value*json[0].price;
+    let details = {
+        'total': total,
+        'quantity': myQuantity.value,
+        'isbn': json[0].isbn
+    };
+
+    let formBody = [];
+    for (var property in details) {
+        let encodedKey = encodeURIComponent(property);
+        let encodedValue = encodeURIComponent(details[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+    console.log(formBody)
+    getResponse(formBody);
+});
+
+const getResponse = async (body) => {
+    let answer = await fetch("../../v2/cartInsert", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: body
+    })
+
+    answer = await answer.json()
+    if(!answer.status)
+        window.alert("No login");
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 const userAction = async () => {

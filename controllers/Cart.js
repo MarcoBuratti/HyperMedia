@@ -17,17 +17,14 @@ module.exports.getCartById = function getCartById(req, res, next) {
 module.exports.cartInsertPOST = function cartInsertPOST(req, res, next) {
   var body = req.body;
   let id_user = req.session.id_user;
-  console.log("CIAO"+id_user);
 
   let status = { status: false }
   if (id_user === undefined) {
-    console.log("unde");
+
     req.session = { id_user: "0" };
   }
 
   if (req.session.id_user == 0) {
-    console.log(req.session.id_user);
-    console.log("no login");
     utils.writeJson(res, status);
   }
   else {
