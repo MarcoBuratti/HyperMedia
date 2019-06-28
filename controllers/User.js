@@ -8,16 +8,14 @@ module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
 
   let status = { status: false }
   let cookie = req.session.id_user;
-  console.log(cookie);
 
   if (cookie === undefined) {
-    console.log("unde");
+
     req.session = { id_user: "0" };
   }
 
   if (req.session.id_user != 0) {
-    console.log(req.session.id_user);
-    console.log("già loggato");
+
     utils.writeJson(res, status);
   }
   else {
@@ -46,18 +44,18 @@ module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
   var body = req.body;
   let status = { status: false }
   let cookie = req.session.id_user;
-  console.log(cookie);
+
   if (cookie === undefined) {
-    console.log("unde");
+
     req.session = { id_user: "0" };
   }
 
   if (req.session.id_user != 0) {
-    console.log(req.session.id_user);
+
     utils.writeJson(res, status);
   }
   else {
-    console.log("registra");
+
     User.getUserByEmail(body).then(function (response) {
       let ctrl = JSON.stringify(response);
       let lenght = ctrl.length;
@@ -76,30 +74,34 @@ module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
   }
 };
 
-module.exports.getUserById = function getUserById(req, res, next) {
-  var userId = req.swagger.params['userId'].value;
-  User.getUserById(userId)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+module.exports.getUser = function getUser(req, res, next) {
+  let cookie = req.session.id_user;
+  if (cookie === undefined || req.session.id_user === 0) {
+    utils.writeJson(res, []);
+  }
+
+  else {
+    User.getUser(req.session.id_user)
+      .then(function (response) {
+        utils.writeJson(res, response);
+      })
+      .catch(function (response) {
+        utils.writeJson(res, response);
+      });
+  }
 };
 
 module.exports.userLogoutPOST = function userLogoutPOST(req, res, next) {
   let status = { status: false }
   let cookie = req.session.id_user;
-  console.log(cookie);
+
   if (cookie === undefined) {
-    console.log("unde");
     req.session = { id_user: "0" };
   }
 
   if (req.session.id_user != 0) {
-    console.log(req.session.id_user);
+
     req.session.id_user = 0;
-    console.log("già loggato");
     status.status = true;
     utils.writeJson(res, status);
   }

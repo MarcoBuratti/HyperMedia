@@ -51,8 +51,8 @@ exports.getUserByEmail = function (body) {
 }
 
 
-exports.getUserById = function (userID) {
-  return db.select()
+exports.getUser = function (userID) {
+  return db.select('name')
     .from('users')
     .where('id_user', userID);
 }

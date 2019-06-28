@@ -78,8 +78,15 @@ signUp.addEventListener('submit', (e) => {
     formBody = formBody.join("&");
 
     let res = getResponseReg(formBody);
-    setNavBtn(res);
-});
+    if (res){
+        //se loggato
+        location.replace('../pages/login.html');
+        }
+    else{
+        //se non loggato
+        location.replace('../pages/login.html');
+    }
+    });
 
 signIn.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -99,7 +106,14 @@ signIn.addEventListener('submit', (e) => {
     }
     formBody = formBody.join("&");
     let res = getResponseLog(formBody);
-    setNavBtn(res);
+    if (res){
+        //se loggato
+        location.replace('../pages/login.html');
+        }
+    else{
+        //se non loggato
+        location.replace('../pages/login.html');
+    }
 });
 
 const getResponseReg = async (body) => {
@@ -112,8 +126,6 @@ const getResponseReg = async (body) => {
     })
 
     answer = await answer.json()
-    console.log(document.activeElement);
-    console.log(answer);
     return answer.status;
 }
 
@@ -126,51 +138,5 @@ const getResponseLog = async (body) => {
         body: body
     })
     answer = await answer.json()
-    console.log(answer);
     return answer.status;
 }
-
-let link;
-let nameBtn;
-let dinamic_btn = document.getElementById("dinamic-btn");
-
-setNavBtn(false);
-
-function setNavBtn(res) {
-    if (res) {
-        nameBtn = 'Logout';
-        link = '<a href="../pages/login.html">';
-        let buttonLogIn = '<li class="active" id="LogoutFunction">' + link + '<span class="glyphicon glyphicon-log-in"></span>' + nameBtn + '</a></li>';
-        dinamic_btn.innerHTML = buttonLogIn;
-        const logoutFunction = document.getElementById('LogoutFunction');
-        logoutFunction.addEventListener('click',async (e) => {
-
-            e.preventDefault();
-        
-        
-            let answer = await fetch("/v2/user/logout", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-                }
-            })
-            answer = await answer.json()
-            console.log(answer.status);
-            console.log("keke");
-        
-            setNavBtn(false);
-        });
-        location.replace('../index.html');
-    } else {
-        link = '<a href="../pages/login.html">';
-        nameBtn = 'Login';
-        let buttonLogIn = '<li class="active">' + link + '<span class="glyphicon glyphicon-log-in"></span>' + nameBtn + '</a></li>';
-        console.log(buttonLogIn);
-        alert('Please control your credential, maybe are wrong');
-        dinamic_btn.innerHTML = buttonLogIn;
-    }
-}
-
-
-
-
