@@ -56,14 +56,14 @@ exports.getBookById = function (isbn) {
 
 
 exports.getBookByGenre = function (bookGenre) {
-  return db.select('isbn')
+  return db.select('isbn','title','price')
     .from('books')
     .where('genre1', bookGenre)
     .orWhere('genre2', bookGenre);
 }
 
 exports.getBookByTheme = function (bookTheme) {
-  return db.select('isbn')
+  return db.select('isbn','title','price')
     .from('books')
     .where('theme1', bookTheme)
     .orWhere('theme2', bookTheme);
