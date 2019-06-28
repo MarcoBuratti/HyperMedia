@@ -19,12 +19,9 @@ function loadData(json) {
     let cardTexts = document.querySelectorAll(".card-text");
     let cardLinks = document.querySelectorAll(".card-link");
     let cardTitles = document.querySelectorAll(".card-title");
-    console.log(json);
-    console.log(cardImgs);
     if(cardImgs.length === json.length) {
         for (var i=0; i<cardImgs.length; i++) {
             cardImgs[i].src = "../assets/img/books/" + json[i].isbn + ".jpg";
-            cardTexts[i].innerHTML = json[i].descr;
             cardLinks[i].href = "../pages/sidebar.html?isbn=" + json[i].isbn;
             cardTitles[i].innerHTML = json[i].title;
         }

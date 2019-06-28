@@ -5,24 +5,51 @@ body {
     margin: 51px 0 50px;
 }
 
+#myCarousel {
+    width: 100%;
+    margin-top: 60px;
+}
+
 #img-carousel {
     width: 100%;
-    max-height: 70vh;
+    height: 60vh;
+}
+
+#master {
+    width: 100%;
 }
 
 .card-img {
     width: 100%;
-    height: 40vh;
-    min-height: 300px;
+    height: 350px;
+}
+
+.copper {
+    height: 460px;
+    width: 22vw;
+    max-width: 450px;
 }
 
 .card{
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
+    width: 22vw;
+    max-width: 450px;
     margin: auto;
     text-align: center;
     background-color: rgb(255,255,255);
     border-radius: 10px;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-footer {
+    position: absolute;
+    text-align: center;
+    bottom: 20px;
+    left: 25%;
+    right: 25%;
 }
 
 .img-responsive {
@@ -77,4 +104,16 @@ hr#separatore {
 #img-home {
     height: 200px;
     width: 300px;
+}
+
+@media screen and (max-width: 993px) {
+    .card, .copper {
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .card, .copper {
+        width: 80vw;
+    }
 }

@@ -26,7 +26,7 @@ exports.booksGET = function () {
 }
 
 exports.getBestSeller = function () {
-  return db.select('isbn', 'title')
+  return db.select('isbn', 'title', 'descr')
     .from('books')
     .orderBy('sold', 'desc')
     .limit(3);
