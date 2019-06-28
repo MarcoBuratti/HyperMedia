@@ -42,6 +42,7 @@ const userAction = async () => {
       themes.innerHTML = themeHTML;
       price.innerHTML = "Price: " + json[0].price.toFixed(2) + "€";
       cover.src = "../assets/img/books/" + json[0].isbn + ".jpg";
+      descr.innerHTML = json[0].descr;
   }
   
   
