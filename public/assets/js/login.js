@@ -22,43 +22,6 @@ let pswReg = document.getElementById('pswReg');
 let signUp = document.getElementById('sign-up-btn');
 let signIn = document.getElementById('sign-in-btn');
 
-/*signUp.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    let details = {
-        'total': 5313,
-        'quantity': 53,
-        'isbn': "1121"
-    };
-
-    let formBody = [];
-    for (var property in details) {
-        let encodedKey = encodeURIComponent(property);
-        let encodedValue = encodeURIComponent(details[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
-    }
-    formBody = formBody.join("&");
-    console.log(formBody)
-    getResponse(formBody);
-});
-
-const getResponse = async (body) => {
-    let answer = await fetch("../../v2/cartInsert", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: body
-    })
-
-    answer = await answer.json()
-
-    console.log(answer.status);
-
-}
-
-*/
-
 signUp.addEventListener('submit', (e) => {
     e.preventDefault();
 
