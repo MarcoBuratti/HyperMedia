@@ -63,6 +63,34 @@ body {
 
 }
 
+#quantity {
+    text-align: center;
+    width: min-content;    
+    font-weight: bold;
+    margin-top: 15px;
+    border-style: none;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 20px;
+    padding: 7.5px;
+}
+
+#buy-submit {
+    background-color: rgb(255, 76, 6);
+    color: white;
+    font-weight: bold;
+    margin-top: 15px;
+    border-style: none;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 20px;
+    padding: 7.5px;
+}
+
+#buy-submit:hover{
+    color: slategray;
+}
+
 @media ( max-height: 600px ) {
     #book-cover {
         height: 450px;
