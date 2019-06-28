@@ -70,7 +70,7 @@ exports.getBookByTheme = function (bookTheme) {
 }
 
 exports.getBookRecommended = function () {
-  return db.select('isbn')
+  return db.select('isbn', 'title', 'price')
     .from('books')
     .where('recommended', true);
 }

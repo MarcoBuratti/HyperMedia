@@ -25,7 +25,7 @@ body {
 }
 
 .copper {
-    height: 460px;
+    height: 480px;
     width: 22vw;
     max-width: 450px;
 }
@@ -42,6 +42,21 @@ body {
 
 .card-title {
     font-weight: bold;
+    font-style: italic;
+}
+
+.card-text {
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bestseller {
+    background-color: red;
+}
+
+.recommended {
+    background-color: green;
 }
 
 .card-footer {
