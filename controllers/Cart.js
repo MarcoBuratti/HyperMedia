@@ -34,13 +34,20 @@ module.exports.cartInsertPOST = function cartInsertPOST(req, res, next) {
       let ctrl = JSON.stringify(response);
       let lenght = ctrl.length;
       if (lenght !== 2) {
-        Cart.cartUpdate(body, id_user)
+        Cart.cartUpdate(body, id_user).then(function(){
+          status.status = true;
+          utils.writeJson(res, status)
+        }
+        )
       } else {
-        Cart.cartInsertPOST(body, id_user)
+        Cart.cartInsertPOST(body, id_user).then(function(){
+          status.status = true;
+          utils.writeJson(res, status)
+        }
+        )
       }
 
-      status.status = true;
-      utils.writeJson(res, status)
+      
     })
   }
 };
