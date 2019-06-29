@@ -10,8 +10,8 @@ btnOpen.addEventListener("click", openSlideMenu);
 
 function openSlideMenu() {
     document.getElementById('side-menu').style.width = '250px';
-    document.getElementById('main').style.marginLeft = '250px';
-    document.getElementById('main').style.opacity = '0.5';
+    document.getElementById('body').style.opacity = '0.5';
+    document.getElementById('footer').style.opacity = '0.5';
 }
 
 let btnClose = document.getElementById('sidebar-btn-close');
@@ -20,6 +20,6 @@ btnClose.addEventListener("click", closeSlideMenu);
 
 function closeSlideMenu() {
     document.getElementById('side-menu').style.width = '0';
-    document.getElementById('main').style.marginLeft = '0';
-    document.getElementById('main').style.opacity = '1.0';
+    document.getElementById('body').style.opacity = '1.0';
+    document.getElementById('footer').style.opacity = '1.0';
 }

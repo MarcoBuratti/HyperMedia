@@ -38,23 +38,28 @@ async function loadData(json, flag) {
     let title = document.getElementById("page-title");
     let list = document.getElementById("my-list");
     let listElems = "";
+    let pageTitle = document.getElementById('bookworm-title');
     switch (flag) {
         case "theme":
             title.innerHTML = "List of all available themes:";
+            pageTitle.innerHTML = "BookWorm - Themes";
             for (var i=0; i<json.length; i++) {
-                listElems += "<li id='list-elem'><i class='far fa-bookmark' id='list-dec'></i><a href='../pages/filterable-list.html?" + flag + "=" + json[i].theme1 + 
-                "' id='my-elem'>" + json[i].theme1 + "</a></li>";
+                if (json[i].theme1 !== '-') {
+                    listElems += "<li id='list-elem'><i class='far fa-bookmark' id='list-dec'></i><a href='../pages/filterable-list.html?" + flag + "=" + json[i].theme1 + 
+                    "' id='my-elem'>" + json[i].theme1 + "</a></li>";
+                }
             }
             break;
         default:
+                pageTitle.innerHTML = "BookWorm - Genres";
             title.innerHTML = "List of all available genres:";
             for (var i=0; i<json.length; i++) {
-                listElems += "<li id='list-elem'><a href='../pages/filterable-list.html?" + flag + "=" + json[i].genre1 +
-                "' id='my-elem'><i class='far fa-bookmark' id='list-dec'></i>" + json[i].genre1 + "</a></li>";
+                if (json[i].genre1 !== '-') {
+                    listElems += "<li id='list-elem'><a href='../pages/filterable-list.html?" + flag + "=" + json[i].genre1 +
+                    "' id='my-elem'><i class='far fa-bookmark' id='list-dec'></i>" + json[i].genre1 + "</a></li>";
+                }
             }
             break;
     }
     list.innerHTML = listElems;
-
 }
- 

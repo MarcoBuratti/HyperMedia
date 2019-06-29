@@ -7,19 +7,16 @@ setNavBtn();
 async function setNavBtn() {
     let answer = await fetch("/v2/findUser");
     answer = await answer.json()
-    console.log(answer);
-    console.log(answer.length);
     if (answer.length) {
+
+        addEvents();
         
+        async function createLogMenu () {
         let buttonLogIn = "<li><a href='#' , class='my-navbar-btn my-navbar-btn-right my-navbar-active-btn' , id='logout-btn-open'>";
         buttonLogIn += "Welcome, " + answer[0].name + "!</a>";
-        buttonLogIn += "<div id='logout-menu' , class='logout-nav'><a href='#' , class='btn-close' , id='logout-btn-close'>&times;</a>";
+        buttonLogIn += "<div id='logout-menu' , class='logout-nav'><a href='#' , class='btn-logout-close' , id='logout-btn-close'>&times;</a>";
         buttonLogIn += '<a class="logout-btn" href="../pages/about-us.html" id="first-logout-btn">Cart</a>';
         buttonLogIn += '<a href="../pages/login.html" class="logout-btn" id="LogoutFunction">' + 'Logout' + '</a></li>';
-
-        
-
-
         collector[0].innerHTML = buttonLogIn;
         const logoutFunction = document.getElementById('LogoutFunction');
         logoutFunction.addEventListener('click', async (e) => {
@@ -36,15 +33,19 @@ async function setNavBtn() {
             })
             location.replace('../pages/login.html');
         });
+        }
 
-        // Get input element
-        let logoutOpen = document.getElementById('logout-btn-open');
-        // Add Event Listener
-        logoutOpen.addEventListener("click", openSlideMenu);
+        async function addEvents() {
+            await createLogMenu();
+            // Get input element
+            let logoutOpen = document.getElementById('logout-btn-open');
+            // Add Event Listener
+            logoutOpen.addEventListener("click", openSlideMenu);
 
-        let logoutClose = document.getElementById('logout-btn-close');
+            let logoutClose = document.getElementById('logout-btn-close');
 
-        logoutClose.addEventListener("click", closeSlideMenu);
+            logoutClose.addEventListener("click", closeSlideMenu);
+        }
     } else {
         link = '<a href="../pages/login.html" class="my-navbar-btn my-navbar-btn-right my-navbar-active-btn">';
         nameBtn = 'Login';
