@@ -22,7 +22,7 @@ exports.authorDbSetup = function (database) {
 exports.getAuthorById = function (authorID) {
    return db.select()
     .from('authors')
-    .where('id', authorID);
+    .where('id_author', authorID);
 }
 
 

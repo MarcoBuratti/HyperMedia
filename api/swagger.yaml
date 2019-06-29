@@ -19,9 +19,9 @@ tags:
 - name: "user"
   description: "Operations about user"
 - name: "author"
-  description: "List of author aviable"
+  description: "List of aviable authors"
 - name: "cart"
-  description: "Books added by the user to the cart"
+  description: "Books added by an user to his cart"
 schemes:
 - "http"
 paths:
@@ -48,7 +48,7 @@ paths:
     get:
       tags:
       - "book"
-      summary: "Find all book by Genre"
+      summary: "Find the three best seller books"
       description: "Return a list of book"
       operationId: "getBestSeller"
       produces:
@@ -57,7 +57,9 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/Book"
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
         400:
           description: "Invalid Name supplied"
         404:
@@ -92,7 +94,7 @@ paths:
     get:
       tags:
       - "book"
-      summary: "Find book by Genre"
+      summary: "Find books by Genre"
       description: "Return an array of books"
       operationId: "getBookByGenre"
       produces:
@@ -107,7 +109,9 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/Book"
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
         400:
           description: "Invalid Name supplied"
         404:
@@ -117,7 +121,7 @@ paths:
     get:
       tags:
       - "book"
-      summary: "Find book by Theme"
+      summary: "Find books by theme"
       description: "Return an array of books"
       operationId: "getBookByTheme"
       produces:
@@ -132,7 +136,9 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/Book"
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
         400:
           description: "Invalid Name supplied"
         404:
@@ -151,7 +157,9 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/Book"
+            type: "array"
+            items:
+              type: "string"
         400:
           description: "Invalid Name supplied"
         404:
@@ -170,7 +178,9 @@ paths:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/Book"
+            type: "array"
+            items:
+              type: "string"
         400:
           description: "Invalid Name supplied"
         404:
@@ -199,8 +209,8 @@ paths:
     post:
       tags:
       - "user"
-      summary: "Login"
-      description: "Login with a form"
+      summary: "Login to our database"
+      description: "Login with a form built in this way:\nemail=YourEmail&password=YourPassword"
       operationId: "userLoginPOST"
       consumes:
       - "application/x-www-form-urlencoded"
@@ -209,7 +219,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "data send to client"
+        description: "data sent to client"
         schema:
           type: "object"
           properties:
@@ -229,8 +239,8 @@ paths:
     post:
       tags:
       - "user"
-      summary: "Register"
-      description: "Register into the store"
+      summary: "Register to our database"
+      description: "Login with a form built in this way:\nname&YourName&email=YourEmail&password=YourPassword"
       operationId: "userRegisterPOST"
       consumes:
       - "application/x-www-form-urlencoded"
@@ -239,7 +249,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "data send to client"
+        description: "data sent to client"
         schema:
           type: "object"
           properties:
@@ -278,6 +288,7 @@ paths:
     post:
       tags:
       - "user"
+      summary: "Logout to our database"
       description: "Logout"
       operationId: "userLogoutPOST"
       produces:
@@ -311,8 +322,8 @@ paths:
     get:
       tags:
       - "event"
-      summary: "Find event by ID"
-      description: "Returns a event"
+      summary: "Find event by its id_number"
+      description: "Returns an event"
       operationId: "getEventById"
       produces:
       - "application/json"
@@ -337,7 +348,7 @@ paths:
     get:
       tags:
       - "event"
-      summary: "Find event by Month"
+      summary: "Find events by month"
       description: "Returns an array of events"
       operationId: "getEventByMonth"
       produces:
@@ -363,18 +374,18 @@ paths:
         404:
           description: "Event not found"
       x-swagger-router-controller: "Event"      
-  /authors:
+  /authors/{id_author}:
     get:
       tags:
       - "author"
-      summary: "Find author by ID"
+      summary: "Find author by id_author"
       description: "Returns an author"
       operationId: "getAuthorById"
       produces:
       - "application/json"
       parameters:
-      - name: "authorID"
-        in: "query"
+      - name: "id_author"
+        in: "path"
         description: "ID of author to return"
         required: true
         type: "integer"
@@ -412,7 +423,7 @@ paths:
     get:
       tags:
       - "author"
-      summary: "Find books by authorId"
+      summary: "Find all books written by an author"
       description: "Returns an array of books"
       operationId: "getBooksByIdAuthor"
       produces:
@@ -420,7 +431,7 @@ paths:
       parameters:
       - name: "authorId"
         in: "path"
-        description: "ID of author"
+        description: "Id of author"
         required: true
         type: "integer"
         format: "int64"
@@ -438,8 +449,8 @@ paths:
     get:
       tags:
       - "author"
-      summary: "Find authors by isbn"
-      description: "Returns authors"
+      summary: "Find all authors of a book"
+      description: "Returns an array of authors"
       operationId: "getAuthorsByIsbn"
       produces:
       - "application/json"
@@ -463,14 +474,14 @@ paths:
     get:
       tags:
       - "cart"
-      summary: "Find cart by ID"
+      summary: "Find book in user's cart"
       description: "Returns a list of books"
       operationId: "getCartById"
       produces:
       - "application/json"
       responses:
         200:
-          description: "A collection of Books"
+          description: "A collection of books"
           schema:
             type: "array"
             items:
@@ -484,8 +495,8 @@ paths:
     post:
       tags:
       - "cart"
-      summary: "cartInsert"
-      description: "Register into the cart"
+      summary: "Insert or update user's cart"
+      description: "Register into the cart a new book"
       operationId: "cartInsertPOST"
       consumes:
       - "application/x-www-form-urlencoded"
@@ -514,7 +525,8 @@ paths:
     delete:
       tags:
       - "cart"
-      description: "Returns books"
+      summary: "Delete all books in a user's cart"
+      description: "Delete all books"
       operationId: "deleteCart"
       produces:
       - "application/json"
@@ -528,14 +540,15 @@ paths:
     delete:
       tags:
       - "cart"
-      description: "Delete book"
+      summary: "Delete a books in a user's cart"
+      description: "Delete a books"
       operationId: "deleteBook"
       produces:
       - "application/json"
       parameters:
       - name: "isbn"
         in: "path"
-        description: "isbn of book"
+        description: "isbn of book to delete"
         required: true
         type: "string"        
       responses:
