@@ -22,7 +22,7 @@ let pswReg = document.getElementById('pswReg');
 let signUp = document.getElementById('sign-up-btn');
 let signIn = document.getElementById('sign-in-btn');
 
-signUp.addEventListener('submit', (e) => {
+signUp.addEventListener('submit', async(e) => {
     e.preventDefault();
 
 
@@ -32,53 +32,14 @@ signUp.addEventListener('submit', (e) => {
         'email': emailReg.value
     };
 
-    let formBody = [];
+    let body = [];
     for (var property in details) {
         let encodedKey = encodeURIComponent(property);
         let encodedValue = encodeURIComponent(details[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
+        body.push(encodedKey + "=" + encodedValue);
     }
-    formBody = formBody.join("&");
+    body = body.join("&");
 
-    let res = getResponseReg(formBody);
-    if (res){
-        //se loggato
-        location.replace('../pages/login.html');
-        }
-    else{
-        //se non loggato
-        location.replace('../pages/login.html');
-    }
-    });
-
-signIn.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-
-    let details = {
-        'password': pswLog.value,
-        'email': emailLog.value
-    };
-
-    let formBody = [];
-    for (var property in details) {
-        let encodedKey = encodeURIComponent(property);
-        let encodedValue = encodeURIComponent(details[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
-    }
-    formBody = formBody.join("&");
-    let res = getResponseLog(formBody);
-    if (res){
-        //se loggato
-        location.replace('../pages/login.html');
-        }
-    else{
-        //se non loggato
-        location.replace('../pages/login.html');
-    }
-});
-
-const getResponseReg = async (body) => {
     let answer = await fetch("/v2/user/register", {
         method: 'POST',
         headers: {
@@ -88,8 +49,55 @@ const getResponseReg = async (body) => {
     })
 
     answer = await answer.json()
-    return answer.status;
-}
+   
+    if (answer.status){
+        location.replace('../pages/successful-registration.html');
+        }
+    else{
+        //message error
+        window.alert("Fuck you, you can't login!");
+        location.replace('../pages/login.html');
+    }
+    });
+
+signIn.addEventListener('submit',async (e) => {
+    e.preventDefault();
+
+
+    let details = {
+        'password': pswLog.value,
+        'email': emailLog.value
+    };
+
+    let body = [];
+    for (var property in details) {
+        let encodedKey = encodeURIComponent(property);
+        let encodedValue = encodeURIComponent(details[property]);
+        body.push(encodedKey + "=" + encodedValue);
+    }
+    body = body.join("&");
+
+    let answer = await fetch("/v2/user/login", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body: body
+    })
+    answer = await answer.json()
+    
+    if (answer.status){
+        
+        location.replace('../index.html');
+        }
+    else{
+        //se non loggato
+        window.alert("Email or password not valid!");
+        
+        location.replace('../pages/login.html');
+    }
+});
+
 
 const getResponseLog = async (body) => {
     let answer = await fetch("/v2/user/login", {
