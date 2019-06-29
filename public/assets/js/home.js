@@ -9,10 +9,8 @@ let bookRecommended;
 const userAction = async () => {
     let response = await fetch('../../v2/bestSeller');
     bestSeller = await response.json();
-    console.log(bestSeller);
     response = await fetch('../../v2/bookRecommended');
     bookRecommended = await response.json();
-    console.log(bookRecommended);
     loadData(bestSeller, bookRecommended);
 }
 
@@ -31,7 +29,7 @@ function loadData(bestSeller, bookRecommended) {
             cardTexts[i].innerHTML = "Best Seller!";
             cardTexts[i].classList.add("bestseller");
     }
-    console.log(i);
+
     for (var j=0; i < cardImgs.length && j < bookRecommended.length ; j++, i++) {
         cardImgs[i].src = "../assets/img/books/" + bookRecommended[j].isbn + ".jpg";
         cardLinks[i].href = "../pages/sidebar.html?isbn=" + bookRecommended[j].isbn;

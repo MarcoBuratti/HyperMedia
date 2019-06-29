@@ -156,3 +156,9 @@
   }
 
 }
+
+@media (max-width: 372px) {
+  #body {
+    padding-top: 30px;
+  }
+}

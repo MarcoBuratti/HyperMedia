@@ -4,6 +4,7 @@ let link;
 let nameBtn;
 let buttonLogIn;
 let sideLoginBtn;
+let menu;
 
 setNavBtn();
 
@@ -11,8 +12,6 @@ async function setNavBtn() {
     let answer = await fetch("/v2/findUser");
     answer = await answer.json()
     if (answer.length) {
-
-        addEvents();
 
         async function createLogMenu() {
             buttonLogIn = "<li><a href='#' , class='my-navbar-btn my-navbar-btn-right' , id='logout-btn-open'>";
@@ -27,9 +26,20 @@ async function setNavBtn() {
             sideLoginBtn += '<a class="sidebar-btn" href="../index.html" id="LogoutFunctionSide">Logout</a>';
             sidebar.innerHTML += sideLoginBtn;
 
+        }
+
+
+
+        async function addEvents() {
+
+            await createLogMenu();
 
             const logoutFunction = document.getElementById('LogoutFunction');
             const logoutFunctionSide = document.getElementById('LogoutFunctionSide');
+
+            menu = document.getElementById('logout-menu');
+            
+
             logoutFunction.addEventListener('click', async (e) => {
 
                 e.preventDefault();
@@ -60,20 +70,14 @@ async function setNavBtn() {
                 location.replace('../pages/login.html');
             });
 
-        }
-
-
-        async function addEvents() {
-            await createLogMenu();
-            // Get input element
             let logoutOpen = document.getElementById('logout-btn-open');
-            // Add Event Listener
-            logoutOpen.addEventListener("click", openSlideMenu);
-
+            logoutOpen.addEventListener("click", openSlideLogMenu);
             let logoutClose = document.getElementById('logout-btn-close');
+            logoutClose.addEventListener("click", closeSlideLogMenu);
 
-            logoutClose.addEventListener("click", closeSlideMenu);
         }
+
+        addEvents();
     } else {
         link = '<a href="../pages/login.html" class="my-navbar-btn my-navbar-btn-right" id="login-btn">';
         nameBtn = 'Login';
@@ -87,16 +91,17 @@ async function setNavBtn() {
 
 
 
-function openSlideMenu() {
-    document.getElementById('logout-menu').style.width = '250px';
+function openSlideLogMenu() {
+
+    menu.style.width = '250px';
     document.getElementById('body').style.opacity = '0.5';
     document.getElementById('footer').style.opacity = '0.5';
 }
 
 
 
-function closeSlideMenu() {
-    document.getElementById('logout-menu').style.width = '0';
+function closeSlideLogMenu() {
+    menu.style.width = '0';
     document.getElementById('body').style.opacity = '1.0';
     document.getElementById('footer').style.opacity = '1.0';
 }
