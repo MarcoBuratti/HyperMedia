@@ -4,6 +4,27 @@ const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('master');
 
+setNavBtn();
+
+async function setNavBtn() {
+    let answer = await fetch("/v2/findUser");
+    answer = await answer.json();
+    if (answer.length) {
+        let logoutBtn = document.getElementById('LogoutFunction');
+        let logoutSideBtn = document.getElementById('LogoutFunctionSide');
+        let welcomeBtn = document.getElementById('logout-btn-open');
+        logoutBtn.classList.add('my-navbar-active-btn');
+        logoutSideBtn.classList.add('active-sidebar-btn');
+        welcomeBtn.classList.add('my-navbar-active-btn');
+    }
+    else {
+        let loginBtn = document.getElementById('login-btn');
+        let loginSideBtn = document.getElementById('login-side-btn');
+        loginBtn.classList.add('my-navbar-active-btn');
+        loginSideBtn.classList.add('active-sidebar-btn');
+    }
+}
+
 signUpButton.addEventListener('click', () => {
     container.classList.add("right-panel-active");
 });
