@@ -19,7 +19,7 @@ let btnClose = document.getElementById('sidebar-btn-close');
 btnClose.addEventListener("click", closeSlideMenu);
 
 function closeSlideMenu() {
-    console.log("entra in closeSlideMenu");
+
     document.getElementById('side-menu').style.width = '0';
     document.getElementById('body').style.opacity = '1.0';
     document.getElementById('footer').style.opacity = '1.0';
