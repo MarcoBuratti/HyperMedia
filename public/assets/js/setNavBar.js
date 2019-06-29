@@ -1,10 +1,6 @@
-const collector = document.getElementById('dinamic-nav');
-
-
-
+const collector = document.getElementsByClassName('my-navbar-right');
 let link;
 let nameBtn;
-let dinamic_btn = document.getElementById("dinamic-btn");
 
 setNavBtn();
 
@@ -14,12 +10,17 @@ async function setNavBtn() {
     console.log(answer);
     console.log(answer.length);
     if (answer.length) {
-        nameBtn = 'Logout';
-        link = '<a href="../pages/login.html" class="my-navbar-btn my-navbar-btn-right my-navbar-active-btn">';
-        let buttonLogIn = '<li><a class="my-navbar-btn">'+ answer[0].name + '</a></li>';
-        buttonLogIn += '<li><a class="my-navbar-btn" href="../pages/about-us.html"> Cart</a></li>';
-        buttonLogIn += '<li class="active" id="LogoutFunction">' + link + '<span class="glyphicon glyphicon-log-in"></span>' + nameBtn + '</a></li>';
-        collector.innerHTML = buttonLogIn;
+        
+        let buttonLogIn = "<li><a href='#' , class='my-navbar-btn my-navbar-btn-right my-navbar-active-btn' , id='logout-btn-open'>";
+        buttonLogIn += "Welcome, " + answer[0].name + "!</a>";
+        buttonLogIn += "<div id='logout-menu' , class='logout-nav'><a href='#' , class='btn-close' , id='logout-btn-close'>&times;</a>";
+        buttonLogIn += '<a class="logout-btn" href="../pages/about-us.html" id="first-logout-btn">Cart</a>';
+        buttonLogIn += '<a href="../pages/login.html" class="logout-btn" id="LogoutFunction">' + 'Logout' + '</a></li>';
+
+        
+
+
+        collector[0].innerHTML = buttonLogIn;
         const logoutFunction = document.getElementById('LogoutFunction');
         logoutFunction.addEventListener('click', async (e) => {
 
@@ -35,10 +36,35 @@ async function setNavBtn() {
             })
             location.replace('../pages/login.html');
         });
+
+        // Get input element
+        let logoutOpen = document.getElementById('logout-btn-open');
+        // Add Event Listener
+        logoutOpen.addEventListener("click", openSlideMenu);
+
+        let logoutClose = document.getElementById('logout-btn-close');
+
+        logoutClose.addEventListener("click", closeSlideMenu);
     } else {
         link = '<a href="../pages/login.html" class="my-navbar-btn my-navbar-btn-right my-navbar-active-btn">';
         nameBtn = 'Login';
-        let buttonLogIn = '<li class="active">' + link + '<span class="glyphicon glyphicon-log-in"></span>' + nameBtn + '</a></li>';
-        collector.innerHTML = buttonLogIn;
+        let buttonLogIn = '<li>' + link +  nameBtn + '</a></li>';
+        collector[0].innerHTML = buttonLogIn;
     }
+}
+
+
+
+function openSlideMenu() {
+    document.getElementById('logout-menu').style.width = '250px';
+    document.getElementById('body').style.opacity = '0.5';
+    document.getElementById('footer').style.opacity = '0.5';
+}
+
+
+
+function closeSlideMenu() {
+    document.getElementById('logout-menu').style.width = '0';
+    document.getElementById('body').style.opacity = '1.0';
+    document.getElementById('footer').style.opacity = '1.0';
 }

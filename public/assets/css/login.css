@@ -199,3 +199,57 @@ input {
 	background-color: #FFFFFF;
 	margin-top: 75px;
 }
+
+.logout-nav {
+	float: right;
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.5);
+	opacity: 0.9;
+	overflow-x: hidden;
+	padding-top: 60px;
+	transition: 0.5s;
+}
+
+.logout-nav a {
+	padding: 10px 10px 10px 30px;
+	text-decoration: none;
+	font-size: 22px;
+	display: block;
+	transition: 0.3s;
+}
+
+.logout-nav a:hover {
+	color: slategray;
+}
+
+.logout-nav .btn-close {
+	position: absolute;
+	top: 0;
+	right: 22px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+.btn-close, #first-logout-btn {
+	margin-top: 50px;
+}
+
+
+.logout-btn, #logout-btn-close {
+	background-color: none;
+	color: white;
+}
+
+#logout-btn-close:hover {
+	color: black;
+}
+
+.logout-btn:hover {
+	color: slategray;
+	background-color: rgb(255, 104, 44);
+}
