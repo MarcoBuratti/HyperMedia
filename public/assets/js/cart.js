@@ -5,6 +5,20 @@ let filterInput = document.getElementById('filterInput');
 let buyButton = document.getElementById('buy-button');
 let upperText = document.getElementById('upper-text');
 let json;
+
+setNavBtn();
+
+async function setNavBtn() {
+    let answer = await fetch("/v2/findUser");
+    answer = await answer.json();
+    if (answer.length) {
+        let cart = document.getElementById('first-logout-btn');
+        let sideCart = document.getElementById('side-cart-btn');
+        cart.classList.add('my-navbar-active-btn');
+        sideCart.classList.add('active-sidebar-btn')
+    }
+}
+
 // Add Event Listener
 filterInput.addEventListener('keyup', filterBooks);
 
