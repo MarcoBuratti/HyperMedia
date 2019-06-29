@@ -13,13 +13,6 @@ exports.cartDbSetup = function (database) {
   });
 }
 
-/**
- * Find cart by ID
- * Returns a list of books
- *
- * cartId Long ID of book to return
- * returns List
- **/
 exports.getCartById = function (userId) {
   return db.join('books','books.isbn','=','cart.isbn').select('quantity', 'total', 'title', 'books.isbn')
     .from('cart')
@@ -27,11 +20,6 @@ exports.getCartById = function (userId) {
     
 }
 
-exports.getAll = function () {
-  return db.select()
-    .from('cart');
-    
-}
 exports.getCartByIdAndIsbn = function (body,id_user) {
   
   let isbn = body.isbn;

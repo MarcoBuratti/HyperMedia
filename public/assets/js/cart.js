@@ -2,7 +2,7 @@
 
 // Get input element
 let filterInput = document.getElementById('filterInput');
-let buyButton = document.getElementById('buy-button');
+let buyButton = document.getElementById('buy');
 let upperText = document.getElementById('upper-text');
 let json;
 
@@ -16,37 +16,6 @@ async function setNavBtn() {
         let sideCart = document.getElementById('side-cart-btn');
         cart.classList.add('my-navbar-active-btn');
         sideCart.classList.add('active-sidebar-btn')
-    }
-}
-
-// Add Event Listener
-filterInput.addEventListener('keyup', filterBooks);
-
-function filterBooks(){
-    // Get value of input
-    let filterValue = document.getElementById('filterInput').value.toUpperCase();
-    
-    // Get books ul
-    let ul = document.getElementById('books');
-
-    // Get lis from ul
-    let li = ul.querySelectorAll('li.collection-item');
-   /* let collectionHeaders = ul.querySelectorAll('h5.collection-header');
-
-    for(let i = 0; i < collectionHeaders.length; i++){
-        collectionHeaders[i].className = 'collection-header-hidden';
-    } */
-
-    // Look through collection-item lis
-    for(let i = 0; i < li.length; i++){
-        let a = li[i].getElementsByTagName('a')[0];
-        // If matches
-        if(a.innerHTML.toUpperCase().indexOf(filterValue) > -1){
-            li[i].style.display = '';
-        }
-        else {
-            li[i].style.display = 'none';
-        }
     }
 }
 
@@ -68,6 +37,7 @@ async function loadData(json) {
         upperText.innerHTML = innerUpperText;
     }
     else{
+        let total = 0;
     for(var i=0; i<json.length; i++) {
 
         var collection;
@@ -184,14 +154,19 @@ async function loadData(json) {
             var innerHTML = collection.innerHTML;
             innerHTML = innerHTML + "<li class='collection-item'>" +
             "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' height='300' width='180'></a>" +
-            "<h4>Price: " + json[i].total.toFixed(2) + '€' + "</h4>";
+            "<h4>Quantity:"+json[i].quantity+"Price: " + json[i].total.toFixed(2) + '€' + "</h4>";
             
             innerHTML += " <button onclick=deleteBook(/"+json[i].isbn+"/)>X</button>";
         
             collection.innerHTML = innerHTML;
         }
-    }
 
+        total += json[i].total;
+       
+    }
+    
+
+    buyButton.innerHTML = "<button id='buy-button'>Vai al pagamento</button><h4>Total:"+total.toFixed(2) + '€' + "</h4>";
 }
 }
 

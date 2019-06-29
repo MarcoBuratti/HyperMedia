@@ -96,6 +96,8 @@ const getResponse = async (body) => {
     answer = await answer.json()
     if(!answer.status)
         window.alert("No login");
+    else
+        location.replace("../pages/cart.html");
 
 }
 

@@ -34,13 +34,9 @@ module.exports.cartInsertPOST = function cartInsertPOST(req, res, next) {
       let ctrl = JSON.stringify(response);
       let lenght = ctrl.length;
       if (lenght !== 2) {
-        Cart.cartUpdate(body, id_user).then(function () {
-          Cart.getAll().then(function (response) { console.log(response) });
-        })
+        Cart.cartUpdate(body, id_user)
       } else {
-        Cart.cartInsertPOST(body, id_user).then(function () {
-          Cart.getAll().then(function (response) { console.log(response) });
-        })
+        Cart.cartInsertPOST(body, id_user)
       }
 
       status.status = true;

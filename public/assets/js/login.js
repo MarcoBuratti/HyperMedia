@@ -118,16 +118,3 @@ signIn.addEventListener('submit',async (e) => {
         location.replace('../pages/login.html');
     }
 });
-
-
-const getResponseLog = async (body) => {
-    let answer = await fetch("/v2/user/login", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        body: body
-    })
-    answer = await answer.json()
-    return answer.status;
-}
