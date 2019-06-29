@@ -34,9 +34,40 @@ function filterBooks(){
 }
 
 const userAction = async () => {
-    let response = await fetch('../../v2/books');
-    json = await response.json();
+    let response;
+
+    let pair = parseTopURL();
+    if (pair === undefined) {
+        response = await fetch('../../v2/books');
+    }
+    else if (pair[0] === 'genre') {
+        response = await fetch('../../v2/bookGenre/' + pair[1]);
+    }
+    else if (pair[0] === 'theme') {
+        response = await fetch('../../v2/bookTheme/' + pair[1]);
+    }
+    else {
+        response = await fetch('../../v2/books');
+    };
+    //funzione per prelevare tutti gli eventi dal database
+    // per fare altri tipi di richieste al database vedere swagger editto con file yaml
+    json = await response.json(); //extract JSON from the http response
+    //funzione par lavorare il json
     loadData(json);
+}
+
+
+function parseTopURL() {
+    //parser del url dell'html di riferimento
+    let query = window.location.search.substring(1);
+    let args = query.split('&');
+    for (let i = 0; i < args.length; i++) {
+      let pair = args[i].split('=');
+      if (pair[0] === 'genre' || pair[0] === 'theme') {
+        return pair;
+      }
+    }
+    return undefined;
 }
 
 
@@ -52,7 +83,6 @@ async function loadData(json) {
 
 
 
-        console.log(author);
         /*console.log("STAMPAMI AUTHORQUERY" + authorQuery(json[i].isbn));*/
         var collection;
         var collectionHeader;
@@ -169,7 +199,7 @@ async function loadData(json) {
             innerHTML = innerHTML + "<li class='collection-item'>" +
             "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' height='300' width='180'></a>" +
             "<h4>Price: " + json[i].price.toFixed(2) + '€' + "</h4>";
-            console.log("Mi sono bloccato prima dell'if?");
+
             if (author.length > 1) {
                 innerHTML = innerHTML + "<h4>Authors: " + author[0].name + ", ";
                 for(var j=1; j<author.length-1; j++) {
@@ -180,7 +210,6 @@ async function loadData(json) {
             else {
                 innerHTML = innerHTML + "<h4>Author: " + author[0].name + "</h4></li>";
             }
-            console.log("Sono dopo l'if");
             collection.innerHTML = innerHTML;
         }
     }
