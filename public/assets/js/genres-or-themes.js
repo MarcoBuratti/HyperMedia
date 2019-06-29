@@ -40,12 +40,15 @@ async function loadData(json, flag) {
     let listElems = "";
     let pageTitle = document.getElementById('bookworm-title');
     let genreBtn = document.getElementById('my-navbar-genres');
+    let genreSideBtn = document.getElementById('sidebar-genres');
     let themeBtn = document.getElementById('my-navbar-themes');
+    let themeSideBtn = document.getElementById('sidebar-themes');
     switch (flag) {
         case "theme":
             title.innerHTML = "List of all available themes:";
             pageTitle.innerHTML = "BookWorm - Themes";
             themeBtn.classList.add('my-navbar-active-btn');
+            themeSideBtn.classList.add('active-sidebar-btn');
             for (var i=0; i<json.length; i++) {
                 if (json[i].theme1 !== '-') {
                     listElems += "<li id='list-elem'><i class='far fa-bookmark' id='list-dec'></i><a href='../pages/filterable-list.html?" + flag + "=" + json[i].theme1 + 
@@ -56,6 +59,7 @@ async function loadData(json, flag) {
         default:
             pageTitle.innerHTML = "BookWorm - Genres";
             genreBtn.classList.add('my-navbar-active-btn');
+            genreSideBtn.classList.add('active-sidebar-btn');
             title.innerHTML = "List of all available genres:";
             for (var i=0; i<json.length; i++) {
                 if (json[i].genre1 !== '-') {
