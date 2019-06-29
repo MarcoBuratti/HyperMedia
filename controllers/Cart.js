@@ -4,7 +4,7 @@ var utils = require('../utils/writer.js');
 var Cart = require('../service/CartService');
 
 module.exports.getCartById = function getCartById(req, res, next) {
-  var cartId = req.swagger.params['cartId'].value;
+  var cartId = req.session.id_user;
   Cart.getCartById(cartId)
     .then(function (response) {
       utils.writeJson(res, response);
