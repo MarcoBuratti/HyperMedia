@@ -85,7 +85,7 @@ body {
     font-size: 25px;
 }
 
-#book-title {
+#book-title, #event-name, #author-name {
     color: rgb(255, 76, 6);
     font-weight: bold;
     font-style: italic;
@@ -148,6 +148,12 @@ body {
     width: 22%;
 }
 
+#event-gallery {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 #myCarousel {
     width: 100%;
     margin-top: 40px;
@@ -156,6 +162,11 @@ body {
 #img-carousel {
     width: 22vw;
     height: 50vh;
+}
+
+#event-img-carousel {
+    height: 60vh;
+    width: 80vw;
 }
 
 #title-carousel {

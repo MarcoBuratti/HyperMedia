@@ -5,6 +5,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 let json;
 
 let cover = document.getElementById('cover');
+let galleryBox = document.getElementById('recommendations-box');
 
 function parseTopURL() {
   //parser del url dell'html di riferimento
@@ -50,11 +51,14 @@ userAction();
 async function loadDataEvent(json){
 
   response = await fetch('../../v2/bookId/' + json[0].isbn);
-  let book = response.json();
+  let book = await response.json();
 
   let eventDiv = document.getElementById('event-details');
+  let eventGallery = document.getElementById('recommendations-gallery');
 
   eventDiv.style.display = "block";
+  eventGallery.id = 'event-gallery';
+  galleryBox.innerHTML = "Event Gallery" + galleryBox.innerHTML;
 
   let eventName = document.getElementById('event-name');
   let eventISBN = document.getElementById('event-isbn');
@@ -74,10 +78,10 @@ async function loadDataEvent(json){
   let galleryElems = document.getElementById('gallery-elems');
   //PROBLEMA CON LIMITE GALLERIA
   let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0"></li>';
-  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn">Read More</a></div></div>';
+  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="event-img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn">Read More</a></div></div>';
   for (i = 1; i < 3; i++) {
     carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
-    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/events/' + json[0].id_event + '/'+ i +'.jpg" id="img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn">Read More</a></div></div>';
+    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/events/' + json[0].id_event + '/'+ i +'.jpg" id="event-img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn">Read More</a></div></div>';
   }
   galleryInd.innerHTML += carouselIndHTML;
   galleryElems.innerHTML = carouselElemHTML + galleryElems.innerHTML;
@@ -92,6 +96,7 @@ async function loadDataAuthor(json){
   let authorDiv = document.getElementById('author-details');
 
   authorDiv.style.display = 'block';
+  galleryBox.innerHTML = "Available books by " + json[0].name + galleryBox.innerHTML;
 
   let authorName = document.getElementById('author-name');
   let authorBio = document.getElementById('author-bio');
@@ -135,6 +140,7 @@ async function loadDataBook(json) {
   let date = document.getElementById('book-date');
 
   bookDiv.style.display = 'block';
+  galleryBox.innerHTML = "Recommended Books" + galleryBox.innerHTML;
 
   let response = await fetch('../../v2/authorsByIsbn/' + json[0].isbn);
   author = await response.json();
