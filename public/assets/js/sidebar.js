@@ -149,10 +149,10 @@ async function loadData(json) {
   let galleryElems = document.getElementById('gallery-elems');
   
   let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0"></li>';
-  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/books/' + unique[0].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3>' + unique[0].title +'</h3><a class="btn btn-default btn-sm showcase-btn" href="">Read More</a></div></div>';
+  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/books/' + unique[0].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3 id="title-carousel">' + unique[0].title +'</h3><a class="btn btn-default btn-sm showcase-btn" href="">Read More</a></div></div>';
   for (i=1; i<unique.length; i++) {
     carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
-    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/books/' + unique[i].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3>' + unique[i].title +'</h3><a class="btn btn-default btn-sm showcase-btn" href="">Read More</a></div></div>';
+    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/books/' + unique[i].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3 id="title-carousel">' + unique[i].title +'</h3><a class="btn btn-default btn-sm showcase-btn" href="">Read More</a></div></div>';
   }
   galleryInd.innerHTML += carouselIndHTML;
   galleryElems.innerHTML = carouselElemHTML + galleryElems.innerHTML;
