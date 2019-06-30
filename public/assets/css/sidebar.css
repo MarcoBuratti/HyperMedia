@@ -15,7 +15,7 @@ body {
 #content-box {
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     text-align: left;
-    background-color: thistle;
+    background-color: white;
     padding: 10px 10px 30px 30px;
     width: 90vw;
     height: 80vh;
@@ -49,7 +49,28 @@ body {
 }
 
 #book-details {
-    padding-left: 5vw;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-left: 3vw;
+    padding-right: 3vw;
+}
+
+#book-details::-webkit-scrollbar-track {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 2px 0;
+    background-color: slategrey;
+}
+
+#book-details::-webkit-scrollbar {
+    width: 15px;
+}
+
+#book-details::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(90,90,90, 0.3);
+    background-color: rgb(255, 76, 6);
+    border: 2px solid black;
 }
 
 #book-cover {
@@ -57,18 +78,33 @@ body {
     height: 70vh;
 }
 
+.book-detail-h3 {
+    font-weight: bolder;
+    font-size: 25px;
+}
+
 #book-title {
-    color: rgb(50, 85, 155);
-    text-shadow: 1px 1px rgba(50, 85, 155, 0.750);
+    color: rgb(255, 76, 6);
+    font-weight: bold;
+    font-style: italic;
+    font-size: 30px;
+    text-shadow: 1px 1px rgba(0,0,0,.3);
 
 }
+
+#book-description {
+    height: max-content;
+    font-style: italic;
+    margin-bottom: 5vh;
+}
+
 
 #quantity {
     text-align: center;
     width: min-content;    
     font-weight: bold;
     margin-top: 15px;
-    border-style: none;
+    border-style: groove;
     border-color: black;
     border-width: 1px;
     border-radius: 20px;
@@ -91,61 +127,50 @@ body {
     color: slategray;
 }
 
-@media ( max-height: 600px ) {
-    #book-cover {
-        height: 450px;
-    }
+#recommendations-mobile {
+    display: none;
 }
 
-@media( max-width:800px ) {
-
+@media (max-width: 1024px) and (orientation:portrait){
     #content-box {
-        height: 100%;
-    }
-
-    #book-cover-column {
-        float: left;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        height: 160vh;
+        width: 80%;
+        margin-top: -30px;
+    }
+
+    #book-cover-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-right: 9vw;
         width: 100%;
-        padding: 0;
     }
 
     #book-details-column {
-        margin-left: -3vw;
         width: 100%;
-        padding: 0;
-        border-top-style: groove;
-        border-top-width: 1px;
-        border-top-color: rgba(90,90,90, 0.3);
+        height: 82vh;
+        margin-top: 8vh;
+        padding-top: 5vh;
         border-left-style: none;
         border-bottom-style: none;
-        height: 50vh;
-    }
-
-    .book-detail-h3 {
-        padding-left: 7vw;
+        border-top-style: groove;
+        border-top-width: 1px;
+        border-top-color: rgb(90,90,90,0.3);
     }
 
     #book-cover {
-        width: 45vw;
-        height: 60vh;
-        margin-left: 7vw;
+        padding: 0;
+        height: 100%;
+        width: 100%;
     }
 
-}
-
-@media( max-width:600px ) {
-    #book-cover {
-        width: 300px;
-        height: 450px;
-    }
-}
-
-@media (max-width: 400px ) {
-    #book-cover {
-        width: 55vw;
-        height: 70vh;
+    #book-details {
+        max-height: none;
+        height: 80vh;
     }
 }
