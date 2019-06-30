@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-  <title>BookWorm</title>
+  <title>BookWorm - Welcome!</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet", href="../assets/css/standard-page.css">
-  <link rel="stylesheet", href="../assets/css/genres-or-themes.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -42,13 +42,16 @@
             <div id="side-menu" , class="side-nav">
           
               <a href="#" , class="btn-close" , id="sidebar-btn-close">&times;</a>
-              <a href="../index.html" class="sidebar-btn active-sidebar-btn">Home</a>
-              <a class="sidebar-btn" href="../pages/about-us.html">About Us</a>
-              <a class="sidebar-btn" href="../pages/filterable-list.html">Books</a>
-              <a class="sidebar-btn" href="../pages/filterable-list.html">Artists</a>
-              <a class="sidebar-btn" href="../pages/sidebar.html">Events</a>
-              <a class="sidebar-btn" href="../pages/delivery.html">Shipping Info</a>
-              <a href="../pages/login.html" class="sidebar-btn">Login</a>
+              <div id="side-list">
+                <a href="../index.html" class="sidebar-btn">Home</a>
+                <a class="sidebar-btn" href="../pages/filterable-list.html">Books</a>
+                <a class="sidebar-btn" href="../pages/genres-or-themes.html?page=genres">Genres</a>
+                <a class="sidebar-btn" href="../pages/genres-or-themes.html?page=themes">Themes</a>
+                <a class="sidebar-btn" href="../pages/authors.html">Authors</a>
+                <a class="sidebar-btn" href="../pages/events.html">Events</a>
+                <a class="sidebar-btn" href="../pages/delivery.html">Info</a>
+                <a class="sidebar-btn" href="../pages/about-us.html">Contact Us</a>
+              </div>
           
             </div>
           </div>
@@ -62,16 +65,17 @@
               </div>
               <div class="my-navbar-buttons-box">
                 <ul class="my-navbar-left">
-                  <li><a href="../index.html" class="my-navbar-btn my-navbar-active-btn">Home</a></li>
-                  <li><a class="my-navbar-btn" href="../pages/about-us.html">About Us</a></li>
+                  <li><a href="../index.html" class="my-navbar-btn">Home</a></li>
                   <li><a class="my-navbar-btn" href="../pages/filterable-list.html">Books</a></li>
-                  <li><a class="my-navbar-btn" href="../pages/filterable-list.html">Artists</a></li>
-                  <li><a class="my-navbar-btn" href="../pages/sidebar.html">Events</a></li>
-                  <li><a class="my-navbar-btn" href="../pages/delivery.html">Shipping Info</a></li>
+                  <li><a class="my-navbar-btn" href="../pages/genres-or-themes.html?page=genres">Genres</a></li>
+                  <li><a class="my-navbar-btn" href="../pages/genres-or-themes.html?page=themes">Themes</a></li>
+                  <li><a class="my-navbar-btn" href="../pages/authors.html">Authors</a></li>
+                  <li><a class="my-navbar-btn" href="../pages/events.html">Events</a></li>
+                  <li><a class="my-navbar-btn" href="../pages/delivery.html">Info</a></li>
+                  <li><a class="my-navbar-btn" href="../pages/about-us.html">Contact Us</a></li>
                 </ul>
           
                 <ul class="my-navbar-right">
-                  <li><a href="../pages/login.html" class="my-navbar-btn my-navbar-btn-right">Login</a></li>
                 </ul>
               </div>
           
@@ -82,10 +86,7 @@
 
 
     <div id="body">
-      <div id="bg">
-        <h1 id="message-registration">You have signed up successfully! Now you are logged in.</h1>
-      </div>
-    
+    <p id='success'>Registration successful, welcome in BookWork! </p>
     </div>
 
     <div id="footer">

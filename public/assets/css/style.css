@@ -132,3 +132,22 @@ hr#separatore {
         width: 80vw;
     }
 }
+
+#intro {
+    color: black;
+    text-align: left;
+    padding-top: 20px;
+    font-size: 4vh;
+}
+
+#success{
+
+        color: black;
+        text-align: center;
+        padding-top: 50px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        font-size: 10vh;
+        font-style: italic;
+        font-weight: bold;
+ }
