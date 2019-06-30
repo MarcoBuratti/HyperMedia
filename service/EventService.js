@@ -15,7 +15,7 @@ exports.eventDbSetup = function (database) {
 
 
 exports.eventsGET = function () {
-  return db.select()
+  return db.join('books','books.isbn','=','events.isbn').select('name','title','id_event','events.date','events.isbn')
       .from('events');
 }
 
