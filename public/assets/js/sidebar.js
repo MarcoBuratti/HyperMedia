@@ -61,12 +61,12 @@ async function loadDataEvent(json){
 
   let galleryInd = document.getElementById('gallery-indicators');
   let galleryElems = document.getElementById('gallery-elems');
-
+  //PROBLEMA CON LIMITE GALLERIA
   let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0"></li>';
-  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="img-carousel"><div class="carousel-caption"></div></div>';
-  for (i = 1; i < json.length; i++) {
+  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn">Read More</a></div></div>';
+  for (i = 1; i < 3; i++) {
     carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
-    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/events/' + json[0].id_event +'/'+ i + '.jpg" id="img-carousel"><div class="carousel-caption"></div></div>';
+    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/events/' + json[0].id_event + '/'+ i +'.jpg" id="img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn">Read More</a></div></div>';
   }
   galleryInd.innerHTML += carouselIndHTML;
   galleryElems.innerHTML = carouselElemHTML + galleryElems.innerHTML;

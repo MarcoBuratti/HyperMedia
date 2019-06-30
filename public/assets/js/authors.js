@@ -132,8 +132,7 @@ async function loadData(json) {
 
             var innerHTML = collection.innerHTML;
             innerHTML = innerHTML + "<li class='collection-item'>" +
-            "<a class='collection-item' , href='../pages/sidebar.html?author=" + json[i].id_author + "'>" + json[i].name + "<br><img src='" + "../assets/img/authors/" + json[i].id_author + ".jpg' height='300' width='180'></a>" +
-            "<h4>Name: " + json[i].name + "</h4>";
+            "<a class='collection-item' , href='../pages/sidebar.html?id_author=" + json[i].id_author + "'>" + json[i].name + "<br><img src='" + "../assets/img/authors/" + json[i].id_author + ".jpg' height='300' width='180'></a>";
 
 
             collection.innerHTML = innerHTML;
