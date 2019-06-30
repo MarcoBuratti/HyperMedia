@@ -3,7 +3,8 @@ script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 let json;
-
+let navBtn;
+let sideBtn;
 let cover = document.getElementById('cover');
 let galleryBox = document.getElementById('recommendations-box');
 
@@ -50,6 +51,11 @@ userAction();
 
 async function loadDataEvent(json){
 
+  navBtn = document.getElementById('nav-events');
+  sideBtn = document.getElementById('side-events');
+  navBtn.classList.add('my-navbar-active-btn');
+  sideBtn.classList.add('active-sidebar-btn');
+
   response = await fetch('../../v2/bookId/' + json[0].isbn);
   let book = await response.json();
 
@@ -76,7 +82,6 @@ async function loadDataEvent(json){
 
   let galleryInd = document.getElementById('gallery-indicators');
   let galleryElems = document.getElementById('gallery-elems');
-  //PROBLEMA CON LIMITE GALLERIA
   let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0"></li>';
   let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="event-img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn">Read More</a></div></div>';
   for (i = 1; i < 3; i++) {
@@ -93,6 +98,11 @@ async function loadDataEvent(json){
 
 async function loadDataAuthor(json){
 
+  navBtn = document.getElementById('nav-authors');
+  sideBtn = document.getElementById('side-authors');
+  navBtn.classList.add('my-navbar-active-btn');
+  sideBtn.classList.add('active-sidebar-btn');
+
   let authorDiv = document.getElementById('author-details');
 
   authorDiv.style.display = 'block';
@@ -107,6 +117,8 @@ async function loadDataAuthor(json){
 
   response = await fetch('../../v2/booksByIdAuthor/' + json[0].id_author);
   content = await response.json();
+
+  console.log(content)
 
 
   let galleryInd = document.getElementById('gallery-indicators');
@@ -126,6 +138,11 @@ async function loadDataAuthor(json){
 
 
 async function loadDataBook(json) {
+
+  navBtn = document.getElementById('nav-books');
+  sideBtn = document.getElementById('side-books');
+  navBtn.classList.add('my-navbar-active-btn');
+  sideBtn.classList.add('active-sidebar-btn');
 
   let bookDiv = document.getElementById('book-details');
 
