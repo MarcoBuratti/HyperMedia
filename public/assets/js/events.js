@@ -3,9 +3,37 @@ let filterInput = document.getElementById('filterInput');
 let json;
 let author;
 
+function parseTopURL() {
+  //parser del url dell'html di riferimento
+  let query = window.location.search.substring(1);
+  let args = query.split('&');
+  for (let i = 0; i < args.length; i++) {
+    let pair = args[i].split('=');
+    if (pair[0] === 'events') {
+      return pair[1];
+    }
+  }
+  return undefined;
+}
+
 const userAction = async () => {
 
-    let response = await fetch('../../v2/events');
+
+    let page = parseTopURL();
+    let response;
+    if (page === undefined || page !== 'month') {
+      response = await fetch('../../v2/events');
+      
+        
+    } else {
+      var today = new Date();
+      //MODIFICARE IL +2 in +1
+      var month = String(today.getMonth() + 2).padStart(2, '0'); //January is 0!
+      var year = today.getFullYear();
+      console.log(month+"  "+year);
+      response = await fetch('../../v2/eventMonth/'+month+'/'+year);
+    }
+
 
     json = await response.json(); //extract JSON from the http response
     //funzione par lavorare il json

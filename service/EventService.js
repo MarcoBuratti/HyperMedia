@@ -28,8 +28,9 @@ exports.getEventById = function (eventId) {
 
 
 exports.getEventByMonth = function (month,year) {
-  var date = '%/' + month + '/'+ year + '%';
-  return db.select()
+  
+  var date = '%/' + month + '/'+ year+'%';
+  return db.join('books','books.isbn','=','events.isbn').select('name','title','id_event','events.date','events.isbn')
   .from('events')
-  .where('date', 'like', date);
+  .where('events.date', 'like', date);
 }
