@@ -16,22 +16,93 @@ let themes = document.getElementById('book-themes');
 let descr = document.getElementById('book-description');
 
 const userAction = async () => {
-  let isbn = parseTopURL();
-  if (isbn === undefined) {
-    isbn = '0-330-49286-1';
-  }
-  //funzione per prelevare tutti gli eventi dal database
-  // per fare altri tipi di richieste al database vedere swagger editto con file yaml
-  let response = await fetch('../../v2/bookId/' + isbn);
+  let response = parseTopURL();
+  let flag;
 
-  json = await response.json(); //extract JSON from the http response
-  //funzione par lavorare il json
-  loadData(json);
+
+  if (response === undefined) {
+    isbn = '0-330-49286-1';
+    flag = "book";
+    response = await fetch('../../v2/bookId/' + isbn);
+    json = await response.json();
+    loadDataBook(json);
+  }
+  else if(response[0]=== 'isbn'){
+    flag = "book";
+    response = await fetch('../../v2/bookId/' + response[1]);
+    json = await response.json();
+    loadDataBook(json);
+  }
+  else if(response[0]=== 'id_author'){
+    flag = "author";
+    response = await fetch('../../v2/authors/' + response[1]);
+    json = await response.json();
+    loadDataAuthor(json);
+  }
+  else if(response[0]=== 'id_event'){
+      flag = "event";
+      response = await fetch('../../v2/eventId/' + response[1]);
+      json = await response.json();
+      loadDataEvent(json);
+}
 }
 
 userAction();
 
-async function loadData(json) {
+async function loadDataEvent(json){
+
+  title.innerHTML = json[0].name;
+  isbn.innerHTML = "ISBN: " + json[0].isbn;
+
+  price.innerHTML = "Date: " + json[0].date;
+  cover.src = "../assets/img/books/" + json[0].isbn + ".jpg";
+  descr.innerHTML = "Preface: " + json[0].description;
+
+
+  let galleryInd = document.getElementById('gallery-indicators');
+  let galleryElems = document.getElementById('gallery-elems');
+
+  let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0"></li>';
+  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="img-carousel"><div class="carousel-caption"></div></div>';
+  for (i = 1; i < json.length; i++) {
+    carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
+    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/events/' + json[0].id_event +'/'+ i + '.jpg" id="img-carousel"><div class="carousel-caption"></div></div>';
+  }
+  galleryInd.innerHTML += carouselIndHTML;
+  galleryElems.innerHTML = carouselElemHTML + galleryElems.innerHTML;
+
+
+
+
+}
+
+async function loadDataAuthor(json){
+
+  title.innerHTML = json[0].name;
+  cover.src = "../assets/img/authors/" + json[0].id_author + ".jpg";
+  descr.innerHTML = "Biografy: " + json[0].biography;
+
+  response = await fetch('../../v2/booksByIdAuthor/' + json[0].id_author);
+  content = await response.json();
+
+
+  let galleryInd = document.getElementById('gallery-indicators');
+  let galleryElems = document.getElementById('gallery-elems');
+
+  let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0"></li>';
+  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/books/' + content[0].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3>' + content[0].title + '</h3><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ content[0].isbn + '">Read More</a></div></div>';
+  for (i = 1; i < content.length; i++) {
+    carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
+    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/books/' + content[i].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3>' + content[i].title + '</h3><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ content[i].isbn + '">Read More</a></div></div>';
+  }
+  galleryInd.innerHTML += carouselIndHTML;
+  galleryElems.innerHTML = carouselElemHTML + galleryElems.innerHTML;
+
+}
+
+
+
+async function loadDataBook(json) {
 
   let response = await fetch('../../v2/authorsByIsbn/' + json[0].isbn);
   author = await response.json();
@@ -203,7 +274,13 @@ function parseTopURL() {
   for (let i = 0; i < args.length; i++) {
     let pair = args[i].split('=');
     if (pair[0] === 'isbn') {
-      return pair[1];
+      return pair;
+    }
+    else if (pair[0] === 'id_author') {
+      return pair;
+    }
+    else if (pair[0] === 'id_event') {
+      return pair;
     }
   }
   return undefined;
@@ -211,7 +288,6 @@ function parseTopURL() {
 
 buyForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  console.log("dentro form")
   let myQuantity = document.getElementById("quantity");
   let total = myQuantity.value * json[0].price;
   let details = {
