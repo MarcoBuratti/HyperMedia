@@ -225,6 +225,7 @@ async function loadDataBook(json) {
   let galleryElems = document.getElementById('gallery-elems');
 
   let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0"></li>';
+
   let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/books/' + unique[0].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3>' + unique[0].title + '</h3><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ unique[0].isbn + '">Read More</a></div></div>';
   for (i = 1; i < unique.length; i++) {
     carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
