@@ -3,36 +3,9 @@ let filterInput = document.getElementById('filterInput');
 let json;
 let author;
 
-function parseTopURL() {
-  //parser del url dell'html di riferimento
-  let query = window.location.search.substring(1);
-  let args = query.split('&');
-  for (let i = 0; i < args.length; i++) {
-    let pair = args[i].split('=');
-    if (pair[0] === 'events') {
-      return pair[1];
-    }
-  }
-  return undefined;
-}
-
 const userAction = async () => {
 
-
-    let page = parseTopURL();
-    let response;
-    if (page === undefined || page !== 'month') {
-      response = await fetch('../../v2/events');
-      
-        
-    } else {
-      var today = new Date();
-      //MODIFICARE IL +2 in +1
-      var month = String(today.getMonth() + 2).padStart(2, '0'); //January is 0!
-      var year = today.getFullYear();
-      console.log(month+"  "+year);
-      response = await fetch('../../v2/eventMonth/'+month+'/'+year);
-    }
+    let response = await fetch('../../v2/allAuthors');
 
 
     json = await response.json(); //extract JSON from the http response
@@ -159,10 +132,9 @@ async function loadData(json) {
 
             var innerHTML = collection.innerHTML;
             innerHTML = innerHTML + "<li class='collection-item'>" +
-            "<a class='collection-item' , href='../pages/sidebar.html?event=" + json[i].id_event + "'>" + json[i].name + "<br><img src='" + "../assets/img/events/" + json[i].id_event + "/0.jpg' height='300' width='180'></a>" +
-            "<h4><a href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>Book: " + json[i].title + "</h4>";
+            "<a class='collection-item' , href='../pages/sidebar.html?author=" + json[i].id_author + "'>" + json[i].name + "<br><img src='" + "../assets/img/authors/" + json[i].id_author + ".jpg' height='300' width='180'></a>" +
+            "<h4>Name: " + json[i].name + "</h4>";
 
-            innerHTML = innerHTML + "<h4>Date: " + json[i].date + "</h4></li>";
 
             collection.innerHTML = innerHTML;
         }
