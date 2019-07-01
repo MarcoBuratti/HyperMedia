@@ -27,6 +27,13 @@ exports.getEventById = function (eventId) {
 }
 
 
+exports.getEventByIsbn = function (isbn) {
+  return db.select('id_event','name')
+    .from('events')
+    .where('isbn', isbn);
+}
+
+
 exports.getEventByMonth = function (month,year) {
   
   var date = '%/' + month + '/'+ year+'%';

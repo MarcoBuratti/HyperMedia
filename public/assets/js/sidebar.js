@@ -144,6 +144,7 @@ async function loadDataBook(json) {
 
   let buyForm = document.getElementById('buy-form');
   let authors = document.getElementById('authors-list');
+  let events = document.getElementById('events-list');
   let title = document.getElementById('book-title');
   let isbn = document.getElementById('isbn-code');
   let price = document.getElementById('book-price');
@@ -157,7 +158,12 @@ async function loadDataBook(json) {
 
   let response = await fetch('../../v2/authorsByIsbn/' + json[0].isbn);
   author = await response.json();
+
+  response = await fetch('../../v2/eventByIsbn/' + json[0].isbn);
+  let event = await response.json();
+  
   let authorsHTML;
+  let eventsHTML;
   title.innerHTML = json[0].title;
   isbn.innerHTML = "ISBN: " + json[0].isbn;
   date.innerHTML = "Date published: " + json[0].date;
@@ -190,6 +196,21 @@ async function loadDataBook(json) {
     authorsHTML = '<h3 class="detail-h3">Authors:<a href="../pages/sidebar.html?id_author='+ author[0].id_author + '">' + author[0].name +'</a></h3>';
   }
   authors.innerHTML = authorsHTML;
+
+if(event.length>0){
+  
+  if (event.length > 1) {
+    eventsHTML = '<h3 class="detail-h3">Events:<a href="../pages/sidebar.html?id_event='+ event[0].id_event + '">' + event[0].name + '</a>,';
+    for (var j = 1; j < author.length - 1; j++) {
+      eventsHTML += event[j].name + ", ";
+    }
+    eventsHTML += '<a href="../pages/sidebar.html?event='+ event[j].id_event + '">' + event[j].name+'</a></h3>';
+  }
+  else {
+    eventsHTML = '<h3 class="detail-h3">Events:<a href="../pages/sidebar.html?event='+ author[0].id_event + '">' + event[0].name +'</a></h3>';
+  }
+  events.innerHTML = eventsHTML;
+}
 
 
   let similar = [];

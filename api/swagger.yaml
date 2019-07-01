@@ -344,6 +344,31 @@ paths:
         404:
           description: "Event not found"
       x-swagger-router-controller: "Event"
+  /eventByIsbn/{isbn}:
+    get:
+      tags:
+      - "event"
+      summary: "Find event by an isbn"
+      description: "Returns an array of events"
+      operationId: "getEventByIsbn"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "isbn"
+        in: "path"
+        description: "isbn of a book"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: '#/definitions/Event'
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Event not found"
+      x-swagger-router-controller: "Event"
   /eventMonth/{month}/{year}:
     get:
       tags:
