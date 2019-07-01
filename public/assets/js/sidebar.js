@@ -56,8 +56,6 @@ async function loadDataEvent(json){
   navBtn.classList.add('my-navbar-active-btn');
   sideBtn.classList.add('active-sidebar-btn');
 
-  response = await fetch('../../v2/bookId/' + json[0].isbn);
-  let book = await response.json();
 
   let eventDiv = document.getElementById('event-details');
   let eventGallery = document.getElementById('recommendations-gallery');
@@ -67,14 +65,12 @@ async function loadDataEvent(json){
   galleryBox.innerHTML = "Event Gallery" + galleryBox.innerHTML;
 
   let eventName = document.getElementById('event-name');
-  let eventISBN = document.getElementById('event-isbn');
   let eventBook = document.getElementById('event-book');
   let eventDate = document.getElementById('event-date');
   let eventDescr = document.getElementById('event-descr');
 
   eventName.innerHTML = json[0].name;
-  eventISBN.innerHTML = "ISBN: " + json[0].isbn;
-  eventBook = "Book: " + book[0].name;
+  eventBook.innerHTML = 'Book: <a href="../pages/sidebar.html?isbn='+ json[0].isbn + '">' + json[0].title +'</a>';
   eventDate.innerHTML = "Date: " + json[0].date;
   cover.src = "../assets/img/books/" + json[0].isbn + ".jpg";
   eventDescr.innerHTML = "Description: " + json[0].description;
@@ -147,12 +143,12 @@ async function loadDataBook(json) {
   let bookDiv = document.getElementById('book-details');
 
   let buyForm = document.getElementById('buy-form');
-  let authors = document.getElementById('book-authors');
+  let authors = document.getElementById('authors-list');
   let title = document.getElementById('book-title');
   let isbn = document.getElementById('isbn-code');
   let price = document.getElementById('book-price');
-  let genres = document.getElementById('book-genres');
-  let themes = document.getElementById('book-themes');
+  let genres = document.getElementById('genres-list');
+  let themes = document.getElementById('themes-list');
   let descr = document.getElementById('book-description');
   let date = document.getElementById('book-date');
 
@@ -166,28 +162,32 @@ async function loadDataBook(json) {
   isbn.innerHTML = "ISBN: " + json[0].isbn;
   date.innerHTML = "Date published: " + json[0].date;
   var genreHTML = genres.innerHTML;
-  genreHTML = genreHTML + "Literary Genres: " + json[0].genre1;
+  genreHTML = '<h3 class="detail-h3" id="book-genres">Literary Genres:<a href="../pages/filterable-list.html?genre='+ json[0].genre1 + '">'+ json[0].genre1 +'</a>';
   if (json[0].genre2 !== "-")
-    genreHTML = genreHTML + ", " + json[0].genre2;
+    genreHTML += ', ' + '<a href="../pages/filterable-list.html?genre='+ json[0].genre2 + '">'+ json[0].genre2 +'</a>';
+    genreHTML += '</h3>'
   genres.innerHTML = genreHTML;
+
   var themeHTML = themes.innerHTML;
-  themeHTML = themeHTML + "Themes: " + json[0].theme1;
+  themeHTML = '<h3 class="detail-h3" id="book-themes">Literary Themes:<a href="../pages/filterable-list.html?theme='+ json[0].theme1 + '">'+ json[0].theme1 + '</a>';
   if (json[0].theme2 !== "-")
-    themeHTML = themeHTML + ", " + json[0].theme2;
+    themeHTML += ', ' + '<a href="../pages/filterable-list.html?theme='+ json[0].theme2 + '">' + json[0].theme2 +'</a>';
+    themeHTML += '</h3>'
   themes.innerHTML = themeHTML;
+
   price.innerHTML = "Price: " + json[0].price.toFixed(2) + "€";
   cover.src = "../assets/img/books/" + json[0].isbn + ".jpg";
   descr.innerHTML = "Preface: " + json[0].descr;
 
   if (author.length > 1) {
-    authorsHTML = "Authors: " + author[0].name + ", ";
+    authorsHTML = '<h3 class="detail-h3">Authors:<a href="../pages/sidebar.html?id_author='+ author[0].id_author + '">' + author[0].name + '</a>,';
     for (var j = 1; j < author.length - 1; j++) {
       authorsHTML += author[j].name + ", ";
     }
-    authorsHTML += author[author.length - 1].name;
+    authorsHTML += '<a href="../pages/sidebar.html?id_author='+ author[j].id_author + '">' + author[j].name+'</a></h3>';
   }
   else {
-    authorsHTML = "Author: " + author[0].name;
+    authorsHTML = '<h3 class="detail-h3">Authors:<a href="../pages/sidebar.html?id_author='+ author[0].id_author + '">' + author[0].name +'</a></h3>';
   }
   authors.innerHTML = authorsHTML;
 
@@ -347,13 +347,4 @@ function uniqueArray(similar) {
     }
   }
   return newArr;
-}
-
-function shuffleArray(array) {
-  for (var i = array.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
 }
