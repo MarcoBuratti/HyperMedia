@@ -159,10 +159,10 @@ async function loadData(json) {
 
             var innerHTML = collection.innerHTML;
             innerHTML = innerHTML + "<li class='collection-item'>" +
-            "<a class='collection-item' , href='../pages/sidebar.html?id_event=" + json[i].id_event + "'>" + json[i].name + "<br><img src='" + "../assets/img/events/" + json[i].id_event + "/0.jpg' height='300' width='180'></a>" +
-            "<h4><a href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>Book: " + json[i].title + "</h4>";
+            "<a class='collection-item' , href='../pages/sidebar.html?id_event=" + json[i].id_event + "'>" + json[i].name + "<br><img src='" + "../assets/img/events/" + json[i].id_event + "/0.jpg' class='event-img'></a>" +
+            "<p class='event-details'><a class='event-details' href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>Book: " + json[i].title + "</p></a>";
 
-            innerHTML = innerHTML + "<h4>Date: " + json[i].date + "</h4></li>";
+            innerHTML = innerHTML + "<p class='event-details'>Date: " + json[i].date + "</p></li>";
 
             collection.innerHTML = innerHTML;
         }

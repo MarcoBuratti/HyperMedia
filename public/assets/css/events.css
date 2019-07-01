@@ -1,45 +1,96 @@
-#img_event{
-    
-    margin-bottom: 1%;
-    margin-right: 2%;
-    margin-left: 0.5%;
-    float: left;
-    border: solid black 1px;
-}
-#all_text{
-    margin-top: 5%;
-    margin-left: 20%;
-}
-
-h1.book-title{
-    font-size: 50;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 1200px;
-}
-
-h2.book-details{
-    font-size: 20;
-    font-style: italic;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 1200px;
-}
-p.book-description{
-    text-align: justify;
-    font-size: 16;
-    
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 1200px;
-}
-
-h3#page-title {
-    font-size: 80;
-    font-weight: bold;
-    margin-top: 5%;
+#body {
     text-align: center;
 }
 
-    
+#month-events {
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+    font-style: italic;
+}
+
+#month-events-ref {
+    color: black;
+}
+
+#month-events-ref:hover {
+    color: rgb(255, 76, 6);
+    text-decoration: none;
+}
+
+#month-events-dec {
+    color: rgb(255, 76, 6);
+    margin-right: 5px;
+}
+
+.event-img{
+    width: 70vw;
+    height: 60vh;
+}
+
+.event-details {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+a.event-details:hover {
+    color: rgb(255, 76, 6);
+    text-decoration: none;
+}
+
+a.collection-item {
+    color: black;
+    font-style: italic;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a.collection-item:hover {
+    text-decoration: none;
+    color: rgb(255, 76, 6);
+}
+
+
+li.collection-item {
+    text-align: center;
+    list-style: none;
+    display: list-item;
+    margin-bottom: 50px;
+}
+
+li.collection-item:before {
+    content: "";
+	  border-radius: 50px;
+	  margin-top: 5px;
+	  margin-left: -20px;
+	  position: absolute;
+}
+
+
+li.collection-header {
+    display: inline;
+
+}
+
+h5.collection-header {
+    margin-top: 30px;
+    color: rgb(255, 76, 6);
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+h5.collection-header-hidden {
+    display: none;
+}
+
+@media (orientation:portrait) {
+    .event-img {
+        height: 50vw;
+        width: 80vw
+    }
+}
