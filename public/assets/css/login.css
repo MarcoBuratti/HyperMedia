@@ -30,8 +30,8 @@ span {
 
 button {
 	border-radius: 20px;
-	border: 1px solid rgb(40, 50, 230);
-	background-color: rgb(40, 50, 230);
+	border: 1px solid rgb(255, 76, 6);
+	background-color: rgb(255, 76, 6);
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -145,8 +145,8 @@ input {
 
 .overlay {
 	background: rgb(255, 255, 255);
-	background: -webkit-linear-gradient(to right, rgb(40, 50, 230),  rgb(41, 44, 97));
-	background: linear-gradient(to right,  rgb(41, 44, 97), rgb(40, 50, 230));
+	background: -webkit-linear-gradient(to right, rgb(255, 76, 6),  rgb(255, 104, 44));
+	background: linear-gradient(to right,  rgb(255, 104, 44), rgb(255, 76, 6));
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

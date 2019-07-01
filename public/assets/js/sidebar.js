@@ -82,7 +82,7 @@ async function loadDataEvent(json){
 
   let galleryInd = document.getElementById('gallery-indicators');
   let galleryElems = document.getElementById('gallery-elems');
-  let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0"></li>';
+  let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
   let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="event-img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn">Read More</a></div></div>';
   for (i = 1; i < 3; i++) {
     carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
@@ -124,7 +124,7 @@ async function loadDataAuthor(json){
   let galleryInd = document.getElementById('gallery-indicators');
   let galleryElems = document.getElementById('gallery-elems');
 
-  let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0"></li>';
+  let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
   let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/books/' + content[0].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3 id="title-carousel">' + content[0].title + '</h3><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ content[0].isbn + '">Read More</a></div></div>';
   for (i = 1; i < content.length; i++) {
     carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
@@ -316,7 +316,7 @@ async function loadDataBook(json) {
   let galleryInd = document.getElementById('gallery-indicators');
   let galleryElems = document.getElementById('gallery-elems');
 
-  let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0"></li>';
+  let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
 
   let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/books/' + unique[0].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3 id="title-carousel">' + unique[0].title + '</h3><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ unique[0].isbn + '">Read More</a></div></div>';
   for (i = 1; i < unique.length; i++) {
