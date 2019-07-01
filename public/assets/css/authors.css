@@ -41,7 +41,7 @@ p#body-title {
 .card-title {
     font-weight: bold;
     font-style: italic;
-    color: rgb(255, 76, 6);
+    color: black;
     text-decoration: none;
 }
 
@@ -68,7 +68,12 @@ p#body-title {
     margin-right: 2vw;
 }
 
-.collection-item:hover {
+.card-title:hover {
+    text-decoration: none;
+    color: rgb(255, 76, 6);
+}
+
+a.collection-item {
     text-decoration: none;
 }
 
