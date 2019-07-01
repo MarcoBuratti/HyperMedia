@@ -21,9 +21,16 @@ exports.eventsGET = function () {
 
 
 exports.getEventById = function (eventId) {
-  return db.select()
+  return db.join('books','books.isbn','=','events.isbn').select('name','title','id_event','events.date','events.isbn','description')
     .from('events')
     .where('id_event', eventId);
+}
+
+
+exports.getEventByIsbn = function (isbn) {
+  return db.select('id_event','name')
+    .from('events')
+    .where('isbn', isbn);
 }
 
 

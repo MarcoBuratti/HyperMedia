@@ -24,6 +24,17 @@ module.exports.getEventById = function getEventById(req, res, next) {
     });
 };
 
+module.exports.getEventByIsbn = function getEventByIsbn(req, res, next) {
+  var eventId = req.swagger.params['isbn'].value;
+  Event.getEventByIsbn(eventId)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.getEventByMonth = function getEventByMonth(req, res, next) {
   var month = req.swagger.params['month'].value;
   var year = req.swagger.params['year'].value;
