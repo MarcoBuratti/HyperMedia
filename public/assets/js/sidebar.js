@@ -79,10 +79,10 @@ async function loadDataEvent(json){
   let galleryInd = document.getElementById('gallery-indicators');
   let galleryElems = document.getElementById('gallery-elems');
   let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
-  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="event-img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn">Read More</a></div></div>';
+  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="event-img-carousel"></div>';
   for (i = 1; i < 3; i++) {
     carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
-    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/events/' + json[0].id_event + '/'+ i +'.jpg" id="event-img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn">Read More</a></div></div>';
+    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/events/' + json[0].id_event + '/'+ i +'.jpg" id="event-img-carousel"></div>';
   }
   galleryInd.innerHTML += carouselIndHTML;
   galleryElems.innerHTML = carouselElemHTML + galleryElems.innerHTML;
@@ -114,17 +114,15 @@ async function loadDataAuthor(json){
   response = await fetch('../../v2/booksByIdAuthor/' + json[0].id_author);
   content = await response.json();
 
-  console.log(content)
-
 
   let galleryInd = document.getElementById('gallery-indicators');
   let galleryElems = document.getElementById('gallery-elems');
 
   let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
-  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/books/' + content[0].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3 id="title-carousel">' + content[0].title + '</h3><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ content[0].isbn + '">Read More</a></div></div>';
+  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/books/' + content[0].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ content[0].isbn + '">Read More</a></div></div>';
   for (i = 1; i < content.length; i++) {
     carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
-    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/books/' + content[i].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3 id="title-carousel">' + content[i].title + '</h3><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ content[i].isbn + '">Read More</a></div></div>';
+    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/books/' + content[i].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ content[i].isbn + '">Read More</a></div></div>';
   }
   galleryInd.innerHTML += carouselIndHTML;
   galleryElems.innerHTML = carouselElemHTML + galleryElems.innerHTML;
@@ -339,10 +337,10 @@ if(event.length>0){
 
   let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
 
-  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/books/' + unique[0].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3 id="title-carousel">' + unique[0].title + '</h3><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ unique[0].isbn + '">Read More</a></div></div>';
+  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/books/' + unique[0].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ unique[0].isbn + '">Read More</a></div></div>';
   for (i = 1; i < unique.length; i++) {
     carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
-    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/books/' + unique[i].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><h3 id="title-carousel">' + unique[i].title + '</h3><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ unique[i].isbn + '">Read More</a></div></div>';
+    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/books/' + unique[i].isbn + '.jpg" id="img-carousel"><div class="carousel-caption"><a class="btn btn-default btn-sm showcase-btn" href="../pages/sidebar.html?isbn='+ unique[i].isbn + '">Read More</a></div></div>';
   }
   galleryInd.innerHTML += carouselIndHTML;
   galleryElems.innerHTML = carouselElemHTML + galleryElems.innerHTML;
