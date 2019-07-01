@@ -1,4 +1,8 @@
 #body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
@@ -92,5 +96,9 @@ h5.collection-header-hidden {
     .event-img {
         height: 50vw;
         width: 80vw
+    }
+
+    #events {
+        padding-inline-start: 0px;
     }
 }

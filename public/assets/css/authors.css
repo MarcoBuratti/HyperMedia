@@ -1,5 +1,8 @@
 #body {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-weight: bold;
     font-style: italic;
@@ -49,6 +52,16 @@ p#body-title {
     margin-bottom: 50px;
 }
 
+#authors {
+    overflow: hidden;
+}
+
+#authors::after {
+    clear: both;
+    display: block;
+    content: "";
+}
+
 .author-div {
     float: left;
     margin-left: 2vw;
@@ -64,10 +77,18 @@ p#body-title {
     .card, .copper {
         width: 50vw;
     }
+
+    .author-div {
+        float:none;
+    }
 }
 
 @media screen and (max-width: 450px) {
     .card, .copper {
         width: 80vw;
+    }
+
+    .author-div {
+        float: none;
     }
 }
