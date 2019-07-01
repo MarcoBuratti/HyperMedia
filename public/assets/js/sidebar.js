@@ -157,7 +157,7 @@ async function loadDataBook(json) {
   let date = document.getElementById('book-date');
 
   bookDiv.style.display = 'block';
-  galleryBox.innerHTML = "Recommended Books" + galleryBox.innerHTML;
+  galleryBox.innerHTML = "Similar Books" + galleryBox.innerHTML;
 
   let response = await fetch('../../v2/authorsByIsbn/' + json[0].isbn);
   author = await response.json();

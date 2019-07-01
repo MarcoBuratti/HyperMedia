@@ -76,7 +76,7 @@ signUp.addEventListener('submit', async(e) => {
         }
     else{
         //message error
-        window.alert("Fuck you, you can't login!");
+        window.alert("This user already registered, try with another mail!");
         location.replace('../pages/login.html');
     }
     });
