@@ -46,8 +46,7 @@ exports.userRegisterPOST = function (body) {
 
 exports.getUserByEmail = function (body) {
   let emailIns = body.email;
-  let nameIns = body.name;
-  return db.select('email').from('users').where('email', emailIns).andWhere('name', nameIns);
+  return db.select('email').from('users').where('email', emailIns);
 }
 
 
