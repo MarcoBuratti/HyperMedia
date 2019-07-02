@@ -26,11 +26,13 @@ p#body-title {
     height: 420px;
     width: 22vw;
     max-width: 380px;
+    min-width: 320px;
 }
 
 .card{
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     width: 22vw;
+    min-width: 320px;
     max-width: 380px;
     margin: 0;
     text-align: center;
@@ -81,6 +83,7 @@ a.collection-item {
 @media screen and (max-width: 993px) {
     .card, .copper {
         width: 50vw;
+        min-width: auto;
     }
 
     .author-div {
@@ -91,6 +94,7 @@ a.collection-item {
 @media screen and (max-width: 450px) {
     .card, .copper {
         width: 80vw;
+        min-width: auto;
     }
 
     .author-div {

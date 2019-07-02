@@ -1,299 +1,299 @@
 body{
-  background: rgb(255, 217, 201);
-  font-family: sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-}
-
-.my-navbar {
-    border-radius: 0;
-    margin: 0px;
-    letter-spacing: 1px;
-    height: 60px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    background-color: rgb(255, 76, 6);
-    overflow: hidden;
-    position: fixed; 
-    top: 0; 
-    width: 100%; 
-    font-size: 16px;
-    font-weight: 550;
-    z-index: 9999;
-}
-
-
-.my-navbar-btn, .brand-btn {
-    margin-top: 0;
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 12px 14px;
-    text-decoration: none;
-    border-radius: 10px;
-}
-
-.my-navbar-active-btn {
-    color: white;
-}
-
-.my-navbar-btn-right {
-    float: right;
-}
-
-.my-navbar-btn:hover {
-    background: rgb(255, 104, 44);
-    color: slategrey;
-    text-decoration: none;
-}
-
-.brand-btn:hover {
-    text-decoration: none;
-    color: black;
-}
-
-.my-navbar-left li {
-    list-style: none;
-}
-
-.my-navbar-right li {
-    list-style: none;
-}
-
-#container {
-    min-height: 100%;
-    position: relative;
-}
-  
-#header {
-    padding: 0;
-}
-  
-#body {
-    margin-top: 50px;
-    padding: 10px;
-    padding-bottom: 20px;
-}
-  
-#footer {
-    height: 20px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-  
-#social{
-    width: 100%;
-    margin-top: 50px;
-    background-color: rgb(255, 76, 6);
-    color: black;
-    text-align: center;
+    background: rgb(255, 217, 201);
+    font-family: sans-serif;
     font-size: 14px;
-    font-weight: bold;
-    height: auto;
-}
-
-.btn {
-    color: black;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-.btn:hover {
-    background-color: rgb(255, 104, 44);
-    color: white;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-#sidenav {
-    display: none;
-}
-
-#nav {
-    display: block;
-}
-
-.logout-nav {
-	float: right;
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	right: 0;
-	background-color: rgba(0,0,0,0.5);
-	opacity: 0.9;
-	overflow-x: hidden;
-	padding-top: 60px;
-	transition: 0.5s;
-}
-
-.logout-nav a {
-	padding: 10px 10px 10px 30px;
-	text-decoration: none;
-	font-size: 22px;
-	display: block;
-	transition: 0.3s;
-}
-
-.logout-nav a:hover {
-	color: slategray;
-}
-
-.logout-nav .btn-logout-close {
-	position: absolute;
-	top: 0;
-	right: 22px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-
-.btn-logout-close, #first-logout-btn {
-	margin-top: 50px;
-}
-
-
-.logout-btn, #logout-btn-close {
-	background-color: none;
-	color: white;
-}
-
-#logout-btn-close:hover {
-	color: black;
-}
-
-.logout-btn:hover {
-	color: slategray;
-	background-color: rgb(255, 104, 44);
-}
-
-@media screen and (max-width: 1365px) {
-
-    #nav {
-        display: none;
-    }
-
-    #main {
-        transition:margin-left 0.5s;
-        overflow: hidden;
-        width: 100%;
-    }
-
-    #sidenav {
-        display: block;
-        border-radius: 0;
-        margin: 0px;
-        letter-spacing: 1px;
-        height: 60px;
-        padding-left: 12px;
-        padding-right: 12px;
-        padding-top: 0px;
-        padding-bottom: 0px;
-        background-color: rgb(255, 76, 6);
-        overflow: hidden;
-        position: fixed; 
-        top: 0; 
-        width: 100%; 
-        font-size: 16px;
-        font-weight: 550;
-        z-index: 9999;
-    }
+    line-height: 1.42857143;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+  
+  .my-navbar {
+      border-radius: 0;
+      margin: 0px;
+      letter-spacing: 1px;
+      height: 60px;
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      background-color: rgb(255, 76, 6);
+      overflow: hidden;
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
+      font-size: 16px;
+      font-weight: 550;
+      z-index: 9999;
+  }
+  
+  
+  .my-navbar-btn, .brand-btn {
+      margin-top: 0;
+      float: left;
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 12px 14px;
+      text-decoration: none;
+      border-radius: 10px;
+  }
+  
+  .my-navbar-active-btn {
+      color: white;
+  }
+  
+  .my-navbar-btn-right {
+      float: right;
+  }
+  
+  .my-navbar-btn:hover {
+      background: rgb(255, 104, 44);
+      color: slategrey;
+      text-decoration: none;
+  }
+  
+  .brand-btn:hover {
+      text-decoration: none;
+      color: black;
+  }
+  
+  .my-navbar-left li {
+      list-style: none;
+  }
+  
+  .my-navbar-right li {
+      list-style: none;
+  }
+  
+  #container {
+      min-height: 100%;
+      position: relative;
+  }
     
-    .sidebar a {
-        float: right;
-        display: block;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-    }
-
-    #sidebar-btn-open {
-        height: 60px;
-        background-color: rgb(255, 76, 6);
-    }
-
-    #sidebar-btn-close {
-        color: black;
-    }
+  #header {
+      padding: 0;
+  }
     
-    .sidebar ul {
-        margin: 8px 0 0 0;
-        list-style: none;
-    }
+  #body {
+      margin-top: 50px;
+      padding: 10px;
+      padding-bottom: 20px;
+  }
     
-    .sidebar a:hover {
-        background-color: #ddd;
-        color: #000;
-    }
+  #footer {
+      height: 20px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+  }
     
-    .side-nav {
-        float: right;
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        right: 0;
-        background-color: rgb(255, 76, 6);
-        opacity: 0.9;
-        overflow-x: hidden;
-        padding-top: 60px;
-        transition: 0.5s;
-    }
-    
-    .side-nav a {
-        padding: 10px 10px 10px 30px;
-        text-decoration: none;
-        font-size: 22px;
-        display: block;
-        transition: 0.3s;
-    }
-    
-    .side-nav a:hover {
-        color: slategray;
-    }
-    
-    .side-nav .btn-close {
-        position: absolute;
-        top: 0;
-        right: 22px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
-    
-    #sidebar-btn-info {
-        margin-top: 3px;
-    }
-    
-    .sidebar-btn {
-        background-color: none;
-        color: black;
-    }
-    
-    .sidebar-btn:hover {
-        color: slategray;
-    }
-    
-    .active-sidebar-btn {
-        background-color: rgb(255, 104, 44);
-        color: white;
-    }
-    
-}
-
-@media screen and (max-width: 255px) {
-    #sidebar-brand {
-        display: none;
-    }
-}
+  #social{
+      width: 100%;
+      margin-top: 50px;
+      background-color: rgb(255, 76, 6);
+      color: black;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      height: auto;
+  }
+  
+  .btn {
+      color: black;
+      border-radius: 10px;
+      font-weight: bold;
+  }
+  
+  .btn:hover {
+      background-color: rgb(255, 104, 44);
+      color: white;
+  }
+  
+  * {
+      box-sizing: border-box;
+  }
+  
+  #sidenav {
+      display: none;
+  }
+  
+  #nav {
+      display: block;
+  }
+  
+  .logout-nav {
+      float: right;
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      background-color: rgba(0,0,0,0.5);
+      opacity: 0.9;
+      overflow-x: hidden;
+      padding-top: 60px;
+      transition: 0.5s;
+  }
+  
+  .logout-nav a {
+      padding: 10px 10px 10px 30px;
+      text-decoration: none;
+      font-size: 22px;
+      display: block;
+      transition: 0.3s;
+  }
+  
+  .logout-nav a:hover {
+      color: slategray;
+  }
+  
+  .logout-nav .btn-logout-close {
+      position: absolute;
+      top: 0;
+      right: 22px;
+      font-size: 36px;
+      margin-left: 50px;
+  }
+  
+  .btn-logout-close, #first-logout-btn {
+      margin-top: 50px;
+  }
+  
+  
+  .logout-btn, #logout-btn-close {
+      background-color: none;
+      color: white;
+  }
+  
+  #logout-btn-close:hover {
+      color: rgb(255, 76, 6);
+  }
+  
+  .logout-btn:hover {
+      color: slategray;
+      background-color: rgb(255, 104, 44);
+  }
+  
+  @media screen and (max-width: 1365px) {
+  
+      #nav {
+          display: none;
+      }
+  
+      #main {
+          transition:margin-left 0.5s;
+          overflow: hidden;
+          width: 100%;
+      }
+  
+      #sidenav {
+          display: block;
+          border-radius: 0;
+          margin: 0px;
+          letter-spacing: 1px;
+          height: 60px;
+          padding-left: 12px;
+          padding-right: 12px;
+          padding-top: 0px;
+          padding-bottom: 0px;
+          background-color: rgb(255, 76, 6);
+          overflow: hidden;
+          position: fixed; 
+          top: 0; 
+          width: 100%; 
+          font-size: 16px;
+          font-weight: 550;
+          z-index: 9999;
+      }
+      
+      .sidebar a {
+          float: right;
+          display: block;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+      }
+  
+      #sidebar-btn-open {
+          height: 60px;
+          background-color: rgb(255, 76, 6);
+      }
+  
+      #sidebar-btn-close {
+          color: black;
+      }
+      
+      .sidebar ul {
+          margin: 8px 0 0 0;
+          list-style: none;
+      }
+      
+      .sidebar a:hover {
+          background-color: #ddd;
+          color: #000;
+      }
+      
+      .side-nav {
+          float: right;
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          right: 0;
+          background-color: rgb(255, 76, 6);
+          opacity: 0.9;
+          overflow-x: hidden;
+          padding-top: 60px;
+          transition: 0.5s;
+      }
+      
+      .side-nav a {
+          padding: 10px 10px 10px 30px;
+          text-decoration: none;
+          font-size: 22px;
+          display: block;
+          transition: 0.3s;
+      }
+      
+      .side-nav a:hover {
+          color: slategray;
+      }
+      
+      .side-nav .btn-close {
+          position: absolute;
+          top: 0;
+          right: 22px;
+          font-size: 36px;
+          margin-left: 50px;
+      }
+      
+      #sidebar-btn-info {
+          margin-top: 3px;
+      }
+      
+      .sidebar-btn {
+          background-color: none;
+          color: black;
+      }
+      
+      .sidebar-btn:hover {
+          color: slategray;
+      }
+      
+      .active-sidebar-btn {
+          background-color: rgb(255, 104, 44);
+          color: white;
+      }
+      
+  }
+  
+  @media screen and (max-width: 255px) {
+      #sidebar-brand {
+          display: none;
+      }
+  }

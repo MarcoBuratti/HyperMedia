@@ -56,7 +56,6 @@ async function loadDataEvent(json){
   navBtn.classList.add('my-navbar-active-btn');
   sideBtn.classList.add('active-sidebar-btn');
 
-
   let eventDiv = document.getElementById('event-details');
   let eventGallery = document.getElementById('recommendations-gallery');
 
@@ -70,7 +69,7 @@ async function loadDataEvent(json){
   let eventDescr = document.getElementById('event-descr');
 
   eventName.innerHTML = json[0].name;
-  eventBook.innerHTML = 'Book: <a href="../pages/sidebar.html?isbn='+ json[0].isbn + '">' + json[0].title +'</a>';
+  eventBook.innerHTML = "Book: " + '<a href="../pages/sidebar.html?isbn='+ json[0].isbn + '">' + json[0].title +'</a>';
   eventDate.innerHTML = "Date: " + json[0].date;
   cover.src = "../assets/img/books/" + json[0].isbn + ".jpg";
   eventDescr.innerHTML = "Description: " + json[0].description;
@@ -79,10 +78,10 @@ async function loadDataEvent(json){
   let galleryInd = document.getElementById('gallery-indicators');
   let galleryElems = document.getElementById('gallery-elems');
   let carouselIndHTML = '<li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
-  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="event-img-carousel"></div>';
+  let carouselElemHTML = ' <div class="item active"><img class="image" src="../assets/img/events/' + json[0].id_event + '/0.jpg" id="event-img-carousel"><div class="carousel-caption"></div></div>';
   for (i = 1; i < 3; i++) {
     carouselIndHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"></li>';
-    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/events/' + json[0].id_event + '/'+ i +'.jpg" id="event-img-carousel"></div>';
+    carouselElemHTML += ' <div class="item"><img class="image" src="../assets/img/events/' + json[0].id_event + '/'+ i +'.jpg" id="event-img-carousel"><div class="carousel-caption"></div></div>';
   }
   galleryInd.innerHTML += carouselIndHTML;
   galleryElems.innerHTML = carouselElemHTML + galleryElems.innerHTML;
@@ -114,6 +113,8 @@ async function loadDataAuthor(json){
   response = await fetch('../../v2/booksByIdAuthor/' + json[0].id_author);
   content = await response.json();
 
+  console.log(content)
+
 
   let galleryInd = document.getElementById('gallery-indicators');
   let galleryElems = document.getElementById('gallery-elems');
@@ -141,75 +142,71 @@ async function loadDataBook(json) {
   let bookDiv = document.getElementById('book-details');
 
   let buyForm = document.getElementById('buy-form');
-  let authors = document.getElementById('authors-list');
-  let events = document.getElementById('events-list');
+  let authors = document.getElementById('book-authors');
   let title = document.getElementById('book-title');
   let isbn = document.getElementById('isbn-code');
   let price = document.getElementById('book-price');
-  let genres = document.getElementById('genres-list');
-  let themes = document.getElementById('themes-list');
+  let genres = document.getElementById('book-genres');
+  let themes = document.getElementById('book-themes');
   let descr = document.getElementById('book-description');
   let date = document.getElementById('book-date');
+  let events = document.getElementById('book-events')
 
   bookDiv.style.display = 'block';
-  galleryBox.innerHTML = "Similar Books" + galleryBox.innerHTML;
+  galleryBox.innerHTML = "Recommended Books" + galleryBox.innerHTML;
 
   let response = await fetch('../../v2/authorsByIsbn/' + json[0].isbn);
   author = await response.json();
 
   response = await fetch('../../v2/eventByIsbn/' + json[0].isbn);
   let event = await response.json();
-  
+
   let authorsHTML;
-  let eventsHTML;
   title.innerHTML = json[0].title;
   isbn.innerHTML = "ISBN: " + json[0].isbn;
   date.innerHTML = "Date published: " + json[0].date;
   var genreHTML = genres.innerHTML;
-  genreHTML = '<h3 class="detail-h3" id="book-genres">Literary Genres:<a href="../pages/filterable-list.html?genre='+ json[0].genre1 + '">'+ json[0].genre1 +'</a>';
+  genreHTML = genreHTML + "Literary Genres: " + '<a class="ref" href="../pages/filterable-list.html?genre=' + json[0].genre1 + '">' + json[0].genre1 + '</a>';
   if (json[0].genre2 !== "-")
-    genreHTML += ', ' + '<a href="../pages/filterable-list.html?genre='+ json[0].genre2 + '">'+ json[0].genre2 +'</a>';
-    genreHTML += '</h3>'
+    genreHTML = genreHTML + ", " + '<a class="ref" href="../pages/filterable-list.html?genre=' + json[0].genre2 + '">' + json[0].genre2 + '</a>';
   genres.innerHTML = genreHTML;
-
   var themeHTML = themes.innerHTML;
-  themeHTML = '<h3 class="detail-h3" id="book-themes">Literary Themes:<a href="../pages/filterable-list.html?theme='+ json[0].theme1 + '">'+ json[0].theme1 + '</a>';
+  themeHTML = themeHTML + "Themes: " +  '<a class="ref" href="../pages/filterable-list.html?theme=' + json[0].theme1 + '">' + json[0].theme1 + '</a>';
   if (json[0].theme2 !== "-")
-    themeHTML += ', ' + '<a href="../pages/filterable-list.html?theme='+ json[0].theme2 + '">' + json[0].theme2 +'</a>';
-    themeHTML += '</h3>'
+    themeHTML = themeHTML + ", " + '<a class="ref" href="../pages/filterable-list.html?theme=' + json[0].theme2 + '">' + json[0].theme2 + '</a>';
   themes.innerHTML = themeHTML;
-
   price.innerHTML = "Price: " + json[0].price.toFixed(2) + "€";
   cover.src = "../assets/img/books/" + json[0].isbn + ".jpg";
   descr.innerHTML = "Preface: " + json[0].descr;
 
   if (author.length > 1) {
-    authorsHTML = '<h3 class="detail-h3">Authors:<a href="../pages/sidebar.html?id_author='+ author[0].id_author + '">' + author[0].name + '</a>,';
+    authorsHTML = "Authors: " + '<a class="ref" href="../pages/sidebar.html?id_author=' + author[0].id_author + '">' + author[0].name + '</a>' + ", ";
     for (var j = 1; j < author.length - 1; j++) {
-      authorsHTML += author[j].name + ", ";
+      authorsHTML += '<a class="ref" href="../pages/sidebar.html?id_author=' + author[j].id_author + '">' + author[j].name + '</a>' + ", ";
     }
-    authorsHTML += '<a href="../pages/sidebar.html?id_author='+ author[j].id_author + '">' + author[j].name+'</a></h3>';
+    authorsHTML += '<a class="ref" href="../pages/sidebar.html?id_author=' + author[j].id_author + '">' + author[j].name + '</a>';
   }
   else {
-    authorsHTML = '<h3 class="detail-h3">Authors:<a href="../pages/sidebar.html?id_author='+ author[0].id_author + '">' + author[0].name +'</a></h3>';
+    authorsHTML = "Author: " + '<a class="ref" href="../pages/sidebar.html?id_author=' + author[0].id_author + '">' + author[0].name + '</a>';
   }
   authors.innerHTML = authorsHTML;
 
-if(event.length>0){
-  
-  if (event.length > 1) {
-    eventsHTML = '<h3 class="detail-h3">Events:<a href="../pages/sidebar.html?id_event='+ event[0].id_event + '">' + event[0].name + '</a>,';
-    for (var j = 1; j < author.length - 1; j++) {
-      eventsHTML += event[j].name + ", ";
-    }
-    eventsHTML += '<a href="../pages/sidebar.html?event='+ event[j].id_event + '">' + event[j].name+'</a></h3>';
-  }
-  else {
-    eventsHTML = '<h3 class="detail-h3">Events:<a href="../pages/sidebar.html?event='+ author[0].id_event + '">' + event[0].name +'</a></h3>';
-  }
-  events.innerHTML = eventsHTML;
-}
+  if(event.length > 0){
 
+    let eventsHTML;
+  
+    if (event.length > 1) {
+      eventsHTML = 'Events about this book: <a class="ref" href="../pages/sidebar.html?id_event='+ event[0].id_event + '">' + event[0].name + '</a>' + ", ";
+      for (var j = 1; j < event.length - 1; j++) {
+        eventsHTML += '<a class="ref" href="../pages/sidebar.html?id_event='+ event[j].id_event + '">' + event[j].name + '</a>' + ", ";
+      }
+      eventsHTML += '<a href="../pages/sidebar.html?event='+ event[j].id_event + '">' + event[j].name+'</a>';
+    }
+    else {
+      eventsHTML = 'Event about this book: <a class="ref" href="../pages/sidebar.html?id_event='+ event[0].id_event + '">' + event[0].name + '</a>';
+    }
+    events.innerHTML = eventsHTML;
+  }
 
   let similar = [];
   let content;
@@ -293,44 +290,43 @@ if(event.length>0){
       }
       i = Math.floor(Math.random() * (len));
     }
-    
-    
-    buyForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      let myQuantity = document.getElementById("quantity");
-      let total = myQuantity.value * json[0].price;
-      let details = {
-        'total': total,
-        'quantity': myQuantity.value,
-        'isbn': json[0].isbn
-      };
-    
-      let body = [];
-      for (var property in details) {
-        let encodedKey = encodeURIComponent(property);
-        let encodedValue = encodeURIComponent(details[property]);
-        body.push(encodedKey + "=" + encodedValue);
-      }
-      body = body.join("&");
-    
-    
-      let answer = await fetch("../../v2/cartInsert", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: body
-      })
-    
-      answer = await answer.json()
-      console.log(answer.status);
-      if (!answer.status)
-        window.alert("No login");
-      else
-        location.replace("../pages/cart.html");
-    
-    });
   }
+
+  buyForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    let myQuantity = document.getElementById("quantity");
+    let total = myQuantity.value * json[0].price;
+    let details = {
+      'total': total,
+      'quantity': myQuantity.value,
+      'isbn': json[0].isbn
+    };
+  
+    let body = [];
+    for (var property in details) {
+      let encodedKey = encodeURIComponent(property);
+      let encodedValue = encodeURIComponent(details[property]);
+      body.push(encodedKey + "=" + encodedValue);
+    }
+    body = body.join("&");
+  
+  
+    let answer = await fetch("../../v2/cartInsert", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: body
+    })
+  
+    answer = await answer.json()
+    console.log(answer.status);
+    if (!answer.status)
+      window.alert("No login");
+    else
+      location.replace("../pages/cart.html");
+  
+  });
 
   let galleryInd = document.getElementById('gallery-indicators');
   let galleryElems = document.getElementById('gallery-elems');
@@ -366,4 +362,13 @@ function uniqueArray(similar) {
     }
   }
   return newArr;
+}
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
 }

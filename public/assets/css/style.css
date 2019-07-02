@@ -2,7 +2,6 @@ body {
     justify-content: center;
     align-items: center;
 	flex-direction: column;
-    margin: 51px 0 50px;
 }
 
 #myCarousel {
