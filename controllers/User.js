@@ -13,8 +13,8 @@ module.exports.userLoginPOST = function userLoginPOST(req, res, next) {
 
     req.session = { id_user: "0" };
   }
-
-  if (req.session.id_user != 0) {
+  
+  if (req.session.id_user != 0||req.body.email === "" || req.body.password === "" ) {
 
     utils.writeJson(res, status);
   }
@@ -50,8 +50,7 @@ module.exports.userRegisterPOST = function userRegisterPOST(req, res, next) {
     req.session = { id_user: "0" };
   }
 
-  if (req.session.id_user != 0) {
-
+  if (req.session.id_user != 0||req.body.email === "" || req.body.password === "" || req.body.name === "") {
     utils.writeJson(res, status);
   }
   else {
