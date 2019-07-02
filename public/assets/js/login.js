@@ -75,8 +75,8 @@ signUp.addEventListener('submit', async(e) => {
         location.replace('../pages/successful-registration.html');
         }
     else{
-        //message error
-        window.alert("This user already registered, try with another mail!");
+    
+        window.alert("Invalid credentials. Please notice the email address and/or the username could have already been used.");
         location.replace('../pages/login.html');
     }
     });

@@ -184,13 +184,16 @@ async function loadData(json) {
                 var innerHTML = collection.innerHTML;
                 innerHTML = innerHTML + "<li class='collection-item'>" +
                 "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' class='cart-img'></a>" +
-                "<h4 class='cart-details'>Quantity: " + json[i].quantity + "</h4><h4 class='cart-details'>Price: " + json[i].total.toFixed(2) + '€' + "</h4><form id='remove-form-" + i + "'><input type='number' id='remove-quantity' value=1 min=1 max=" +
+                "<h4 class='cart-details'>Quantity: " + json[i].quantity + "</h4><h4 class='cart-details'>Price: " + json[i].total.toFixed(2) + '€' + "</h4>";
+                if(json[i].quantity>1){
+                innerHTML += "<form onsubmit = updateCart("+i+") id='remove-form-" + i + "'><input type='number' id='remove-quantity' value=1 min=1 max=" +
                 json[i].quantity + "><br><input type='submit' id='remove-submit' value='Remove'></form>";
-                
+                }
                 
                 //innerHTML += " <button class='pay-btn' onclick=deleteBook(/"+json[i].isbn+"/)>Remove</button>";
             
                 collection.innerHTML = innerHTML;
+                
             }
 
             total += json[i].total;
@@ -202,50 +205,9 @@ async function loadData(json) {
 
         let removeForm;
 
-        for (var k = 0; k < json.length ; k++) {
+       
 
-            removeForm = document.getElementById('remove-form-' + k);
-
-            removeForm.addEventListener('submit', async (e) => {
-
-            e.preventDefault();
-            let removeQuantity = removeForm.querySelector("#remove-quantity").value;
-            let newQuantity = json[k].quantity - removeQuantity;
-            let total = (json[k].total / json[k].quantity) * newQuantity;
-            let details = {
-                'total': total,
-                'quantity': newQuantity,
-                'isbn': json[k].isbn
-            };
-            
-            let body = [];
-            for (var property in details) {
-                let encodedKey = encodeURIComponent(property);
-                let encodedValue = encodeURIComponent(details[property]);
-                body.push(encodedKey + "=" + encodedValue);
-            }
-            body = body.join("&");
-            
-            
-            let answer = await fetch("../../v2/cartInsert", {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: body
-            })
-            
-            answer = await answer.json()
-            console.log(answer.status);
-            if (!answer.status)
-                window.alert("No login");
-            else
-                location.replace("../pages/cart.html");
-            
-            });
-        }
-
-
+    
     }
 }
 
@@ -271,3 +233,43 @@ buyButton.addEventListener('click',async (e) => {
 
     
 });
+
+
+async function updateCart(k){
+
+    removeForm = document.getElementById('remove-form-' + k);
+
+    let removeQuantity = removeForm.querySelector("#remove-quantity").value;
+    let newQuantity = json[k].quantity - removeQuantity;
+    let total = (json[k].total / json[k].quantity) * newQuantity;
+    let details = {
+        'total': total,
+        'quantity': newQuantity,
+        'isbn': json[k].isbn
+    };
+    
+    let body = [];
+    for (var property in details) {
+        let encodedKey = encodeURIComponent(property);
+        let encodedValue = encodeURIComponent(details[property]);
+        body.push(encodedKey + "=" + encodedValue);
+    }
+    body = body.join("&");
+    
+    
+    let answer = await fetch("../../v2/cartInsert", {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: body
+    })
+    
+    answer = await answer.json()
+    console.log(answer.status);
+    if (!answer.status)
+        window.alert("No login");
+    else
+        location.replace("../pages/cart.html");
+    
+}
