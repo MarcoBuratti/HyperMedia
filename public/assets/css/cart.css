@@ -127,7 +127,34 @@ h5.collection-header-hidden {
     color: slategrey
 }
 
-div#buy {
-    padding-left: 3.5vw;
+#buy {
+    padding-left: 90px;
     margin-top: 5vh;
+}
+
+@media screen and (max-width: 500px) {
+
+    .collection {
+        list-style: none;
+        padding: 0;
+    }
+
+    li.collection-item {
+        margin-left: 10vw;
+    }
+
+    #buy {
+        margin-left: 10vw;
+        padding-left: 0px;
+    }
+
+    li.collection-item:before {
+        list-style: none;
+        border: 0px !important;
+    }
+
+    .cart-img {
+        width: 200px;
+        height: 300px;
+    }
 }
