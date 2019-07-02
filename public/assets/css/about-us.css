@@ -78,11 +78,10 @@ p.contact-us{
   width: max-content;
   padding: 5px;
   border-radius: 10px;
-  margin-top: 40px;
+  margin-top: 1vh;
 }
 
 input.contact-us, textarea {
-
   border-radius: 10px;
   padding: 12px 15px;
   width: 100%;
@@ -94,7 +93,6 @@ input.contact-us, textarea {
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 1px;
-  margin-top: 10px;
   margin-left: 0;
 }
 
@@ -115,6 +113,8 @@ form.contact-us {
 
 
 textarea {
+  height: 10vh;
+  min-height: 100px;
   resize: none;
 }
 
@@ -134,6 +134,7 @@ input#submit-button {
 }
 
 #map{
+  min-height: 25vw;
   height: 55vh;
   width: 40vw;
   margin-top: 5vh;

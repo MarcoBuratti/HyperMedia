@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet", href="../assets/css/standard-page.css">
-    <link rel="stylesheet", href="../assets/css/filterable-list.css">
+    <link rel="stylesheet", href="../assets/css/cart.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -88,9 +88,21 @@
             
 
             <!--TITOLO-->
-            <div id= "upper-text">
+            <p id="upper-text">Your cart:</p>
+            <p id="empty-cart"></p>
 
+            <div id="search-box-container">
+                <div id="search-box">
+                    <form name="search-form">                    
+                        <h2 class="search-bar-title">Search Bar</h2>
+                        <input type="text" , id="filterInput" , placeholder="Please type the book title here.">
+                        <br>
+                        
+                    </form>
+                </div>
             </div>
+
+
             <ul class="collection with-header", id="books">
                 <li class="collection-header">
                     <h5 class="collection-header-hidden", id="a-collection-header">A</h5>

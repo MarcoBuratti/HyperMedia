@@ -1,0 +1,133 @@
+#upper-text {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 40px;
+    color: rgb(255, 76, 6);
+    text-shadow: slategrey 1px 1px;
+}
+
+#empty-cart {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 30px;
+    color: black;
+}
+
+#search-box-container {
+    display: none;
+    text-align: center;
+}
+
+#search-box {
+    display: inline-block;
+}
+
+h2.search-bar-title {
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(100, 165, 210);
+}
+
+input#filterInput {
+    width: 80vw;
+    border-radius: 10px;
+    border-color: rgb(100, 165, 210);
+    padding: 10px;
+    background-color: lightgrey;
+    color: rgb(100, 165, 210);
+}
+
+a.collection-item {
+    color: rgb(50, 50, 50);
+    font-style: italic;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a.collection-item:hover {
+    text-decoration: none;
+}
+
+
+li.collection-item {
+    list-style: none;
+	  display: list-item;
+	  margin-left: 50px;
+}
+
+li.collection-item:before {
+    content: "";
+	  border: 5px #000 solid !important;
+	  border-radius: 50px;
+	  margin-top: 5px;
+	  margin-left: -20px;
+	  position: absolute;
+}
+
+
+li.collection-header {
+    display: inline;
+
+}
+
+h5.collection-header {
+    margin-top: 30px;
+    color: rgb(100, 165, 210);
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+h5.collection-header-hidden {
+    display: none;
+}
+
+.cart-img {
+    width: 20vw;
+    height: 30vw;
+    max-width: 400px;
+    max-height: 600px;
+}
+
+.cart-details {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#remove-quantity {
+    text-align: center;
+    width: min-content;    
+    font-weight: bold;
+    margin-top: 15px;
+    border-style: groove;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 20px;
+    padding: 3px;
+}
+
+#remove-submit, #buy-btn {
+    background-color: rgb(255, 76, 6);
+    color: white;
+    font-weight: bold;
+    margin-top: 15px;
+    border-style: none;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 20px;
+    padding: 7.5px;
+}
+
+#remove-submit:hover, #buy-btn:hover {
+    color: slategrey
+}
+
+div#buy {
+    padding-left: 3.5vw;
+    margin-top: 5vh;
+}
