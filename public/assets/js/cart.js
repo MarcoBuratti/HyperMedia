@@ -1,39 +1,5 @@
-// Get input element
-let filterInput = document.getElementById('filterInput');
 let buyButton = document.getElementById('buy');
-
 let json;
-
-filterInput.addEventListener('keyup', filterBooks);
-
-function filterBooks(){
-    // Get value of input
-    let filterValue = document.getElementById('filterInput').value.toUpperCase();
-    
-    // Get books ul
-    let ul = document.getElementById('books');
-
-    // Get lis from ul
-    let li = ul.querySelectorAll('li.collection-item');
-   /* let collectionHeaders = ul.querySelectorAll('h5.collection-header');
-
-    for(let i = 0; i < collectionHeaders.length; i++){
-        collectionHeaders[i].className = 'collection-header-hidden';
-    } */
-
-    // Look through collection-item lis
-    for(let i = 0; i < li.length; i++){
-        let a = li[i].getElementsByTagName('a')[0];
-        // If matches
-        if(a.innerHTML.toUpperCase().indexOf(filterValue) > -1){
-            li[i].style.display = '';
-        }
-        else {
-            li[i].style.display = 'none';
-        }
-    }
-}
-
 
 setNavBtn();
 
@@ -66,12 +32,9 @@ async function loadData(json) {
     }
     else {
         let total = 0;
-        let searchbox = document.getElementById('search-box-container');
-        searchbox.style.display = 'block';
         for(var i=0; i<json.length; i++) {
 
             var collection;
-            var collectionHeader;
             switch(json[i].title.charAt(0).toUpperCase()) {
                 case 'A':
                     collection = document.getElementById('a-collection-items');
@@ -179,18 +142,14 @@ async function loadData(json) {
                     break;
             }
             if (json[i].title.charAt(0).match(/[a-z]/i)) {
-                if (collectionHeader.className === 'collection-header-hidden')
-                    collectionHeader.className = "collection-header";
                 var innerHTML = collection.innerHTML;
                 innerHTML = innerHTML + "<li class='collection-item'>" +
                 "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' class='cart-img'></a>" +
                 "<h4 class='cart-details'>Quantity: " + json[i].quantity + "</h4><h4 class='cart-details'>Price: " + json[i].total.toFixed(2) + '€' + "</h4>";
-                if(json[i].quantity>1){
-                innerHTML += "<form onsubmit = updateCart("+i+") id='remove-form-" + i + "'><input type='number' id='remove-quantity' value=1 min=1 max=" +
-                json[i].quantity + "><br><input type='submit' id='remove-submit' value='Remove'></form>";
-                }
+
+                innerHTML += "<form onsubmit = updateCart("+i+") id='update-form-" + i + "'><input type='number' id='new-quantity' value=" + json[i].quantity + " min=1 max=10><br><input name='update_submit' type='submit' id='update-submit' value='Update quantity'></form>";
+                innerHTML += "<form onsubmit = deleteBook("+i+") id='remove-form-" + i + "'><input name='remove_submit' type='submit' id='remove-submit' value='Remove'></form>";
                 
-                //innerHTML += " <button class='pay-btn' onclick=deleteBook(/"+json[i].isbn+"/)>Remove</button>";
             
                 collection.innerHTML = innerHTML;
                 
@@ -202,17 +161,12 @@ async function loadData(json) {
     
 
         buyButton.innerHTML = "<h4 class='cart-details'>Total:"+total.toFixed(2) + '€' + "</h4><button id='buy-btn'>Buy Now</button>";
-
-        let removeForm;
-
-       
-
     
     }
 }
 
-async function deleteBook(isbn){
-    await fetch('../../v2/bookDelete'+isbn, {
+async function deleteBook(k){
+    await fetch('../../v2/bookDelete/'+json[k].isbn, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -237,10 +191,9 @@ buyButton.addEventListener('click',async (e) => {
 
 async function updateCart(k){
 
-    removeForm = document.getElementById('remove-form-' + k);
+    removeForm = document.getElementById('update-form-' + k);
 
-    let removeQuantity = removeForm.querySelector("#remove-quantity").value;
-    let newQuantity = json[k].quantity - removeQuantity;
+    let newQuantity = removeForm.querySelector("#new-quantity").value;
     let total = (json[k].total / json[k].quantity) * newQuantity;
     let details = {
         'total': total,
