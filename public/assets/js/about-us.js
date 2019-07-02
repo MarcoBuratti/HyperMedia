@@ -1,24 +1,57 @@
-const submit_box = document.querySelector('.regform_box');
-const error = document.querySelector('#regform_err');
-const username_box = document.querySelector('.regform_user');
-const password_box = document.querySelector('.regform_pass');
+function initMap(){
+  // Map options
+  var options = {
+    zoom: 15,
+    center:{lat:45.477888,lng:9.234955}
 
+  }
 
-submit_box.addEventListener('submit', (e) => {
+  // New map
+  var map = new google.maps.Map(document.getElementById('map'), options);
 
-    e.preventDefault();
+  // Listen for click on map
+  google.maps.event.addListener(map, 'click', function(event){
+    // Add marker
+    addMarker({coords:event.latLng});
+  });
 
-    if (username_box.value === '' || password_box.value === '') {
-        error.innerHTML = "Invalid input: username and/or password are empty.";
+  // Array of markers
+  var markers = [
+    {
+      coords:{lat:45.477888,lng:9.234955},
+      content:'<h1>Our Headquarter</h1>'
     }
-    else if (username_box.value.length > 12 || password_box.value.length > 12) {
-        error.innerHTML = "Invalid input: username and/or password are too long.";
+  ];
+
+  // Loop through markers
+  for(var i = 0;i < markers.length;i++){
+    // Add marker
+    addMarker(markers[i]);
+  }
+
+  // Add Marker Function
+  function addMarker(props){
+    var marker = new google.maps.Marker({
+      position:props.coords,
+      map:map,
+      //icon:props.iconImage
+    });
+
+    // Check for customicon
+    if(props.iconImage){
+      // Set icon image
+      marker.setIcon(props.iconImage);
     }
-    else if (username_box.value.length < 8 || password_box.value.length < 8) {
-        error.innerHTML = "Invalid input: username and/or password are too short.";
+
+    // Check content
+    if(props.content){
+      var infoWindow = new google.maps.InfoWindow({
+        content:props.content
+      });
+
+      marker.addListener('click', function(){
+        infoWindow.open(map, marker);
+      });
     }
-    else {
-        error.innerHTML = "";
-    }
+  }
 }
-);

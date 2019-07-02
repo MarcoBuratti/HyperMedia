@@ -47,9 +47,9 @@ h3.about-us, h3#contact-us-title{
 p.about-us {
   background-color: rgba(255, 104, 44, 0.8);
   color: black;
-  width: 30vw;
-  margin-right: 10vw;
-  margin-left: 10vw;
+  width: 40vw;
+  margin-right: 5vw;
+  margin-left: 5vw;
   padding: 10px;
   border-width: 5px;
   border-color: grey;
@@ -69,14 +69,6 @@ a.email-address, a.phone-number, i.important {
   font-family: sans-serif;
   font-weight: bold;
 
-}
-
-
-article.contact-us{
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
 }
 
 p.contact-us{
@@ -103,21 +95,27 @@ input.contact-us, textarea {
   font-weight: bold;
   letter-spacing: 1px;
   margin-top: 10px;
+  margin-left: 0;
 }
 
 form.contact-us {
   display: block;
-  text-align: center;
-  
+  text-align: center;  
+  background-color: rgba(255, 104, 44, 0.8);
+  color: black;
+  width: 40vw;
+  margin-right: 5vw;
+  margin-left: 5vw;
+  padding: 10px;
+  border-width: 5px;
+  border-color: grey;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
-input#name-input, input#email-input {
-  width: 30vw;
-}
 
 textarea {
   resize: none;
-  width: 30vw;
 }
 
 
@@ -132,6 +130,15 @@ input#submit-button {
   border: 0px;
   border-radius: 10px;
   margin-top: 30px;
+  width: auto;
+}
+
+#map{
+  height: 55vh;
+  width: 40vw;
+  margin-top: 5vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 
 @media screen and (max-width: 800px) {
@@ -149,21 +156,23 @@ input#submit-button {
 
 p.about-us {
   width: 85vw;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 article {
   max-width: 100vw;
 }
 
-input#name-input, input#email-input {
+form.contact-us {
+  width: 85vw;
+}
+
+#map {
+  height: 85vw;
   width: 85vw;
 }
 
 textarea {
   resize: none;
-  width: 85vw;
 }
 
 }
