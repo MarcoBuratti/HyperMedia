@@ -147,7 +147,7 @@ async function loadData(json) {
                 "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' class='cart-img'></a>" +
                 "<h4 class='cart-details'>Quantity: " + json[i].quantity + "</h4><h4 class='cart-details'>Price: " + json[i].total.toFixed(2) + '€' + "</h4>";
 
-                innerHTML += "<form onsubmit = updateCart("+i+") id='update-form-" + i + "'><input type='number' id='new-quantity' value=" + json[i].quantity + " min=1 max=10><br><input name='update_submit' type='submit' id='update-submit' value='Update quantity'></form>";
+                innerHTML += "<form onsubmit = updateCart("+i+") id='update-form-" + i + "'><input type='number' id='new-quantity' value=1 min=1 max=10><br><input name='update_submit' type='submit' id='update-submit' value='Update quantity'></form>";
                 innerHTML += "<form onsubmit = deleteBook("+i+") id='remove-form-" + i + "'><input name='remove_submit' type='submit' id='remove-submit' value='Remove'></form>";
                 
             
