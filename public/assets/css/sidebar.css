@@ -187,6 +187,11 @@ body {
     color: rgb(255, 76, 6);
 }
 
+#book-events {
+    font-style: italic;
+    color: rgb(255, 76, 6);
+}
+
 @media (max-width: 1024px) and (orientation:portrait){
 
     #content-box {

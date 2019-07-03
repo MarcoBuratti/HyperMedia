@@ -22,7 +22,7 @@ function filterBooks(){
 
     // Look through collection-item lis
     for(let i = 0; i < li.length; i++){
-        let a = li[i].getElementsByTagName('a')[0];
+        let a = li[i].getElementsByClassName('book-title-ref')[0];
         // If matches
         if(a.innerHTML.toUpperCase().indexOf(filterValue) > -1){
             li[i].style.display = '';
@@ -196,20 +196,22 @@ async function loadData(json) {
             if (collectionHeader.className === 'collection-header-hidden')
                 collectionHeader.className = "collection-header";
             var innerHTML = collection.innerHTML;
-            innerHTML = innerHTML + "<li class='collection-item'>" +
-            "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' class='book-img'></a>" +
-            "<h4 class='book-details'>Price: " + json[i].price.toFixed(2) + '€' + "</h4>";
+            innerHTML = innerHTML + "<li class='collection-item'>" + "<div class='my-row'><div class='column' id='img-column'>" +
+            "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' class='book-img'></a></div>" +
+            "<div class='column' id='other-column'><a class='collection-item book-title-ref', href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "</a><h4 class='book-details'>Price: " + json[i].price.toFixed(2) + '€' + "</h4>";
 
             if (author.length > 1) {
                 innerHTML = innerHTML + "<h4 class='book-details'>Authors: " + "<a class='author-ref' href='../pages/sidebar.html?id_author=" + author[0].id_author + "'>" + author[0].name + "</a>, ";
                 for(var j=1; j<author.length-1; j++) {
                     innerHTML = innerHTML  + "<a class='author-ref' href='../pages/sidebar.html?id_author=" + author[j].id_author + "'>" + author[j].name + "</a>, ";
                 }
-                innerHTML = innerHTML + "<a class='author-ref' href='../pages/sidebar.html?id_author=" + author[j].id_author + "'>" + author[j].name + "</a>" + "</h4></li>";
+                innerHTML = innerHTML + "<a class='author-ref' href='../pages/sidebar.html?id_author=" + author[j].id_author + "'>" + author[j].name + "</a>" + "</h4>";
             }
             else {
-                innerHTML = innerHTML + "<h4 class='book-details'>Author: " + "<a class='author-ref' href='../pages/sidebar.html?id_author=" + author[0].id_author + "'>" + author[0].name + "</a></h4></li>";
+                innerHTML = innerHTML + "<h4 class='book-details'>Author: " + "<a class='author-ref' href='../pages/sidebar.html?id_author=" + author[0].id_author + "'>" + author[0].name + "</a></h4>";
             }
+
+            innerHTML += "<h4 class='book-details' id='book-descr'>Preface: " + json[i].descr.substring(0, 480) + " [...]</h4></div></div></li>"
             collection.innerHTML = innerHTML;
         }
     }

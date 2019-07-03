@@ -21,7 +21,7 @@ exports.booksDbSetup = function (database) {
  * returns List
  **/
 exports.booksGET = function () {
-  return db.select('isbn', 'title', 'price')
+  return db.select('isbn', 'title', 'price', 'descr')
     .from('books');
 }
 
