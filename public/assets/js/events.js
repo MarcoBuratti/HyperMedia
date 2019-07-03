@@ -27,8 +27,8 @@ const userAction = async () => {
         
     } else {
       var today = new Date();
-      //MODIFICARE IL +2 in +1
-      var month = String(today.getMonth() + 2).padStart(2, '0'); //January is 0!
+
+      var month = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
       var year = today.getFullYear();
       console.log(month+"  "+year);
       response = await fetch('../../v2/eventMonth/'+month+'/'+year);
