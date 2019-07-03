@@ -4,7 +4,7 @@
   "description": "hyper project",
   "main": "index.js",
   "scripts": {
-    "start": "knex migrate:rollback && knex migrate:latest && knex seed:run && node index.js",
+    "start": "node index.js",
     "dev": "nodemon"
   },
   "repository": {
@@ -22,6 +22,7 @@
     "connect": "^3.2.0",
     "cookie-parser": "^1.4.4",
     "cookie-session": "^1.3.3",
+    "cool-ascii-faces": "^1.3.4",
     "js-yaml": "^3.3.0",
     "knex": "^0.14.6",
     "lodash": "^4.17.10",
