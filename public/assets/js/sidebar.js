@@ -200,7 +200,7 @@ async function loadDataBook(json) {
       for (var j = 1; j < event.length - 1; j++) {
         eventsHTML += '<a class="ref" href="../pages/sidebar.html?id_event='+ event[j].id_event + '">' + event[j].name + '</a>' + ", ";
       }
-      eventsHTML += '<a href="../pages/sidebar.html?event='+ event[j].id_event + '">' + event[j].name+'</a>';
+      eventsHTML += '<a class="ref" href="../pages/sidebar.html?event='+ event[j].id_event + '">' + event[j].name+'</a>';
     }
     else {
       eventsHTML = 'Event about this book: <a class="ref" href="../pages/sidebar.html?id_event='+ event[0].id_event + '">' + event[0].name + '</a>';
