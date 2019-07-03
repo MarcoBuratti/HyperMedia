@@ -69,7 +69,7 @@ async function loadDataEvent(json){
   let eventDescr = document.getElementById('event-descr');
 
   eventName.innerHTML = json[0].name;
-  eventBook.innerHTML = "Book: " + '<a href="../pages/sidebar.html?isbn='+ json[0].isbn + '">' + json[0].title +'</a>';
+  eventBook.innerHTML = "Book: " + '<a class="ref" href="../pages/sidebar.html?isbn='+ json[0].isbn + '">' + json[0].title +'</a>';
   eventDate.innerHTML = "Date: " + json[0].date;
   cover.src = "../assets/img/books/" + json[0].isbn + ".jpg";
   eventDescr.innerHTML = "Description: " + json[0].description;
