@@ -35,8 +35,6 @@ function loadData(bestSeller, bookRecommended) {
         cardTitles[i].innerHTML = bookRecommended[j].title;
         bookRecommended.splice(j, 1);
         len = bookRecommended.length - 1;
-        console.log(bookRecommended);
-        console.log(len);
         j=Math.floor(Math.random() * (len));
     }
 }
