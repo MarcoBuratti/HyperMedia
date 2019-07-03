@@ -197,18 +197,18 @@ async function loadData(json) {
                 collectionHeader.className = "collection-header";
             var innerHTML = collection.innerHTML;
             innerHTML = innerHTML + "<li class='collection-item'>" +
-            "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' height='300' width='180'></a>" +
-            "<h4>Price: " + json[i].price.toFixed(2) + '€' + "</h4>";
+            "<a class='collection-item' , href='../pages/sidebar.html?isbn=" + json[i].isbn + "'>" + json[i].title + "<br><img src='" + "../assets/img/books/" + json[i].isbn + ".jpg' class='book-img'></a>" +
+            "<h4 class='book-details'>Price: " + json[i].price.toFixed(2) + '€' + "</h4>";
 
             if (author.length > 1) {
-                innerHTML = innerHTML + "<h4>Authors: " + author[0].name + ", ";
+                innerHTML = innerHTML + "<h4 class='book-details'>Authors: " + "<a class='author-ref' href='../pages/sidebar.html?id_author=" + author[0].id_author + "'>" + author[0].name + "</a>, ";
                 for(var j=1; j<author.length-1; j++) {
-                    innerHTML = innerHTML  + author[j].name + ", ";
+                    innerHTML = innerHTML  + "<a class='author-ref' href='../pages/sidebar.html?id_author=" + author[j].id_author + "'>" + author[j].name + "</a>, ";
                 }
-                innerHTML = innerHTML + author[author.length-1].name + "</h4></li>";
+                innerHTML = innerHTML + "<a class='author-ref' href='../pages/sidebar.html?id_author=" + author[j].id_author + "'>" + author[j].name + "</a>" + "</h4></li>";
             }
             else {
-                innerHTML = innerHTML + "<h4>Author: " + author[0].name + "</h4></li>";
+                innerHTML = innerHTML + "<h4 class='book-details'>Author: " + "<a class='author-ref' href='../pages/sidebar.html?id_author=" + author[0].id_author + "'>" + author[0].name + "</a></h4></li>";
             }
             collection.innerHTML = innerHTML;
         }
