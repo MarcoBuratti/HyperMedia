@@ -129,13 +129,23 @@ hr#separatore {
     text-shadow: rgba(0, 0, 0, 0.2) 1px 1px;
 }
 
+#page-title {
+    text-align: center;
+    font-size: 2.2vw;
+    color: rgba(0, 0, 0, 0.75);
+    text-shadow: rgba(0, 0, 0, 0.2) 1px 1px;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 2vh;
+}
+
 @media screen and (max-width: 1365px) {
 
     #intro {
         font-size: 22px;
     }
 
-    h2#titolo {
+    h2#titolo, #page-title {
         font-size: 28px;
     }
 
