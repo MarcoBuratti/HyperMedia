@@ -68,7 +68,11 @@ a.email-address, a.phone-number, i.important {
   font-style: italic;
   font-family: sans-serif;
   font-weight: bold;
+}
 
+a.email-address:hover, a.phone-number:hover {
+  text-decoration: none;
+  color: white;
 }
 
 p.contact-us{

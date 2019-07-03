@@ -9,8 +9,10 @@ async function setNavBtn() {
     if (answer.length) {
         let cart = document.getElementById('first-logout-btn');
         let sideCart = document.getElementById('side-cart-btn');
+        let welcomeBtn = document.getElementById('logout-btn-open');
         cart.classList.add('my-navbar-active-btn');
         sideCart.classList.add('active-sidebar-btn')
+        welcomeBtn.classList.add('my-navbar-active-btn');
     }
 }
 
