@@ -1,0 +1,8 @@
+#success {
+    color: rgba(0,0,0,0.8);
+    font-weight: bold;
+    font-style: italic;
+    font-size: 40px;
+    text-shadow: rgba(0,0,0,0.8) 1px 1px;
+    text-align: center;
+}
