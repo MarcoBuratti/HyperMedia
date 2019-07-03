@@ -56,21 +56,21 @@ exports.getBookById = function (isbn) {
 
 
 exports.getBookByGenre = function (bookGenre) {
-  return db.select('isbn','title','price')
+  return db.select('isbn','title','price', 'descr')
     .from('books')
     .where('genre1', bookGenre)
     .orWhere('genre2', bookGenre);
 }
 
 exports.getBookByTheme = function (bookTheme) {
-  return db.select('isbn','title','price')
+  return db.select('isbn','title','price', 'descr')
     .from('books')
     .where('theme1', bookTheme)
     .orWhere('theme2', bookTheme);
 }
 
 exports.getBookRecommended = function () {
-  return db.select('isbn', 'title', 'price')
+  return db.select('isbn', 'title', 'price', 'descr')
     .from('books')
     .where('recommended', true);
 }

@@ -26,44 +26,36 @@ body {
 .copper {
     height: 480px;
     width: 22vw;
-    max-width: 450px;
+    max-width: 400px;
 }
 
 .card{
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
     width: 22vw;
-    max-width: 450px;
+    height: 480px;
+    max-width: 400px;
     margin: auto;
     text-align: center;
     background-color: rgb(255,255,255);
     border-radius: 10px;
 }
 
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .card-title {
     font-weight: bold;
     font-style: italic;
+    padding: 5% 5% 5% 5%;
 }
 
-.card-text {
-    font-weight: bold;
-    color: white;
-    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.2);
-}
-
-.bestseller {
-    background-color: red;
-}
-
-.recommended {
-    background-color: green;
-}
-
-.card-footer {
+#card-footer {
     position: absolute;
-    text-align: center;
-    bottom: 20px;
-    left: 25%;
-    right: 25%;
+    bottom: 5%;
 }
 
 .img-responsive {
@@ -108,21 +100,55 @@ hr#separatore {
 }
 
 
- h2#titolo{
-     font-weight: 700;
-     font-size: 30px;
+ h2#titolo {
+     color: rgba(0, 0, 0, 0.75);
+     font-style: italic;
+     font-weight: bold;
+     font-size: 2.2vw;
      margin-top: 20px;
      margin-bottom: 10px;
+     text-shadow: rgba(0, 0, 0, 0.2) 1px 1px;
  }
 
-#img-home {
-    height: 200px;
-    width: 300px;
+ #bestseller-books-title, #recommended-books-title {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 2.2vw;
+    margin-bottom: 2vh;
+    margin-top: 5vh;
+    color: rgb(255, 76, 6);
+    text-shadow: rgba(0, 0, 0, 0.2) 1px 1px;
+    text-align: center;
+}
+
+#intro {
+    color: rgba(0, 0, 0, 0.75);
+    font-style: italic;
+    font-size: 1.2vw;
+    margin-bottom: 10px;
+    text-shadow: rgba(0, 0, 0, 0.2) 1px 1px;
+}
+
+@media screen and (max-width: 1365px) {
+
+    #intro {
+        font-size: 22px;
+    }
+
+    h2#titolo {
+        font-size: 28px;
+    }
+
+    #bestseller-books-title, #recommended-books-title {
+        font-size: 28px;
+    }
 }
 
 @media screen and (max-width: 993px) {
     .card, .copper {
         width: 50vw;
+        max-width: 400px;
+        min-width: 300px;
     }
 }
 
@@ -131,22 +157,3 @@ hr#separatore {
         width: 80vw;
     }
 }
-
-#intro {
-    color: black;
-    text-align: left;
-    padding-top: 20px;
-    font-size: 4vh;
-}
-
-#success{
-
-        color: black;
-        text-align: center;
-        padding-top: 50px;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        font-size: 10vh;
-        font-style: italic;
-        font-weight: bold;
- }

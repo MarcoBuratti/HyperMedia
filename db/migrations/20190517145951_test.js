@@ -6,7 +6,7 @@ exports.up = function (knex, Promise) {
         table.string('name');//.notNullable();
         table.string('isbn');//.reference('isbn').inTable('relations');
         table.string('date');
-        table.string('description');
+        table.text('description');
     })
         .createTable('users', function (table) {
             console.log("Create Table Users");

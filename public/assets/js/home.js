@@ -19,22 +19,24 @@ userAction();
 
 function loadData(bestSeller, bookRecommended) {
     let cardImgs = document.querySelectorAll(".card-img");
-    let cardTexts = document.querySelectorAll(".card-text");
     let cardLinks = document.querySelectorAll(".card-link");
     let cardTitles = document.querySelectorAll(".card-title");
     for (var i=0; i < bestSeller.length && i < cardImgs.length ; i++) {
             cardImgs[i].src = "../assets/img/books/" + bestSeller[i].isbn + ".jpg";
             cardLinks[i].href = "../pages/sidebar.html?isbn=" + bestSeller[i].isbn;
             cardTitles[i].innerHTML = bestSeller[i].title;
-            cardTexts[i].innerHTML = "Best Seller!";
-            cardTexts[i].classList.add("bestseller");
+
     }
 
-    for (var j=0; i < cardImgs.length && j < bookRecommended.length ; j++, i++) {
+    let len = bookRecommended.length - 1;
+    for (var j=Math.floor(Math.random() * (len)); i < cardImgs.length && j < bookRecommended.length ; i++) {
         cardImgs[i].src = "../assets/img/books/" + bookRecommended[j].isbn + ".jpg";
         cardLinks[i].href = "../pages/sidebar.html?isbn=" + bookRecommended[j].isbn;
         cardTitles[i].innerHTML = bookRecommended[j].title;
-        cardTexts[i].innerHTML = "Recommended Book!";
-        cardTexts[i].classList.add("recommended");
+        bookRecommended.splice(j, 1);
+        len = bookRecommended.length - 1;
+        console.log(bookRecommended);
+        console.log(len);
+        j=Math.floor(Math.random() * (len));
     }
 }
