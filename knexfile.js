@@ -4,7 +4,7 @@ module.exports = {
     development: {
       client: 'pg',
       
-      connection: 'postres://postgres:Sergio@localhost/testdue',
+      connection: 'postgres://aouhgoinjndwvn:687dfce950901be9b7fca25bbdf716269952e5bcba60976d83c1e5fc8efbad6a@ec2-54-75-224-168.eu-west-1.compute.amazonaws.com:5432/dbmpatb09amckh',
 
       migrations: {
         directory: __dirname + '/db/migrations',
@@ -15,12 +15,14 @@ module.exports = {
     },
     production: { 
       client: 'pg', 
-      connection: process.env.DATABASE_URL,
+      connection: 'postgres://aouhgoinjndwvn:687dfce950901be9b7fca25bbdf716269952e5bcba60976d83c1e5fc8efbad6a@ec2-54-75-224-168.eu-west-1.compute.amazonaws.com:5432/dbmpatb09amckh',
       migrations: {
         directory: __dirname + '/db/migrations',
       },
       seeds: {
-        directory: __dirname + '/db/seeds/production',
+        directory: __dirname + '/db/seeds',
       },
     }
   };
+
+
