@@ -139,6 +139,7 @@ hr#separatore {
     margin-bottom: 2vh;
 }
 
+
 @media screen and (max-width: 1365px) {
 
     #intro {
@@ -163,7 +164,14 @@ hr#separatore {
 }
 
 @media screen and (max-width: 450px) {
+
     .card, .copper {
         width: 80vw;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    #img-carousel {
+        height: 30vh;
     }
 }
