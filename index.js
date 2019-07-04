@@ -29,7 +29,7 @@ var swaggerDoc = jsyaml.safeLoad(spec);
 // Add cookies to responses
 app.use(cookieParser());
 app.use(cookieSession({ name: "session", keys: ['id_user','cookie'] }));
-socket = io.listen(serverPort);
+
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
