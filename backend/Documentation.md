@@ -16,10 +16,11 @@
 
 ### Links to other deliverables [this address](https://example.com/backend).
 
-> Deliverable D0: the web application is reachable at this address INSERIRE IL LINK GENERATO DA HEROKU.
+> Deliverable D0: the web application is reachable at this address https://buratticammarericanzoneri.herokuapp.com .
 
-> Deliverable D2 D3: the YAML file containing the specification of the appAPI can be found at INSERIRE LINK,
-                     the SwaggerUI page of the same API is available at INSERIRE LINK.
+> Deliverable D2: the YAML file containing the specification of the appAPI can be found at https://buratticammarericanzoneri.herokuapp.com/backend/spec.yaml .
+
+> Deliverable D3: the SwaggerUI page of the same API is available at https://buratticammarericanzoneri.herokuapp.com/backend/swaggerui .
 
 > Deliverable D4: the source code of D0 is available as a zip file at INSERIRE LINK.
 
