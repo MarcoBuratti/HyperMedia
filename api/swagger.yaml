@@ -219,7 +219,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "data sent to client"
+        description: "Login with a form built in this way:\nemail=YourEmail&password=YourPassword"
         schema:
           type: "object"
           properties:
@@ -249,7 +249,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "data sent to client"
+        description: "Login with a form built in this way:\nname&YourName&email=YourEmail&password=YourPassword"
         schema:
           type: "object"
           properties:
@@ -521,7 +521,7 @@ paths:
       tags:
       - "cart"
       summary: "Insert or update user's cart"
-      description: "Register into the cart a new book"
+      description: "Register into the cart a new book with a form built in this way:\nisbn&BookIsbn&quantity=YourQuantity&total=YourTotal"
       operationId: "cartInsertPOST"
       consumes:
       - "application/x-www-form-urlencoded"
@@ -530,7 +530,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "data send to client"
+        description: "Register into the cart a new book with a form built in this way:\nisbn&BookIsbn&quantity=YourQuantity&total=YourTotal"
         schema:
           type: "object"
           properties:
