@@ -217,7 +217,7 @@ input {
 	margin-top: 75px;
 }
 
-@media (max-width: 500px) and (orientation:portrait) {
+@media (max-width: 500px) {
 
 	#body {
 		padding-top: 0;
