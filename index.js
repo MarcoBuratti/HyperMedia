@@ -30,6 +30,15 @@ var swaggerDoc = jsyaml.safeLoad(spec);
 app.use(cookieParser());
 app.use(cookieSession({ name: "session", keys: ['id_user','cookie'] }));
 
+app.use(function (req, res, next) {
+  if(req.url === "/backend/swaggerui") {
+    let swaggerUIDocsUrl = "/docs"
+    res.writeHead(301, {Location: swaggerUIDocsUrl});
+    res.end();
+  } else
+    next()
+})
+
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
