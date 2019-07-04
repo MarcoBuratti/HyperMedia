@@ -23,7 +23,6 @@ tags:
 - name: "cart"
   description: "Books added by an user to his cart"
 schemes:
-- "http"
 - "https"
 paths:
   /books:
