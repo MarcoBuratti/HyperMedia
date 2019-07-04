@@ -50,19 +50,10 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
   setupDataLayer().then(() => {
     // Start the server
-    app.get('/', function(request, response) {
-      var result = 'App is running'
-      response.send(result);
-    }).listen(app.get('port'), function() {
-      console.log('App is running, server is listening on port ', app.get('port'));
-    });
-
-    /*
     http.createServer(app).listen(serverPort, function () {
       console.log(process.env.serverPort)
       console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
       console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
-    });*/
+    });
   });
 });
-
