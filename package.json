@@ -4,6 +4,7 @@
   "description": "hyper project",
   "main": "index.js",
   "scripts": {
+    "postinstall": "nmp install",
     "start": "knex migrate:rollback && knex migrate:latest && knex seed:run && node index.js",
     "dev": "nodemon"
   },
