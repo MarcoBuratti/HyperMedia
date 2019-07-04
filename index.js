@@ -7,7 +7,7 @@ var fs = require('fs'),
 var app = require('connect')();
 var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
-var serverPort = 8080 || process.env.serverPort;
+var serverPort = 8080 || process.env.PORT;
 let serveStatic = require("serve-static");
 let cookieSession = require("cookie-session");
 let cookieParser = require("cookie-parser");
@@ -51,7 +51,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   setupDataLayer().then(() => {
     // Start the server
     http.createServer(app).listen(serverPort, function () {
-      console.log(process.env.serverPort)
+      console.log(process.env.PORT)
       console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
       console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
     });
