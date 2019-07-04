@@ -1,0 +1,50 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    overflow-x: auto;
+}
+
+#architecture{
+    width: 60vw;
+    height: 80vh;
+}
+
+#data-model{
+    width: 60vw;
+    height: 75vh;
+}
+
+.my-col {
+    float: left;
+    width: 10vw;
+    border: groove 1px black;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+h4 {
+    margin: 0;
+}
+
+.my-row::after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+div#col-email {
+    width: 30vw;
+}
+
+div#col-role {
+    width: 12vw;
+}
